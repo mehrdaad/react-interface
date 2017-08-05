@@ -1,9 +1,9 @@
 import { enhanceColors } from '../utils/colors'
 
 const colors = {
-  primary: 'blue'
+  background: '#FFF',
+  border: '#333',
+  text: '#000'
 }
-
-console.log(enhanceColors(colors))
 
 export default enhanceColors(colors)
