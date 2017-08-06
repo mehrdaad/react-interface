@@ -3,7 +3,7 @@ module.exports = {
   npm: {
     esModules: true,
     umd: {
-      global: 'ReactUI',
+      global: 'ReactInterface',
       externals: {
         react: 'React'
       }

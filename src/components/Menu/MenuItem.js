@@ -19,6 +19,10 @@ export default styled.li`
     background: ${props => props.theme.colors.background.darken(.25)};
   }
 
+  ${props => props.active && css`
+    background: ${props => props.theme.colors.background.darken(.25)};
+  `}
+
   ${props => props.large && css`
     font-size: ${props => props.theme.sizes.fonts.large};
   `}

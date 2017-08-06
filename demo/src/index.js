@@ -2,12 +2,9 @@ import React, {Component} from 'react'
 import {render} from 'react-dom'
 import { ThemeProvider } from 'styled-components'
 
-import components from '../../src/components'
+import { Button, Menu, MenuItem, MenuHeader, MenuDivider } from '../../src/components'
 import themes from '../../src/themes'
-import icons from '../../src/icons'
-
-const { Button, Menu, MenuItem, MenuHeader, MenuDivider } = components
-const { Caret } = icons
+import { Caret } from '../../src/icons'
 
 const themeMap = {
   base: themes.base,

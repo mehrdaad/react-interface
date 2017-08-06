@@ -1,7 +1,7 @@
 import Button from './Button'
 import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
 
-export default {
+export {
   Button,
   Menu,
   MenuItem,

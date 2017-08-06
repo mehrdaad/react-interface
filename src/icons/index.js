@@ -1,5 +1,5 @@
 import Caret from './Caret'
 
-export default {
+export {
   Caret
 }
