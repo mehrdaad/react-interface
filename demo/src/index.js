@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import { ThemeProvider } from 'styled-components'
+import ReactStory from 'react-story'
 
-import { Button, Menu, MenuItem, MenuHeader, MenuDivider } from '../../src/components'
+import { Button } from '../../src/components'
 import themes from '../../src/themes'
-import { Caret } from '../../src/icons'
+
+import stories from './stories'
+
 
 const themeMap = {
   base: themes.base,
@@ -41,21 +44,7 @@ class Demo extends Component {
   render() {
     return (
       <ThemeProvider theme={this.getTheme()}>
-        <div>
-          {this.renderThemeSelector()}
-          <Button>Button!</Button>
-          <Caret rotate={90} />
-
-          <Menu style={{ width: 200 }}>
-            <MenuHeader>Account</MenuHeader>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>Friends</MenuItem>
-            <MenuItem>Notifications</MenuItem>
-            <MenuDivider />
-            <MenuItem>Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </Menu>
-        </div>
+        <ReactStory stories={stories} />
       </ThemeProvider>
     )
   }
