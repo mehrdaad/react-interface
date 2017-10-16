@@ -8,6 +8,7 @@ export default styled.li`
   display: block;
   border-radius: 2px;
   padding: 7px;
+  margin: .1rem 0;
   line-height: 16px;
   display: flex;
   align-items: center;

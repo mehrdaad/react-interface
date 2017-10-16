@@ -1,7 +1,9 @@
-import { enhanceColors } from '../utils/colors'
+// import { enhanceColors } from '../utils/colors'
 
 const colors = {
   primary: 'blue'
 }
 
-export default enhanceColors(colors)
+// Potential idea for decorating color props with SASS style transformers
+// export default enhanceColors(colors)
+export default colors

@@ -7,13 +7,6 @@
 import base from '../base'
 import colors from './colors'
 
-const theme = {
-  ...base
-}
-
-theme.colors = {
-  ...base.colors,
-  ...colors
-}
+const theme = { colors }
 
 export default theme

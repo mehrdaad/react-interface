@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
-import {render} from 'react-dom'
-import { ThemeProvider } from 'styled-components'
+import { render } from 'react-dom'
+import ReactStory from 'react-story'
 
-import { Button, Menu, MenuItem, MenuHeader, MenuDivider } from '../../src/components'
+import { Button } from '../../src/components'
 import themes from '../../src/themes'
-import { Caret } from '../../src/icons'
+import { Theme } from '../../src'
+import stories from './stories'
+
 
 const themeMap = {
-  base: themes.base,
   light: themes.light,
   dark: themes.dark
 }
@@ -17,7 +18,7 @@ class Demo extends Component {
     super(props)
 
     this.state = {
-      theme: 'base'
+      theme: 'light'
     }
   }
 
@@ -40,23 +41,10 @@ class Demo extends Component {
 
   render() {
     return (
-      <ThemeProvider theme={this.getTheme()}>
-        <div>
-          {this.renderThemeSelector()}
-          <Button>Button!</Button>
-          <Caret rotate={90} />
-
-          <Menu style={{ width: 200 }}>
-            <MenuHeader>Account</MenuHeader>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>Friends</MenuItem>
-            <MenuItem>Notifications</MenuItem>
-            <MenuDivider />
-            <MenuItem>Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </Menu>
-        </div>
-      </ThemeProvider>
+      <Theme theme={this.getTheme()} color="#0A2862">
+        {this.renderThemeSelector()}
+        <ReactStory stories={stories} />
+      </Theme>
     )
   }
 }
