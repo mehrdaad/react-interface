@@ -1,9 +1,5 @@
-import { enhanceColors } from '../utils/colors'
-
 const colors = {
-  background: '#FFF',
-  border: '#333',
-  text: '#000'
+  primary: "#DDD"
 }
 
-export default enhanceColors(colors)
+export default colors

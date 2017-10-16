@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Stylish = styled.button`
+const Btn = styled.button`
   padding: 1rem;
+  outline: none;
+  background: ${props => { console.log(props.theme); return props.theme.colors.primary; }};
+  border-radius: 3px;
+  border: none;
 `
 
-const Button = () => (
-  <Stylish />
-)
+const Button = props => <Btn {...props} />
 
 Button.propTypes = {
   /**

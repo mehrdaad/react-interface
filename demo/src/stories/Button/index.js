@@ -4,27 +4,23 @@ import { Button } from '../../../../src/components'
 import ButtonRaw from '!raw-loader!../../../../src/components/Button'
 import Markdown from '!raw-loader!./code.md'
 
-const ButtonDemo = () => (
-  <Demo
-    name="Normal Button"
-    desc="Normal Button"
-    code={Markdown}
-  >
-    <Button>Hello</Button>
-  </Demo>
-)
-
 const ButtonStory = () => (
   <Story>
-    <ButtonDemo />
+    <Demo
+      name="Normal Button"
+      desc="Normal Button"
+      code={Markdown}
+    >
+      <Button>Hello</Button>
+    </Demo>
     <PropsTable
-      demonstrating={Button}
       raw={ButtonRaw}
+      demonstrating={Button}
     />
   </Story>
 )
 
 export default {
   name: 'Button',
-  component: ButtonDemo
+  component: ButtonStory
 }
