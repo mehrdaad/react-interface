@@ -29,6 +29,7 @@ class Demo extends Component {
   renderThemeSelector() {
     const options = Object.keys(themeMap).map(key =>
       <Button
+        size="small"
         key={`theme-${key}`}
         onClick={() => this.setState({ theme: key })}
       >
@@ -41,7 +42,7 @@ class Demo extends Component {
 
   render() {
     return (
-      <Theme theme={this.getTheme()} color="#0A2862">
+      <Theme theme={this.getTheme()}>
         {this.renderThemeSelector()}
         <ReactStory stories={stories} />
       </Theme>

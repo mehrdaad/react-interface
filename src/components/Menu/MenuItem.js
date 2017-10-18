@@ -17,11 +17,11 @@ export default styled.li`
   cursor: pointer;
 
   &:hover {
-    background: ${props => props.theme.colors.background.darken(.25)};
+    background: ${props => props.theme.colors.gray};
   }
 
   ${props => props.active && css`
-    background: ${props => props.theme.colors.background.darken(.25)};
+    background: ${props => props.theme.colors.background};
   `}
 
   ${props => props.large && css`
