@@ -1,11 +1,12 @@
 /**
  *
- * React UI Dark Theme
+ * React UI Light Theme
  *
  */
 
-import base from '../base';
+import base from '../base'
+import colors from './colors'
 
-export default {
-  ...base
-}
+const theme = { colors }
+
+export default theme

@@ -1,13 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { space } from 'styled-system'
 
 const Btn = styled.button`
   padding: 1rem;
   outline: none;
-  background: ${props => { console.log(props.theme); return props.theme.colors.primary; }};
+  background: ${props => props.theme.colors[props.type]};
+  color: ${props => props.theme.colors[`${props.type}1`]};
+  padding: ${props => props.theme.sizes.paddings[props.size]};
+  font-size: ${props => props.theme.sizes.fonts[props.size]};
   border-radius: 3px;
   border: none;
+  ${space};
 `
 
 const Button = props => <Btn {...props} />
@@ -16,7 +21,7 @@ Button.propTypes = {
   /**
    * What type of component is this?
    */
-  primary: PropTypes.bool.isRequired,
+  type: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger']),
   /**
    * How big is it?
    */
@@ -31,8 +36,8 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  primary: true,
-  size: 'small'
+  type: 'primary',
+  size: 'medium',
 }
 
 export default Button

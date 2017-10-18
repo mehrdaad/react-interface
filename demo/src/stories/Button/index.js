@@ -7,11 +7,18 @@ import Markdown from '!raw-loader!./code.md'
 const ButtonStory = () => (
   <Story>
     <Demo
-      name="Normal Button"
-      desc="Normal Button"
+      name="Button"
+      desc="Button"
       code={Markdown}
     >
-      <Button>Hello</Button>
+      <Button
+        size="small"
+        type="warning"
+      >
+        Small
+      </Button>
+      <Button ml={1}>Medium</Button>
+      <Button size="large" ml={1}>Large</Button>
     </Demo>
     <PropsTable
       raw={ButtonRaw}

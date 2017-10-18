@@ -15,9 +15,9 @@ const sizes = {
     large: '2rem'
   },
   paddings: {
-    small: '1rem',
-    medium: '2rem',
-    large: '3rem'
+    small: '.5rem',
+    medium: '1rem',
+    large: '1.5rem'
   },
   margins: {
     small: '1rem',
