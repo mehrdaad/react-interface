@@ -1,9 +1,9 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import merge from 'deepmerge'
+import palx from 'palx'
 import base from './themes/base'
 import { getColorShades, colorListToMap } from './themes/utils/colors'
-import palx from 'palx'
 
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
@@ -21,7 +21,6 @@ const Theme = ({ theme = {}, color, ...rest }) => {
 
   // Merge base theme and theme with palette
   const merged = merge(base, theme)
-  console.log(merged)
 
   return (
     <ThemeProvider theme={merged}>

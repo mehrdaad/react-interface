@@ -43,8 +43,11 @@ class Demo extends Component {
   render() {
     return (
       <Theme theme={this.getTheme()}>
-        {this.renderThemeSelector()}
-        <ReactStory stories={stories} />
+        <ReactStory
+          stories={stories}
+          sidebarContent={<div>{this.renderThemeSelector()}</div>}
+          useTheme={false}
+        />
       </Theme>
     )
   }
