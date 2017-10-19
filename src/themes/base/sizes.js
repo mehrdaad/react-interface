@@ -10,19 +10,34 @@ const sizes = {
     xxxl: 1920
   },
   fonts: {
-    small: '.75rem',
-    medium: '1rem',
-    large: '2rem'
+    xxs: '.25rem',
+    xs: '.5rem',
+    sm: '.75rem',
+    md: '1rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+    xxl: '2rem',
+    xxxl: '3rem'
   },
   paddings: {
-    small: '.5rem',
-    medium: '1rem',
-    large: '1.5rem'
+    xxs: '.25rem',
+    xs: '.5rem',
+    sm: '.75rem',
+    md: '1rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+    xxl: '2rem',
+    xxxl: '3rem'
   },
   margins: {
-    small: '1rem',
-    medium: '2rem',
-    large: '3rem'
+    xxs: '.25rem',
+    xs: '.5rem',
+    sm: '.75rem',
+    md: '1rem',
+    lg: '1.25rem',
+    xl: '1.5rem',
+    xxl: '2rem',
+    xxxl: '3rem'
   }
 }
 

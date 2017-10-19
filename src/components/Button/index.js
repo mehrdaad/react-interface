@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
 
 const Btn = styled.button`
+  cursor: pointer;
   padding: 1rem;
   outline: none;
   background: ${props => props.theme.colors[props.type]};
@@ -25,7 +26,7 @@ Button.propTypes = {
   /**
    * How big is it?
    */
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl']),
   /**
    * Style overrides
    */
@@ -37,7 +38,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   type: 'primary',
-  size: 'medium',
+  size: 'md',
 }
 
 export default Button

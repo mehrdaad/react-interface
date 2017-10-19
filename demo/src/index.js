@@ -29,7 +29,7 @@ class Demo extends Component {
   renderThemeSelector() {
     const options = Object.keys(themeMap).map(key =>
       <Button
-        size="small"
+        size="sm"
         key={`theme-${key}`}
         onClick={() => this.setState({ theme: key })}
       >

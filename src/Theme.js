@@ -8,6 +8,9 @@ import { getColorShades, colorListToMap } from './themes/utils/colors'
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
   background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.black};
+  box-sizing: border-box;
+  a { text-decoration: none  }
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
@@ -21,6 +24,7 @@ const Theme = ({ theme = {}, color, ...rest }) => {
 
   // Merge base theme and theme with palette
   const merged = merge(base, theme)
+  console.log(merged)
 
   return (
     <ThemeProvider theme={merged}>
