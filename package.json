@@ -28,7 +28,7 @@
     "markdown-loader": "^2.0.1",
     "palx": "^1.0.2",
     "raw-loader": "^0.5.1",
-    "react-story": "^1.2.0",
+    "react-story": "^1.2.1",
     "styled-components": "^2.2.1",
     "styled-system": "^1.0.7"
   },

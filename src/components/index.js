@@ -6,6 +6,7 @@ import Paragraph from './Paragraph'
 import Pre from './Pre'
 import Expand from './Expand'
 import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
+import { Table, TBody, THead, Header, Row, Cell } from './FlexTable'
 import { Flex } from 'grid-styled'
 
 export {
@@ -18,6 +19,12 @@ export {
   MenuItem,
   MenuHeader,
   MenuDivider,
+  Table,
+  TBody,
+  THead,
+  Header,
+  Row,
+  Cell,
   Box,
   Flex,
   Icon,

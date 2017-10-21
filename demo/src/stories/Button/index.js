@@ -2,14 +2,15 @@ import React from 'react'
 import { Story, Demo, PropsTable } from 'react-story'
 import { Button } from '../../../../src/components'
 import ButtonRaw from '!raw-loader!../../../../src/components/Button'
-import Markdown from '!raw-loader!./code.md'
+import Sizes from '!raw-loader!./sizes.md'
+import Variants from '!raw-loader!./variants.md'
 
 const ButtonStory = () => (
   <Story>
     <Demo
       name="Button Sizes"
       desc="Button sizes desc"
-      code={Markdown}
+      code={Sizes}
     >
       <Button size="sm" mr={1}>Small</Button>
       <Button size="md" mr={1}>Medium</Button>
@@ -18,7 +19,7 @@ const ButtonStory = () => (
     <Demo
       name="Button Variants"
       desc="Button variants desc"
-      code={Markdown}
+      code={Variants}
     >
       <Button type="primary" mr={1}>Primary</Button>
       <Button type="success" mr={1}>Success</Button>
