@@ -15,7 +15,6 @@ const Cell = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0px;
-  white-space: nowrap;
 `;
 
 const FlexCell = ({ children, ...props }) => (
@@ -27,8 +26,8 @@ const FlexCell = ({ children, ...props }) => (
 FlexCell.defaultProps = {
   grow: 1,
   shrink: 1,
-  basis: 0,
-  align: 'center',
+  basis: 'auto',
+  align: 'initial',
   justify: 'start'
 };
 

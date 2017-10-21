@@ -43,30 +43,6 @@ class Demo extends Component {
   render() {
     return (
       <Theme theme={this.getTheme()}>
-        <Table>
-          <Header>
-            <THead>Cleared Alerts</THead>
-            <THead>Cleared Alerts</THead>
-            <THead>Cleared Alerts</THead>
-          </Header>
-          <TBody>
-            <Row>
-              <Cell>This</Cell>
-              <Cell>Is</Cell>
-              <Cell>Cool</Cell>
-            </Row>
-            <Row>
-              <Cell>This</Cell>
-              <Cell>Is</Cell>
-              <Cell>Cool</Cell>
-            </Row>
-            <Row>
-              <Cell>This</Cell>
-              <Cell>Is</Cell>
-              <Cell>Cool</Cell>
-            </Row>
-          </TBody>
-        </Table>
         <ReactStory
           stories={stories}
           sidebarContent={<div>{this.renderThemeSelector()}</div>}
