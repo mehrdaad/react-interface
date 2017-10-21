@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { render } from 'react-dom'
 import ReactStory from 'react-story'
 
-import { Button } from '../../src/components'
+import { Button, Box, Title, Expand, Pre, Icon } from '../../src/components'
 import themes from '../../src/themes'
 import { Theme } from '../../src'
 import stories from './stories'
@@ -43,6 +43,26 @@ class Demo extends Component {
   render() {
     return (
       <Theme theme={this.getTheme()}>
+        <Box
+          borderColor='#D8E2EA'
+          borderWidth={1}
+          borderRadius={3}
+        >
+          <Title
+            p={2}
+            borderBottom
+            borderWidth={1}
+            borderColor='#D8E2EA'
+          >
+            <span>Hello</span>
+            <Icon type='caret' color='primary' />
+          </Title>
+          <Expand>
+            <Pre p={2} m={0} bg='#FCFDFE'>
+              Some stuff here
+            </Pre>
+          </Expand>
+        </Box>
         <ReactStory
           stories={stories}
           sidebarContent={<div>{this.renderThemeSelector()}</div>}

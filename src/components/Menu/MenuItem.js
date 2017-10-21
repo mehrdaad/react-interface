@@ -12,8 +12,7 @@ export default styled.li`
   line-height: 16px;
   display: flex;
   align-items: center;
-  color: ${props => props.theme.colors.primary9};
-  font-size: ${props => props.theme.sizes.fonts.medium};
+  font-size: ${props => props.theme.sizes.fonts[props.size]};
   cursor: pointer;
 
   &:hover {
