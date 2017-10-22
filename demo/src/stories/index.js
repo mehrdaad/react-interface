@@ -1,5 +1,7 @@
 import Button from './Button'
+import Icon from './Icon'
 
 export default [
-  Button
+  Button,
+  Icon,
 ]

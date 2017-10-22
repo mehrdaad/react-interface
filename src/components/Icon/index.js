@@ -1,26 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 import { space, width } from 'styled-system'
+import * as feathers from 'react-feather'
 import { Caret } from '../../icons'
 
 const icons = {
-  caret: Caret
+  ...feathers,
+  Caret: Caret
 }
+
+const capitalize = type => type.charAt(0).toUpperCase() + type.substring(1)
 
 const Wrapper = styled.div`
   ${space}
   ${width}
 
-  svg path {
-    fill: ${props => props.theme.colors[props.color]};
+  svg {
+    stroke: ${props => props.theme.colors[props.color] || props.color};
   }
 `
 
-const Icon = ({ type, color }) => (
-  <Wrapper color={color}>
+const Icon = ({ type, ...rest }) => (console.log(rest),
+  <Wrapper {...rest}>
     {React.createElement(
-      icons[type],
-      { color }
+      icons[type.split('-').map(t => capitalize(t)).join('')],
+      { ...rest }
     )}
   </Wrapper>
 )

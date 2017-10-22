@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { render } from 'react-dom'
 import ReactStory from 'react-story'
 
-import { Button, Table, TBody, THead, Header, Row, Cell } from '../../src/components'
+import { Button } from '../../src/components'
 import themes from '../../src/themes'
 import { Theme } from '../../src'
 import stories from './stories'
@@ -45,7 +45,6 @@ class Demo extends Component {
       <Theme theme={this.getTheme()}>
         <ReactStory
           stories={stories}
-          sidebarContent={<div>{this.renderThemeSelector()}</div>}
           useTheme={false}
         />
       </Theme>
