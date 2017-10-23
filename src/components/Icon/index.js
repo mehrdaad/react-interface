@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Icon = ({ type, ...rest }) => (console.log(rest),
+const Icon = ({ type, ...rest }) => (
   <Wrapper {...rest}>
     {React.createElement(
       icons[type.split('-').map(t => capitalize(t)).join('')],

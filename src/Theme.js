@@ -24,7 +24,6 @@ const Theme = ({ theme = {}, color, ...rest }) => {
 
   // Merge base theme and theme with palette
   const merged = merge(base, theme)
-  console.log(merged)
 
   return (
     <ThemeProvider theme={merged}>
