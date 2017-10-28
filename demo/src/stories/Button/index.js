@@ -5,7 +5,7 @@ import ButtonRaw from '!raw-loader!../../../../src/components/Button'
 import Sizes from '!raw-loader!./sizes.md'
 import Variants from '!raw-loader!./variants.md'
 
-const ButtonStory = () => (
+const ButtonStory = (
   <Story>
     <Demo
       name="Button Sizes"

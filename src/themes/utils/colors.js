@@ -1,5 +1,5 @@
 // Thank you erikras: https://github.com/erikras/styled-components-theme
-// and https://github.com/jxnblk/monochrome/blob/master/src/palette.js
+// and jxnblk: https://github.com/jxnblk/monochrome/blob/master/src/palette.js
 // import Color from 'color'
 import chroma from 'chroma-js'
 import huename from 'hue-name'

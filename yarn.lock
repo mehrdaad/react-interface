@@ -5283,9 +5283,9 @@ react-smackdown@^0.6.4:
     react-html-parser "^2.0.0"
     react-syntax-highlighter "^5.6.3"
 
-react-story@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-story/-/react-story-1.3.0.tgz#fdc611a8014aa426cb7c1fb6d383d556927e63ee"
+react-story@^1.3.0, react-story@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-story/-/react-story-1.4.1.tgz#2e3b989a5c3b1919dd2c36f1a0ae5c2ec33f4783"
   dependencies:
     react-docgen next
     react-docgen-annotation-resolver "^1.0.0"

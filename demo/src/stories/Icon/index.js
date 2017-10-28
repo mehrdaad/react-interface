@@ -3,7 +3,7 @@ import { Story, Demo, PropsTable } from 'react-story'
 import { Icon, Flex, Paragraph } from '../../../../src/components'
 import Icons from '!raw-loader!./icons.md'
 
-const IconStory = () => (
+const IconStory = (
   <Story>
     <Demo
       name="Icons"

@@ -13,7 +13,6 @@ const palette = {
 const colors = {
   ...getPaletteShades(palette),
   ...colorListToMap(palx(palette.primary)),
-  background: '#FFF'
 }
 
 export default colors
