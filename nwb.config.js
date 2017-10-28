@@ -11,6 +11,7 @@ module.exports = {
       }
     }
   },
+  uglify: false,
   webpack: {
 		extra: {
 			module: {
