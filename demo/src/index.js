@@ -4,7 +4,7 @@ import ReactStory from 'react-story'
 
 import { Button } from '../../src/components'
 import themes from '../../src/themes'
-import { Theme } from '../../src'
+import Theme from '../../src/Theme'
 import stories from './stories'
 
 
@@ -42,7 +42,7 @@ class Demo extends Component {
 
   render() {
     return (
-      <Theme theme={this.getTheme()}>
+      <Theme color="blue">
         <ReactStory
           stories={stories}
           useTheme={false}
