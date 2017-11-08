@@ -42,7 +42,7 @@ class Demo extends Component {
 
   render() {
     return (
-      <Theme color="blue">
+      <Theme>
         <ReactStory
           stories={stories}
           useTheme={false}

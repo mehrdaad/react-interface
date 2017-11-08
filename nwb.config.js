@@ -4,15 +4,16 @@ module.exports = {
   type: 'react-component',
   npm: {
     esModules: true,
-    umd: {
-      global: 'ReactInterface',
-      externals: {
-        react: 'React'
-      }
-    }
+    // disable umd for now until https://github.com/insin/nwb/issues/391 is resolved
+    // umd: {
+    //   global: 'ReactInterface',
+    //   externals: {
+    //     react: 'React'
+    //   }
+    // }
   },
-  uglify: false,
   webpack: {
+    uglify: false,
 		extra: {
 			module: {
 				rules: [

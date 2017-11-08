@@ -7,8 +7,7 @@
     "css",
     "es",
     "lib",
-    "umd",
-    "themes.js"
+    "umd"
   ],
   "scripts": {
     "build": "nwb build-react-component",
