@@ -7,8 +7,8 @@ const Btn = styled.button`
   cursor: pointer;
   padding: 1rem;
   outline: none;
-  background: ${props => props.theme.colors[props.type]};
-  color: ${props => props.theme.colors[`${props.type}1`]};
+  background: ${props => props.theme.colors[props.color]};
+  color: ${props => props.theme.colors[`${props.color}1`]};
   padding: ${props => props.theme.sizes.paddings[props.size]};
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   border-radius: 3px;
@@ -22,7 +22,7 @@ Button.propTypes = {
   /**
    * What type of component is this?
    */
-  type: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger']),
+  color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger']),
   /**
    * How big is it?
    */
@@ -37,7 +37,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  type: 'primary',
+  color: 'primary',
   size: 'md',
 }
 
