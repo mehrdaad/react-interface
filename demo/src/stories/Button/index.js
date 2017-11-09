@@ -1,9 +1,10 @@
 import React from 'react'
 import { Story, Demo, PropsTable } from 'react-story'
-import { Button } from '../../../../src/components'
+import { Button, Icon } from '../../../../src/components'
 import ButtonRaw from '!raw-loader!../../../../src/components/Button'
 import Sizes from '!raw-loader!./sizes.md'
 import Variants from '!raw-loader!./variants.md'
+import Icons from '!raw-loader!./icons.md'
 
 const ButtonStory = () => (
   <Story>
@@ -26,6 +27,16 @@ const ButtonStory = () => (
       <Button color="info" mr={1}>Info</Button>
       <Button color="warning" mr={1}>Warning</Button>
       <Button color="danger" mr={1}>Danger</Button>
+    </Demo>
+    <Demo
+      name="Button Icons"
+      desc="You can put icons in your buttons!"
+      code={Icons}
+    >
+      <Button>
+        <Icon type="activity" mr={1} height={20} width={20} />
+        <span>Primary</span>
+      </Button>
     </Demo>
     <PropsTable
       raw={ButtonRaw}

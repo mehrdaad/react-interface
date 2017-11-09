@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { space } from 'styled-system'
+import { space, size } from 'styled-system'
 
 const Btn = styled.button`
   cursor: pointer;
@@ -13,7 +13,12 @@ const Btn = styled.button`
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   border-radius: 3px;
   border: none;
+  transition: all .2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   ${space};
+  ${size};
 `
 
 const Button = props => <Btn {...props} />
