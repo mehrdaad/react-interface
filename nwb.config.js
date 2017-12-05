@@ -13,7 +13,6 @@ module.exports = {
     // }
   },
   webpack: {
-    uglify: false,
 		extra: {
 			module: {
 				rules: [
