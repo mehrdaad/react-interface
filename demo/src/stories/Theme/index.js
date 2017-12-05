@@ -14,6 +14,7 @@ const desc = `
 `
 
 const groupColorsByName = colors => {
+  console.log(colors)
   const grouped = Object.keys(colors)
     .filter(c => /\d/.test(c))
     .map(c => ({ name: c, color: colors[c] }))
