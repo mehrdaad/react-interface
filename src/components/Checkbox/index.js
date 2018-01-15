@@ -22,9 +22,9 @@ const Wrapper = styled.div`
 
 const Box = styled.div`
   box-sizing: border-box;
-  background: ${props.theme["checkbox.background"] || props.theme.colors.primary};
-  border: 1px solid ${props.theme["checkbox.border.color"] || props.theme.colors.primary5};
-  color: ${props.theme["checkbox.icon.color"] || props.theme.colors.primary1};
+  background: ${props => props.theme["checkbox.background"] || props.theme.colors.primary};
+  border: 1px solid ${props => props.theme["checkbox.border.color"] || props.theme.colors.primary5};
+  color: ${props => props.theme["checkbox.icon.color"] || props.theme.colors.primary1};
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
   ${borderRadius};
