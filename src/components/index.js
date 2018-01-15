@@ -1,13 +1,14 @@
-import Button from './Button'
-import Box from './Box'
-import Icon from './Icon'
-import Title from './Title'
-import Paragraph from './Paragraph'
-import Pre from './Pre'
-import Expand from './Expand'
-import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
-import { Table, TBody, THead, Header, Row, Cell } from './FlexTable'
-import { Flex } from 'grid-styled'
+import Button from "./Button"
+import Box from "./Box"
+import Icon from "./Icon"
+import Title from "./Title"
+import Paragraph from "./Paragraph"
+import Pre from "./Pre"
+import Expand from "./Expand"
+import Checkbox from "./Checkbox"
+import { Menu, MenuItem, MenuHeader, MenuDivider } from "./Menu"
+import { Table, TBody, THead, Header, Row, Cell } from "./FlexTable"
+import { Flex } from "grid-styled"
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   Box,
   Flex,
   Icon,
+  Checkbox
 }

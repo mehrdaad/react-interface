@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { space, width } from 'styled-system'
-import * as feathers from 'react-feather'
-import { Caret } from '../../icons'
+import React from "react"
+import styled from "styled-components"
+import { space, width } from "styled-system"
+import * as feathers from "react-feather"
+import { Caret } from "../../icons"
 
 const icons = {
   ...feathers,
@@ -12,10 +12,9 @@ const icons = {
 const capitalize = type => type.charAt(0).toUpperCase() + type.substring(1)
 
 const Wrapper = styled.div`
-  ${space}
-  ${width}
+  display: inline-block;
 
-  svg {
+  ${space} ${width} svg {
     stroke: ${props => props.theme.colors[props.color] || props.color};
   }
 `
@@ -23,7 +22,12 @@ const Wrapper = styled.div`
 const Icon = ({ type, ...rest }) => (
   <Wrapper {...rest}>
     {React.createElement(
-      icons[type.split('-').map(t => capitalize(t)).join('')],
+      icons[
+        type
+          .split("-")
+          .map(t => capitalize(t))
+          .join("")
+      ],
       { ...rest }
     )}
   </Wrapper>

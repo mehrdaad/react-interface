@@ -9,7 +9,7 @@ const Btn = styled.button`
   outline: none;
   background: ${props => props.theme.colors[props.color]};
   color: ${props => props.theme.colors[`${props.color}1`]};
-  padding: ${props => props.theme.sizes.paddings[props.size]};
+  padding: ${props => props.theme.sizes.paddings[props.size]}rem;
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   border-radius: 3px;
   border: none;
