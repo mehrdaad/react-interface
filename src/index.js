@@ -7,6 +7,7 @@ export Pre from './components/Pre'
 export Expand from './components/Expand'
 export Icon from './components/Icon'
 export Box from './components/Box'
+export Checkbox from './components/Checkbox'
 export { Flex } from 'grid-styled'
 
 export Menu from './components/Menu/Menu'
