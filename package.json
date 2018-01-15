@@ -1,6 +1,6 @@
 {
   "name": "react-interface",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "react-interface React component",
   "main": "lib/index.js",
   "files": [
