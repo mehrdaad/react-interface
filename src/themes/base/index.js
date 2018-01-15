@@ -14,9 +14,10 @@ const theme = {
   colors,
 
   /* Checkbox */
-  "checkbox.border.color": colors.primary2,
-  "checkbox.background": colors.primary1,
-  "checkbox.icon.color": colors.primary
+  // "checkbox.border.color": colors.primary2,
+  // "checkbox.background": colors.primary1,
+  // "checkbox.icon.color": colors.primary,
+  // "checkbox.label.color": colors.primary,
 }
 
 export default theme
