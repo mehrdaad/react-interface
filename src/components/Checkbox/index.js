@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   cursor: pointer;
 
-  span {
+  > span {
     padding-left: ${props => props.theme.sizes.paddings[props.size] / 3}rem;
   }
 
@@ -46,7 +46,7 @@ class Checkbox extends PureComponent {
 
     // Allow for intercepting of label click if necessary
     if (onLabelClick) {
-      onLabelClick(e)
+      onLabelClick(e, this.props.value, !this.props.checked)
     }
 
     // Trigger normal onChange event
@@ -66,8 +66,8 @@ class Checkbox extends PureComponent {
     } = this.props
 
     return (
-      <Wrapper {...this.props}>
-        <Box {...this.props} onClick={this.onClick}>
+      <Wrapper {...this.props} onClick={this.onClick}>
+        <Box {...this.props}>
           {checked && <Icon type="check" />}
         </Box>
         {label && <span onClick={this.onLabelClick}>{label}</span>}
