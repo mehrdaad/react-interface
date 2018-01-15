@@ -42,15 +42,12 @@ class Checkbox extends PureComponent {
   }
 
   onLabelClick = e => {
-    const { onLabelClick, onChange } = this.props
+    const { onLabelClick, onChange, value, checked } = this.props
 
     // Allow for intercepting of label click if necessary
     if (onLabelClick) {
-      onLabelClick(e, this.props.value, !this.props.checked)
+      onLabelClick(e, value, !checked)
     }
-
-    // Trigger normal onChange event
-    onChange(e, this.props.value, !this.props.checked)
   }
 
   render() {
