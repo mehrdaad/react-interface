@@ -30,7 +30,6 @@ const Box = styled.div`
   color: ${props => props.theme.colors[`${props.color}1`] || props.theme["checkbox.icon.color"] || props.theme.colors.primary1};
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
-  ${props => console.log(props)}
 
   svg,
   div {
