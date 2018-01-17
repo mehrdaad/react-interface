@@ -28,20 +28,26 @@ const Box = styled.div`
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
 
-  ${props => props.type && css`
-    background: ${props => props.theme.colors[props.type]};
-    border: 1px solid ${props => props.theme.colors[props.type]};
-    color: ${props => props.theme.colors[`${props.type}1`]};
-  `}
-
   background: ${props => props.theme["checkbox.background"]};
   border: 1px solid ${props => props.theme["checkbox.border.color"]};
   color: ${props =>  props.theme["checkbox.icon.color"]};
+
+  ${props => !props.type && css`
+    background: ${props => props.theme.colors.primary};
+    border: 1px solid ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors['primary1']};
+  `}
 
   &:hover {
     border-color: ${props => props.theme["checkbox.hover.border.color"]};
     background: ${props => props.theme["checkbox.hover.background"]};
   }
+
+  ${props => props.type && css`
+    background: ${props => props.theme.colors[props.type]};
+    border: 1px solid ${props => props.theme.colors[props.type]};
+    color: ${props => props.theme.colors[`${props.type}1`]};
+  `}
 
   svg,
   div {
@@ -113,8 +119,7 @@ Checkbox.propTypes = {
 }
 
 Checkbox.defaultProps = {
-  size: "md",
-  type: "primary"
+  size: "md"
 }
 
 export default Checkbox
