@@ -28,15 +28,15 @@ const Box = styled.div`
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
 
-  background: ${props => props.theme["checkbox.background"]};
-  border: 1px solid ${props => props.theme["checkbox.border.color"]};
-  color: ${props =>  props.theme["checkbox.icon.color"]};
-
   ${props => !props.type && css`
     background: ${props => props.theme.colors.primary};
     border: 1px solid ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors['primary1']};
   `}
+
+  background: ${props => props.theme["checkbox.background"]};
+  border: 1px solid ${props => props.theme["checkbox.border.color"]};
+  color: ${props =>  props.theme["checkbox.icon.color"]};
 
   &:hover {
     border-color: ${props => props.theme["checkbox.hover.border.color"]};
@@ -85,7 +85,7 @@ class Checkbox extends PureComponent {
 
     return (
       <Wrapper {...this.props} onClick={this.onClick} className="checkbox-wrapper">
-        <Box {...this.props} className="checkbox-wrapper">
+        <Box {...this.props} className="checkbox">
           {checked && <Icon type="check" />}
         </Box>
         {
