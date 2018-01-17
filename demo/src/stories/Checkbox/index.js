@@ -32,10 +32,10 @@ const CheckboxStory = () => (
       <CheckboxExample size="xl" mr={1} />
     </Demo>
     <Demo name="Checkbox Colors" desc="Pick from any of the theme colors.">
-      <CheckboxExample size="md" mr={1} color="primary" />
-      <CheckboxExample size="md" mr={1} color="warning" />
-      <CheckboxExample size="md" mr={1} color="danger" />
-      <CheckboxExample size="md" mr={1} color="success" />
+      <CheckboxExample size="md" mr={1} type="primary" />
+      <CheckboxExample size="md" mr={1} type="warning" />
+      <CheckboxExample size="md" mr={1} type="danger" />
+      <CheckboxExample size="md" mr={1} type="success" />
     </Demo>
     <Demo
       name="Checkbox Labels"
@@ -46,7 +46,6 @@ const CheckboxStory = () => (
       <CheckboxExample size="lg" mr={1} label="Force" />
       <CheckboxExample size="xl" mr={1} label="Luke" />
     </Demo>
-    <PropsTable raw={CheckboxRaw} demonstrating={Checkbox} />
   </Story>
 )
 

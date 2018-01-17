@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { space, size, borderColor, borderRadius, color } from "styled-system"
 import Icon from "../Icon"
 
@@ -25,11 +25,23 @@ const Box = styled.div`
   ${borderColor};
   ${color};
   box-sizing: border-box;
-  background: ${props => props.theme.colors[props.color] || props.theme["checkbox.background"] || props.theme.colors.primary};
-  border: 1px solid ${props => props.theme.colors[props.color] || props.theme["checkbox.border.color"] || props.theme.colors.primary5};
-  color: ${props => props.theme.colors[`${props.color}1`] || props.theme["checkbox.icon.color"] || props.theme.colors.primary1};
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
+
+  ${props => props.type && css`
+    background: ${props => props.theme.colors[props.type]};
+    border: 1px solid ${props => props.theme.colors[props.type]};
+    color: ${props => props.theme.colors[`${props.type}1`]};
+  `}
+
+  background: ${props => props.theme["checkbox.background"]};
+  border: 1px solid ${props => props.theme["checkbox.border.color"]};
+  color: ${props =>  props.theme["checkbox.icon.color"]};
+
+  &:hover {
+    border-color: ${props => props.theme["checkbox.hover.border.color"]};
+    background: ${props => props.theme["checkbox.hover.background"]};
+  }
 
   svg,
   div {
@@ -66,11 +78,16 @@ class Checkbox extends PureComponent {
     } = this.props
 
     return (
-      <Wrapper {...this.props} onClick={this.onClick}>
-        <Box {...this.props}>
+      <Wrapper {...this.props} onClick={this.onClick} className="checkbox-wrapper">
+        <Box {...this.props} className="checkbox-wrapper">
           {checked && <Icon type="check" />}
         </Box>
-        {label && <span onClick={this.onLabelClick}>{label}</span>}
+        {
+          label &&
+          <span onClick={this.onLabelClick} className="checkbox-label">
+            {label}
+          </span>
+        }
       </Wrapper>
     )
   }
@@ -96,7 +113,8 @@ Checkbox.propTypes = {
 }
 
 Checkbox.defaultProps = {
-  size: "md"
+  size: "md",
+  type: "primary"
 }
 
 export default Checkbox
