@@ -41,3 +41,5 @@ const MenuItem = styled.li`
 MenuItem.defaultProps = {
   br: 2,
 }
+
+export default MenuItem
