@@ -8,6 +8,8 @@ export Expand from './components/Expand'
 export Icon from './components/Icon'
 export Box from './components/Box'
 export Checkbox from './components/Checkbox'
+export Popover from './components/Popover'
+export Select from './components/Select'
 export { Flex } from 'grid-styled'
 
 export Menu from './components/Menu/Menu'
