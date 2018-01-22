@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components';
+import { borderRadius, spacing } from 'styled-system';
 
-export default styled.li`
+const MenuItem = styled.li`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
   display: block;
-  border-radius: 2px;
   padding: 7px;
   margin: .1rem 0;
   line-height: 16px;
@@ -14,6 +14,8 @@ export default styled.li`
   align-items: center;
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   cursor: pointer;
+  ${borderRadius};
+  ${spacing};
 
   &:hover {
     background: ${props => props.theme['menu.item.hover.background']};
@@ -34,4 +36,8 @@ export default styled.li`
     width: 18px;
     margin-right: 5px;
   }
-`;
+`
+
+MenuItem.defaultProps = {
+  br: 2,
+}
