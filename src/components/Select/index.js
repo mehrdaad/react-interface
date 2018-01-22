@@ -9,7 +9,7 @@ const Placeholder = styled.span`
   color: ${props => props.theme['select.placeholder.color']};
 `
 
-class Select extends React.Component {
+export default class Select extends React.Component {
   renderPlaceholder () {
     return <Placeholder>{this.props.placeholder}</Placeholder>
   }
@@ -53,4 +53,3 @@ class Select extends React.Component {
   }
 }
 
-export default Select
