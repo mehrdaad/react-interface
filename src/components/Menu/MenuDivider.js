@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { space } from 'styled-system'
 
-export default styled.div`
+const MenuDivider = styled.div`
   border-top: 1px solid ${props =>props.theme['menu.border.color']};
-  margin: .5rem 7px;
+  ${space};
 `;
+
+MenuDivider.defaultProps = {
+  m: 1,
+}
+
+export default MenuDivider

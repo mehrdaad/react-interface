@@ -1,8 +1,15 @@
 import styled from 'styled-components';
+import { space } from 'styled-system'
 
-export default styled.div`
+const MenuHeader = styled.div`
   font-size: ${props => props.theme.sizes.fonts.small};
   color: ${props => props.theme['menu.header.color']};
   font-weight: bold;
-  padding: .25rem .5rem;
+  ${space};
 `;
+
+MenuHeader.defaultProps = {
+  p: 1,
+}
+
+export default MenuHeader

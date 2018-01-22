@@ -1,12 +1,18 @@
 import styled from 'styled-components';
-import { spacing, borderRadius } from 'styled-system';
+import { space, borderRadius } from 'styled-system';
 
-export default styled.ul`
+const Menu = styled.ul`
   background: ${props => props.theme['menu.background']};
   box-shadow: ${props => props.theme['menu.shadow']};
   border: 1px solid ${props => props.theme['menu.border.color']};
   border-radius: 4px;
-  padding: .5rem;
   ${borderRadius};
-  ${spacing};
+  ${space};
 `;
+
+Menu.defaultProps = {
+  borderRadius: 4,
+  p: 1,
+}
+
+export default Menu
