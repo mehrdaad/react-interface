@@ -6,6 +6,8 @@ import Paragraph from "./Paragraph"
 import Pre from "./Pre"
 import Expand from "./Expand"
 import Checkbox from "./Checkbox"
+import Popover from "./Popover"
+import Select from "./Select"
 import { Menu, MenuItem, MenuHeader, MenuDivider } from "./Menu"
 import { Table, TBody, THead, Header, Row, Cell } from "./FlexTable"
 import { Flex } from "grid-styled"
@@ -29,5 +31,7 @@ export {
   Box,
   Flex,
   Icon,
-  Checkbox
+  Checkbox,
+  Popover,
+  Select,
 }

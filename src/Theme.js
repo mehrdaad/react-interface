@@ -11,6 +11,10 @@ const Wrapper = styled.div`
   color: ${props => props.theme.colors.black};
   box-sizing: border-box;
   a { text-decoration: none  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
