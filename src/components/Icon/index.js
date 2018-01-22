@@ -13,8 +13,10 @@ const capitalize = type => type.charAt(0).toUpperCase() + type.substring(1)
 
 const Wrapper = styled.div`
   display: inline-block;
+  ${space};
+  ${width};
 
-  ${space} ${width} svg {
+  svg {
     stroke: ${props => props.theme.colors[props.color] || props.color};
   }
 `

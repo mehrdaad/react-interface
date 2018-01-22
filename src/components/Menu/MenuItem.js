@@ -16,11 +16,13 @@ export default styled.li`
   cursor: pointer;
 
   &:hover {
-    background: ${props => props.theme.colors.gray};
+    background: ${props => props.theme['menu.item.hover.background']};
+    color: ${props => props.theme['menu.item.hover.color']};
   }
 
   ${props => props.active && css`
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme['menu.item.active.background']};
+    color: ${props => props.theme['menu.item.active.color']};
   `}
 
   ${props => props.large && css`
