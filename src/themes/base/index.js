@@ -37,6 +37,7 @@ export const createTheme = themeColors => {
     /* Menus */
     'menu.background': colors.background,
     'menu.border.color': colors.background6,
+    'menu.divider.border.color': colors.background6,
     'menu.item.hover.background': colors.primary1,
     'menu.item.hover.color': colors.primary,
     'menu.item.active.background': colors.primary,
