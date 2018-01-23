@@ -11,6 +11,7 @@ const MenuItem = styled.li`
   display: flex;
   align-items: center;
   font-size: ${props => props.theme.sizes.fonts[props.size]};
+  color: ${props => props.theme['menu.item.color']};
   cursor: pointer;
   ${borderRadius};
   ${space};
