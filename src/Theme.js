@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   a { text-decoration: none  }
 `
 
+// Look into https://yeun.github.io/open-color/ as a base theme
 const Theme = ({ theme = {}, color, ...rest }) => {
   const primary = color || theme && theme.colors && theme.colors.primary
 

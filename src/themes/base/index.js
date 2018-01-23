@@ -4,7 +4,7 @@
  *
  */
 
-import palx from 'palx'
+import palx from '../utils/palx'
 import { getPaletteShades, colorListToMap } from '../utils/colors'
 import defaultColors from "./colors"
 import fonts from "./fonts"
