@@ -1,6 +1,5 @@
 // Thank you erikras: https://github.com/erikras/styled-components-theme
 // and jxnblk: https://github.com/jxnblk/monochrome/blob/master/src/palette.js
-// import Color from 'color'
 import chroma from 'chroma-js'
 
 const isDark = color => chroma(color).luminance() < .5
@@ -13,7 +12,7 @@ export function getColorShades(color, colorName, steps = 10) {
   var colors = ['#fff', scaleSourceHex, '#000'];
   var scale = chroma.scale(colors).mode('lab')
   // Output source color.
-  for(var i = 1, steps = steps; i < steps; i++) {
+  for(var i = 0, steps = steps; i < steps; i++) {
     var point = i / steps;
     // Convert point to numbering system value.
     var name = Math.round(point * 1000);

@@ -8,5 +8,4 @@ export default {
   danger: '#DA3849',
   info: '#25A2B6',
   background: '#FFF',
-
 }

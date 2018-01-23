@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import merge from 'deepmerge'
-import palx from 'palx'
+import palx from './themes/utils/palx'
 import base from './themes/base'
 import { getColorShades, colorListToMap } from './themes/utils/colors'
 
@@ -14,11 +14,16 @@ const Wrapper = styled.div`
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
+  const primary = color || theme && theme.colors && theme.colors.primary
+
   if (color) {
-    const primary = getColorShades(color, 'primary')
+    const primaryPalette = getColorShades(color, 'primary')
     // Merge theme and primary color palette
     theme = merge(theme, {
-      colors: { ...primary, ...colorListToMap(palx(color)) }
+      colors: {
+        ...primaryPalette,
+        ...colorListToMap(palx(color))
+      }
     })
   }
 
