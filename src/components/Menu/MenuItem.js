@@ -30,6 +30,8 @@ const MenuItem = styled.li`
     font-size: ${props => props.theme.sizes.fonts.large};
   `}
 
+  a { color: inherit }
+
   svg {
     height: 18px;
     width: 18px;
