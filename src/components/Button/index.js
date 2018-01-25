@@ -16,7 +16,7 @@ const Btn = styled.button`
   align-items: center;
   justify-content: center;
 
-  ${props => !props.type && css`
+  ${props => !props.palette && css`
     background: ${props => props.theme.colors.primary};
     border: 1px solid ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors['primary1']};
@@ -26,10 +26,10 @@ const Btn = styled.button`
   border: 1px solid ${props => props.theme["button.border.color"]};
   color: ${props =>  props.theme["button.color"]};
 
-  ${props => props.type && css`
-    background: ${props => props.theme.colors[props.type]};
-    border: 1px solid ${props => props.theme.colors[props.type]};
-    color: ${props => props.theme.colors[`${props.type}1`]};
+  ${props => props.palette && css`
+    background: ${props => props.theme.colors[props.palette]};
+    border: 1px solid ${props => props.theme.colors[props.palette]};
+    color: ${props => props.theme.colors[`${props.palette}1`]};
   `}
 
   ${color}
@@ -43,7 +43,7 @@ Button.propTypes = {
   /**
    * What type of component is this?
    */
-  type: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger', PropTypes.string]),
+  palette: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger', PropTypes.string]),
   /**
    * How big is it?
    */
