@@ -7,8 +7,6 @@ const Btn = styled.button`
   cursor: pointer;
   padding: 1rem;
   outline: none;
-  background: ${props => props.theme.colors[props.color]};
-  color: ${props => props.theme.colors[`${props.color}1`]};
   padding: ${props => props.theme.sizes.paddings[props.size]}rem;
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   border-radius: 3px;
@@ -17,9 +15,26 @@ const Btn = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  ${space};
-  ${width};
-  ${color};
+
+  ${props => !props.type && css`
+    background: ${props => props.theme.colors.primary};
+    border: 1px solid ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors['primary1']};
+  `}
+
+  background: ${props => props.theme["button.background"]};
+  border: 1px solid ${props => props.theme["button.border.color"]};
+  color: ${props =>  props.theme["button.color"]};
+
+  ${props => props.type && css`
+    background: ${props => props.theme.colors[props.type]};
+    border: 1px solid ${props => props.theme.colors[props.type]};
+    color: ${props => props.theme.colors[`${props.type}1`]};
+  `}
+
+  ${color}
+  ${space}
+  ${width}
 `
 
 const Button = props => <Btn {...props} />
@@ -28,7 +43,7 @@ Button.propTypes = {
   /**
    * What type of component is this?
    */
-  color: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger']),
+  type: PropTypes.oneOf(['primary', 'secondary', 'info', 'success', 'warning', 'danger', PropTypes.string]),
   /**
    * How big is it?
    */
@@ -43,7 +58,6 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  color: 'primary',
   size: 'md',
 }
 
