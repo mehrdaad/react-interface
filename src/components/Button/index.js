@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { space, width } from 'styled-system'
+import { space, width, color } from 'styled-system'
 
 const Btn = styled.button`
   cursor: pointer;
@@ -19,6 +19,7 @@ const Btn = styled.button`
   justify-content: center;
   ${space};
   ${width};
+  ${color};
 `
 
 const Button = props => <Btn {...props} />
