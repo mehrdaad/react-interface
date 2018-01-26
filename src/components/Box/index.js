@@ -10,8 +10,8 @@ import {
   justifyContent,
   alignItems,
   flexDirection,
-  flex,
 } from 'styled-system'
+import { flex } from '../utils/styled-system-enhancers'
 
 export default Box.extend`
   ${borderRadius}
