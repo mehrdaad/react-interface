@@ -11,7 +11,7 @@ import {
   alignItems,
   flexDirection,
 } from 'styled-system'
-import { flex } from '../utils/styled-system-enhancers'
+import { flex } from '../../utils/styled-system-enhancers'
 
 export default Box.extend`
   ${borderRadius}

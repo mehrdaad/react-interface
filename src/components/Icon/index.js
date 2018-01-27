@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { space, width } from "styled-system"
+import { space, width, alignSelf } from "styled-system"
 import * as feathers from "react-feather"
 import { Caret } from "../../icons"
 
@@ -12,9 +12,10 @@ const icons = {
 const capitalize = type => type.charAt(0).toUpperCase() + type.substring(1)
 
 const Wrapper = styled.div`
-  display: inline-block;
-  ${space};
-  ${width};
+  display: inline-flex;
+  ${space}
+  ${width}
+  ${alignSelf}
 
   svg {
     stroke: ${props => props.theme.colors[props.color] || props.color};

@@ -1,16 +1,21 @@
 import { Flex } from 'grid-styled'
 
+// Grid components
+export { Flex } from 'grid-styled'
+export Box from './components/Box'
+
+// Components
 export Button from './components/Button'
 export Title from './components/Title'
 export Paragraph from './components/Paragraph'
 export Pre from './components/Pre'
 export Expand from './components/Expand'
 export Icon from './components/Icon'
-export Box from './components/Box'
 export Checkbox from './components/Checkbox'
 export Popover from './components/Popover'
 export Select from './components/Select'
-export { Flex } from 'grid-styled'
+export Notification from './components/Notification'
+export Text from './components/Text'
 
 export Menu from './components/Menu/Menu'
 export MenuItem from './components/Menu/MenuItem'

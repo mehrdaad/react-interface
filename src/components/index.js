@@ -8,6 +8,8 @@ import Expand from "./Expand"
 import Checkbox from "./Checkbox"
 import Popover from "./Popover"
 import Select from "./Select"
+import Notification from "./Notification"
+import Text from "./Text"
 import { Menu, MenuItem, MenuHeader, MenuDivider } from "./Menu"
 import { Table, TBody, THead, Header, Row, Cell } from "./FlexTable"
 import { Flex } from "grid-styled"
@@ -34,4 +36,6 @@ export {
   Checkbox,
   Popover,
   Select,
+  Notification,
+  Text,
 }
