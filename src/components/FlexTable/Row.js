@@ -8,8 +8,8 @@ const Row = styled.div`
   flex-flow: row nowrap;
 `;
 
-const FlexRow = ({ children, className }) => (
-  <Row className={className}>
+const FlexRow = ({ children, className, ...rest }) => (
+  <Row className={className} {...rest}>
     {children}
   </Row>
 );
