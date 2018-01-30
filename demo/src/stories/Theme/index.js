@@ -1,6 +1,6 @@
 import React from 'react'
 import Color from 'color'
-import { Story, Demo, PropsTable } from 'react-story'
+import { Story, Demo } from 'react-story'
 import { withTheme } from 'styled-components'
 import { Theme } from '../../../../src'
 import { Flex, Box } from 'grid-styled'

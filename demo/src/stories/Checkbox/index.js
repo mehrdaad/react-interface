@@ -1,5 +1,5 @@
 import React from "react"
-import { Story, Demo, PropsTable } from "react-story"
+import { Story, Demo } from "react-story"
 import { Checkbox } from "../../../../src/components"
 import CheckboxRaw from "!raw-loader!../../../../src/components/Checkbox"
 

@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Story, Demo, PropsTable } from "react-story"
+import { Story, Demo } from "react-story"
 import { Select } from '../../../../src/components'
 
 // Override react-story ul styles

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Demo, PropsTable } from 'react-story'
+import { Story, Demo } from 'react-story'
 import { Icon, Flex, Paragraph } from '../../../../src/components'
 import Icons from '!raw-loader!./icons.md'
 

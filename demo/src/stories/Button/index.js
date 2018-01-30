@@ -1,5 +1,5 @@
 import React from 'react'
-import { Story, Demo, PropsTable } from 'react-story'
+import { Story, Demo } from 'react-story'
 import { Button, Icon } from '../../../../src/components'
 import ButtonRaw from '!raw-loader!../../../../src/components/Button'
 import Sizes from '!raw-loader!./sizes.md'
@@ -38,10 +38,6 @@ const ButtonStory = () => (
         <span>Primary</span>
       </Button>
     </Demo>
-    <PropsTable
-      raw={ButtonRaw}
-      demonstrating={Button}
-    />
   </Story>
 )
 
