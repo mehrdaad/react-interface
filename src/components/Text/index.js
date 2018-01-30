@@ -1,6 +1,14 @@
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { space, borderRadius, color, alignSelf } from 'styled-system'
+import {
+  space,
+  borderRadius,
+  color,
+  alignSelf,
+  fontWeight,
+  letterSpacing,
+  lineHeight
+} from 'styled-system'
 
 const Text = styled.span`
   padding: ${props => props.theme.sizes.paddings[props.size]}rem;
@@ -17,6 +25,9 @@ const Text = styled.span`
   ${color}
   ${space}
   ${alignSelf}
+  ${fontWeight}
+  ${letterSpacing}
+  ${lineHeight}
 `
 
 export default Text
