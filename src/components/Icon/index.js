@@ -36,7 +36,7 @@ const Icon = ({ type, ...rest }) => (
           .map(t => capitalize(t))
           .join("")
       ],
-      { ...rest }
+      // { ...rest }
     )}
   </Wrapper>
 )
