@@ -17,7 +17,14 @@ const Wrapper = styled.div`
   ${width}
   ${alignSelf}
   ${color}
-  ${hover}
+
+  svg {
+    stroke: ${props => props.theme.colors[props.color] || props.color}
+  }
+
+  &:hover svg {
+    stroke: ${props => props.theme.colors[props.hoverColor] || props.hoverColor}
+  }
 `
 
 const Icon = ({ type, ...rest }) => (
