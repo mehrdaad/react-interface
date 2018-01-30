@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Icon = ({ type, ...rest }) => (
+const Icon = ({ type, size, color, ...rest }) => (
   <Wrapper className="ri-icon" {...rest}>
     {React.createElement(
       icons[
@@ -36,7 +36,7 @@ const Icon = ({ type, ...rest }) => (
           .map(t => capitalize(t))
           .join("")
       ],
-      // { ...rest }
+      { size, color }
     )}
   </Wrapper>
 )
