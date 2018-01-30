@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { space } from 'styled-system'
 
 const Cell = styled.div`
   display: flex;
@@ -15,6 +16,7 @@ const Cell = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0px;
+  ${space}
 `;
 
 const FlexCell = ({ children, ...props }) => (
