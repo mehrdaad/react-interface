@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { space, width, alignSelf } from "styled-system"
+import { space, width, alignSelf, color, hover } from "styled-system"
 import * as feathers from "react-feather"
 import { Caret } from "../../icons"
 
@@ -16,10 +16,8 @@ const Wrapper = styled.div`
   ${space}
   ${width}
   ${alignSelf}
-
-  svg {
-    stroke: ${props => props.theme.colors[props.color] || props.color};
-  }
+  ${color}
+  ${hover}
 `
 
 const Icon = ({ type, ...rest }) => (

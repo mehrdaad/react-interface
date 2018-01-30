@@ -104,10 +104,10 @@ class Popover extends PureComponent {
         onClick={this.handleSelectorClick}
         onKeyDown={this.handleKeyDown}
         tabIndex="0"
-        className={className}
+        className={`ri-popover ${className}`}
         {...rest}
       >
-        <div className="children" style={{ height: '100%' }}>
+        <div className="ri-popover-children" style={{ height: '100%' }}>
           {children}
         </div>
         <ContentWrapper

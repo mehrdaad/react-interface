@@ -1,3 +1,5 @@
+import { pseudoStyle } from 'styled-system'
+
 export const grow = ({ grow }) => {
   if (grow === undefined) return null
   let cssAttr = grow
