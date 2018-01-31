@@ -38,7 +38,7 @@ class Select extends React.Component {
   render () {
     const { value, ...rest } = this.props
     return (
-      <Popover content={this.renderOptions()} borderRadius={0} top="95%">
+      <Popover content={this.renderOptions()} borderRadius={0} top="95%" animation="fade">
         <Wrapper {...rest} className="ri-select">
           {!value && this.renderPlaceholder()}
           {value && this.renderSelectedValue()}

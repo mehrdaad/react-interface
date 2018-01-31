@@ -14,6 +14,19 @@ export const fadeIn = keyframes`
   }
 `
 
+export const scaleIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(.8) translateY(-30%);
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+`
+
 export const fadeOut = keyframes`
   0% {
     opacity: 1;

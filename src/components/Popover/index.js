@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { borderRadius } from 'styled-system'
 import onClickOutside from 'react-onclickoutside'
-import { fadeIn } from '../../utils/animations'
+import { fadeIn, scaleIn } from '../../utils/animations'
 
 const Wrapper = styled.div`
   width: ${props => props.width};
@@ -19,7 +19,26 @@ const Wrapper = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  display: ${props => props.open ? 'block' : 'none'};
+  ${props => !props.open && css`
+    opacity: 0;
+    pointer-events: none;
+  `}
+
+  ${props => !props.open && props.animation === 'scale' && css`
+    transform: scale(.8) translateY(-30%);
+  `}
+
+  ${props => props.open && props.animation === 'scale' && css`
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  `}
+
+  ${props => props.open && props.animation === 'fade' && css`
+    opacity: 1;
+    pointer-events: auto;
+  `}
+
   position: absolute;
   top: ${props => props.top || '100%'};
   left: ${props => props.position === 'left' ? '0' : 'initial'};
@@ -27,9 +46,8 @@ const ContentWrapper = styled.div`
   min-width: ${props => props.minWidth || '100%'};
   max-width: ${props => props.maxWidth || 'initial'};
   z-index: 99;
-  animation: ${fadeIn} .2s linear 1;
   background: ${props => props.theme['popover.background']};
-  border: 1px solid ${props => props.theme['popover.border.color']};
+  border-color: ${props => props.theme['popover.border.color']};
   box-shadow: ${props => props.theme['popover.shadow']};
   max-height: 415px;
   overflow-y: auto;
@@ -92,6 +110,7 @@ class Popover extends PureComponent {
       height = '100%',
       position = 'left',
       shadow = true,
+      animation = 'scale',
       minWidth,
       maxWidth,
       className,
@@ -121,6 +140,7 @@ class Popover extends PureComponent {
           closePopover={this.close}
           shadow={shadow}
           top={top}
+          animation={animation}
         >
           {React.cloneElement(content, {
             closePopover: this.close
