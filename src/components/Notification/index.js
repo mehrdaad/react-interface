@@ -10,9 +10,9 @@ const Notification = styled.div`
   justify-content: start;
 
   ${props => !props.palette && css`
-    background: ${props => props.theme.colors.primary};
+    background: ${props => props.theme.colors['primary1']};
     border: 1px solid ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors['primary1']};
+    color: ${props => props.theme.colors.primary};
   `}
 
   background: ${props => props.theme["notification.background"]};
@@ -20,6 +20,12 @@ const Notification = styled.div`
   color: ${props =>  props.theme["notification.color"]};
 
   ${props => props.palette && css`
+    background: ${props => props.theme.colors[`${props.palette}1`]};
+    border: 1px solid ${props => props.theme.colors[props.palette]};
+    color: ${props => props.theme.colors[props.palette]};
+  `}
+
+  ${props => props.palette && props.solid && css`
     background: ${props => props.theme.colors[props.palette]};
     border: 1px solid ${props => props.theme.colors[props.palette]};
     color: ${props => props.theme.colors[`${props.palette}1`]};
@@ -35,6 +41,7 @@ const Notification = styled.div`
 Notification.defaultProps = {
   borderRadius: 4,
   p: 2,
+  solid: false,
 }
 
 export default Notification

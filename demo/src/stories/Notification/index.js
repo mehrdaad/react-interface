@@ -35,6 +35,16 @@ const NotificationStory = () => (
       <Notification mb={1} justify="center"><span>Primary</span></Notification>
       <Notification mb={1} justify="flex-end"><span>Primary</span></Notification>
     </Demo>
+    <Demo
+      name="Notification Solid Version"
+      desc=""
+    >
+      <Notification palette="primary" mb={1} solid>Primary</Notification>
+      <Notification palette="success" mb={1} solid>Success</Notification>
+      <Notification palette="info" mb={1} solid>Info</Notification>
+      <Notification palette="warning" mb={1} solid>Warning</Notification>
+      <Notification palette="danger" mb={1} solid>Danger</Notification>
+    </Demo>
   </Story>
 )
 
