@@ -32,10 +32,10 @@ const CheckboxStory = () => (
       <CheckboxExample size="xl" mr={1} />
     </Demo>
     <Demo name="Checkbox Colors" desc="Pick from any of the theme colors.">
-      <CheckboxExample size="md" mr={1} type="primary" />
-      <CheckboxExample size="md" mr={1} type="warning" />
-      <CheckboxExample size="md" mr={1} type="danger" />
-      <CheckboxExample size="md" mr={1} type="success" />
+      <CheckboxExample size="md" mr={1} palette="primary" label="primary" />
+      <CheckboxExample size="md" mr={1} palette="warning" label="warning" />
+      <CheckboxExample size="md" mr={1} palette="danger" label="danger" />
+      <CheckboxExample size="md" mr={1} palette="success" label="success" />
     </Demo>
     <Demo
       name="Checkbox Labels"

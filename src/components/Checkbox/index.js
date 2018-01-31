@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   > .checkbox-label {
     padding-left: ${props => props.theme.sizes.paddings[props.size] / 3}rem;
     color: ${props => props.theme['checkbox.label.color']};
+    color: ${props => props.theme.colors[props.palette]};
   }
 
   ${space};
@@ -28,7 +29,7 @@ const Box = styled.div`
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};
 
-  ${props => !props.type && css`
+  ${props => !props.palette && css`
     background: ${props => props.theme.colors.primary};
     border: 1px solid ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors['primary1']};
@@ -43,10 +44,10 @@ const Box = styled.div`
     background: ${props => props.theme["checkbox.hover.background"]};
   }
 
-  ${props => props.type && css`
-    background: ${props => props.theme.colors[props.type]};
-    border: 1px solid ${props => props.theme.colors[props.type]};
-    color: ${props => props.theme.colors[`${props.type}1`]};
+  ${props => props.palette && css`
+    background: ${props => props.theme.colors[`${props.palette}1`]};
+    border: 1px solid ${props => props.theme.colors[props.palette]};
+    color: ${props => props.theme.colors[props.palette]};
   `}
 
   svg,
@@ -103,7 +104,7 @@ Checkbox.propTypes = {
   /**
    * What type of component is this?
    */
-  color: PropTypes.oneOf([
+  palette: PropTypes.oneOf([
     "primary",
     "secondary",
     "info",
