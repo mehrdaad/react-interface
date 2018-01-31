@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   position: relative;
   outline: none !important;
 
-  .children {
+  .ri-popover-children {
     cursor: pointer;
   }
 
