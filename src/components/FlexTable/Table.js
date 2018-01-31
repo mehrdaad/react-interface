@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { space } from 'styled-system';
 
 const Table = styled.div`
   display: flex;
@@ -10,6 +11,7 @@ const Table = styled.div`
   line-height: 1.5;
   border-bottom: 1px solid #d0d0d0;
   flex: 1 1 auto;
+  ${space}
 `;
 
 const FlexTable = ({ children, ...props }) => (
