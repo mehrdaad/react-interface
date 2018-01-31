@@ -29,6 +29,8 @@ const ContentWrapper = styled.div`
   z-index: 99;
   animation: ${fadeIn} .2s linear 1;
   background: ${props => props.theme['popover.background']};
+  border: 1px solid ${props => props.theme['popover.border.color']};
+  box-shadow: ${props => props.theme['popover.shadow']};
   max-height: 415px;
   overflow-y: auto;
   transition: .3s cubic-bezier(.3, 0, 0, 1.3);
