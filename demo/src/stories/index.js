@@ -5,6 +5,7 @@ import Checkbox from "./Checkbox"
 import Menu from './Menu'
 import Select from './Select'
 import Notification from './Notification'
+import Tooltip from './Tooltip'
 
 export default [
   Button,
@@ -13,5 +14,6 @@ export default [
   Checkbox,
   Menu,
   Select,
-  Notification
+  Notification,
+  Tooltip
 ]

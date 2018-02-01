@@ -9,6 +9,7 @@ import Checkbox from "./Checkbox"
 import Popover from "./Popover"
 import Select from "./Select"
 import Notification from "./Notification"
+import Tooltip from "./Tooltip"
 import Text from "./Text"
 import { Menu, MenuItem, MenuHeader, MenuDivider } from "./Menu"
 import { Table, TBody, THead, Header, Row, Cell } from "./FlexTable"
@@ -38,4 +39,5 @@ export {
   Select,
   Notification,
   Text,
+  Tooltip,
 }

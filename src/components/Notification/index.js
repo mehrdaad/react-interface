@@ -22,7 +22,7 @@ const Notification = styled.div`
   ${props => props.palette && css`
     background: ${props => props.theme.colors[`${props.palette}1`]};
     border: 1px solid ${props => props.theme.colors[props.palette]};
-    color: ${props => props.theme.colors[props.palette]};
+    color: ${props => props.theme.colors[`${props.palette}6`]};
   `}
 
   ${props => props.palette && props.solid && css`
