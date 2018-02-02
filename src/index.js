@@ -16,6 +16,7 @@ export Popover from './components/Popover'
 export Select from './components/Select'
 export Notification from './components/Notification'
 export Text from './components/Text'
+export Tooltip from './components/Tooltip'
 
 export Menu from './components/Menu/Menu'
 export MenuItem from './components/Menu/MenuItem'
