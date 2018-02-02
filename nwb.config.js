@@ -5,12 +5,12 @@ module.exports = {
   npm: {
     esModules: true,
     // disable umd for now until https://github.com/insin/nwb/issues/391 is resolved
-    umd: {
-      global: 'ReactInterface',
-      externals: {
-        react: 'React'
-      }
-    }
+    // umd: {
+    //   global: 'ReactInterface',
+    //   externals: {
+    //     react: 'React'
+    //   }
+    // }
   },
   webpack: {
 		extra: {
