@@ -17,7 +17,7 @@ export default class Tooltip extends React.PureComponent {
 
   show = () => {
     const { position = 'top', smart } = this.props
-    const style = { width: this.width }
+    const style = { width: this.width, zIndex: 9999 }
     const dimensions = this.el.getBoundingClientRect()
     const { x, y, width, height, left, right, top, bottom } = dimensions
 
