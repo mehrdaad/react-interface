@@ -76,6 +76,7 @@ export default class Tooltip extends React.PureComponent {
             <Tip
               className="tooltip-body"
               style={this.state.style}
+              size={this.props.size}
             >
               {this.props.content}
             </Tip>

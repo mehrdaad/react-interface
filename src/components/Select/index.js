@@ -20,13 +20,16 @@ class Select extends React.Component {
   }
 
   renderOptions () {
-    return (
+    return close => (
       <Menu borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => (
           <MenuItem
             key={o.value}
             borderRadius={0}
-            onClick={() => this.props.onChange(o.value)}
+            onClick={() => {
+              this.props.onChange(o.value)
+              close()
+            }}
           >
             {o.label}
           </MenuItem>
@@ -35,10 +38,11 @@ class Select extends React.Component {
     )
   }
 
-  render () {
+  renderChildren () {
     const { value, ...rest } = this.props
     return (
-      <Popover content={this.renderOptions()} borderRadius={0} top="95%" animation="fade">
+      // Cannot assign ref to styled-component, so we must wrap it
+      <div>
         <Wrapper {...rest} className="ri-select">
           {!value && this.renderPlaceholder()}
           {value && this.renderSelectedValue()}
@@ -48,6 +52,23 @@ class Select extends React.Component {
             style={{ marginLeft: 'auto', display: 'inherit' }}
           />
         </Wrapper>
+      </div>
+    )
+  }
+
+  render () {
+    const { value, ...rest } = this.props
+    return (
+      <Popover
+        trigger={this.renderChildren()}
+        animation="slide"
+        position="bottom center"
+        on="click"
+        arrow={false}
+        fullWidth
+        contentStyle={{ marginTop: -1 }}
+      >
+        {this.renderOptions()}
       </Popover>
     )
   }

@@ -8,6 +8,7 @@ import Expand from "./Expand"
 import Checkbox from "./Checkbox"
 import Popover from "./Popover"
 import Select from "./Select"
+import MultiSelect from "./MultiSelect"
 import Notification from "./Notification"
 import Tooltip from "./Tooltip"
 import Text from "./Text"
@@ -37,6 +38,7 @@ export {
   Checkbox,
   Popover,
   Select,
+  MultiSelect,
   Notification,
   Text,
   Tooltip,

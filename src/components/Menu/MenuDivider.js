@@ -7,7 +7,7 @@ const MenuDivider = styled.div`
 `;
 
 MenuDivider.defaultProps = {
-  m: 1,
+  my: 1,
 }
 
 export default MenuDivider

@@ -25,6 +25,7 @@ const Box = styled.div`
   ${borderRadius};
   ${borderColor};
   ${color};
+  ${space};
   box-sizing: border-box;
   height: ${props => props.theme.sizes.dimensions[props.size]};
   width: ${props => props.theme.sizes.dimensions[props.size]};

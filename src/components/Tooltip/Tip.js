@@ -11,7 +11,7 @@ const Wrapper = Box.extend`
   color: white;
   box-shadow: 2px 2px 3px rgba(0 ,0, 0, 0.3);
   text-align: center;
-  font-size: 16px;
+  font-size: ${props => props.theme.sizes.fonts[props.size]};
   color: ${props => props.theme.colors['tooltip.color']};
   background: ${props => props.theme.colors['tooltip.background']};
   ${color}
@@ -23,10 +23,10 @@ export default class Tip extends PureComponent {
   }
 
   render() {
-    const { children, style } = this.props
+    const { children, style, size } = this.props
 
     return (
-      <Wrapper style={style}>
+      <Wrapper style={style} size={size}>
         {children}
       </Wrapper>
     )

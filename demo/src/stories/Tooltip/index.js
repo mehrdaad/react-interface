@@ -15,7 +15,11 @@ const TooltipStory = () => (
       </Tooltip>
     </Demo>
     <Demo>
-      <Tooltip position='bottom' content="My tooltip content. Lorem ipsum dolar set amet.">
+      <Tooltip
+        animation='fade'
+        position='bottom'
+        content="My tooltip content. Lorem ipsum dolar set amet."
+      >
         <span>Bottom</span>
       </Tooltip>
     </Demo>

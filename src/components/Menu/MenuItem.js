@@ -31,12 +31,6 @@ const MenuItem = styled.li`
   `}
 
   a { color: inherit }
-
-  svg {
-    height: 18px;
-    width: 18px;
-    margin-right: 5px;
-  }
 `
 
 MenuItem.defaultProps = {

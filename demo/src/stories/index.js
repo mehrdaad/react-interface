@@ -4,6 +4,7 @@ import Theme from "./Theme"
 import Checkbox from "./Checkbox"
 import Menu from './Menu'
 import Select from './Select'
+import MultiSelect from './MultiSelect'
 import Notification from './Notification'
 import Tooltip from './Tooltip'
 
@@ -14,6 +15,7 @@ export default [
   Checkbox,
   Menu,
   Select,
+  MultiSelect,
   Notification,
   Tooltip
 ]

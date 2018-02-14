@@ -37,6 +37,12 @@ export const createTheme = themeColors => {
     'select.border.color': colors.background6,
     'select.icon.color': colors.background6,
 
+    /* MultiSelect */
+    'multiselect.background': colors.background,
+    'multiselect.placeholder.color': colors.background6,
+    'multiselect.border.color': colors.background6,
+    'multiselect.icon.color': colors.background6,
+
     /* Menus */
     'menu.background': colors.background,
     'menu.border.color': colors.background6,

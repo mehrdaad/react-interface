@@ -1,174 +1,273 @@
-import React, { PureComponent } from 'react'
+import React, { Fragment, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { borderRadius } from 'styled-system'
-import onClickOutside from 'react-onclickoutside'
-import { fadeIn, scaleIn } from '../../utils/animations'
+import Portal from '../Portal'
+import calculatePosition from "./utils";
+import styles from "./popover.css.js"
+import Show from 'react-show'
 
-const Wrapper = styled.div`
-  width: ${props => props.width};
-  height: ${props => props.height};
-  position: relative;
-  outline: none !important;
+export default class Popover extends React.Component {
+  static defaultProps = {
+    children: () => <span> Your Content Here !!</span>,
+    onOpen: () => {},
+    onClose: () => {},
+    closeOnDocumentClick: true,
+    defaultOpen: false,
+    on: ["click"],
+    contentStyle: {},
+    arrowStyle: {},
+    overlayStyle: {},
+    className: "",
+    position: "bottom center",
+    modal: false,
+    arrow: true,
+    offset: 0,
+    mouseEnterDelay: 100,
+    mouseLeaveDelay: 100,
+    animation: 'scale',
+    easing: 'easeOutQuint',
+    duration: 250,
+  };
+  state = {
+    isOpen: this.props.defaultOpen
+  };
 
-  .ri-popover-children {
-    cursor: pointer;
+  constructor(props) {
+    super(props);
+    this.setTriggerRef = r => (this.TriggerEl = r);
+    this.setContentRef = r => (this.ContentEl = r);
+    this.setArrowRef = r => (this.ArrowEl = r);
+    this.setHelperRef = r => (this.HelperEl = r);
+    this.timeOut = 0;
   }
 
-  &::selection { background: none }
-`
+  componentDidMount() {
+    if (this.props.defaultOpen) this.setPosition();
+  }
 
-const ContentWrapper = styled.div`
-  ${props => !props.open && css`
-    opacity: 0;
-    pointer-events: none;
-  `}
+  componentWillUnmount() {
+    clearTimeout(this.timeOut);
+  }
 
-  ${props => !props.open && props.animation === 'scale' && css`
-    transform: scale(.8) translateY(-30%);
-  `}
+  togglePopup = () => {
+    if (this.state.isOpen) this.closePopup();
+    else this.openPopup();
+  };
+  openPopup = () => {
+    if (this.state.isOpen) return;
+    this.setState({ isOpen: true }, () => {
+      this.setPosition();
+      this.props.onOpen();
+    });
+  };
+  closePopup = () => {
+    if (!this.state.isOpen) return;
+    this.setState({ isOpen: false }, () => {
+      this.props.onClose();
+    });
+  };
+  onMouseEnter = () => {
+    clearTimeout(this.timeOut);
+    const { mouseEnterDelay } = this.props;
+    this.timeOut = setTimeout(() => this.openPopup(), mouseEnterDelay);
+  };
+  onMouseLeave = () => {
+    clearTimeout(this.timeOut);
+    const { mouseLeaveDelay } = this.props;
+    this.timeOut = setTimeout(() => this.closePopup(), mouseLeaveDelay);
+  };
 
-  ${props => props.open && props.animation === 'scale' && css`
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-  `}
-
-  ${props => props.open && props.animation === 'fade' && css`
-    opacity: 1;
-    pointer-events: auto;
-  `}
-
-  position: absolute;
-  top: ${props => props.top || '100%'};
-  left: ${props => props.position === 'left' ? '0' : 'initial'};
-  right: ${props => props.position === 'right' ? '0' : 'initial'};
-  min-width: ${props => props.minWidth || '100%'};
-  max-width: ${props => props.maxWidth || 'initial'};
-  z-index: 99;
-  background: ${props => props.theme['popover.background']};
-  border-color: ${props => props.theme['popover.border.color']};
-  box-shadow: ${props => props.theme['popover.shadow']};
-  max-height: 415px;
-  overflow-y: auto;
-  transition: .3s cubic-bezier(.3, 0, 0, 1.3);
-  ${borderRadius};
-`
-
-class Popover extends PureComponent {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      open: props.isOpen
+  setPosition = () => {
+    const { arrow, position, offset } = this.props;
+    const helper = this.HelperEl.getBoundingClientRect();
+    const trigger = this.TriggerEl.getBoundingClientRect();
+    const content = this.ContentEl.getBoundingClientRect();
+    const cords = calculatePosition(trigger, content, position, arrow, offset);
+    this.ContentEl.style.top = cords.top - helper.top + "px";
+    this.ContentEl.style.left = cords.left - helper.left + "px";
+    if (arrow) {
+      this.ArrowEl.style["transform"] = cords.transform;
+      this.ArrowEl.style["-ms-transform"] = cords.transform;
+      this.ArrowEl.style["-webkit-transform"] = cords.transform;
+      this.ArrowEl.style.top = cords.arrowTop;
+      this.ArrowEl.style.left = cords.arrowLeft;
     }
-  }
+    if (
+      this.TriggerEl.style.position == "static" ||
+      this.TriggerEl.style.position == ""
+    )
+      this.TriggerEl.style.position = "relative";
+  };
 
-  handleContentClick = e => {
-    const { open } = this.state
-    const { dismissOnClick } = this.props
+  addWarperAction = () => {
+    const { contentStyle, className, menu, on, fullWidth } = this.props;
+    const popupContentStyle = styles.popupContent.tooltip;
 
-    if (!dismissOnClick && open) {
-      e.stopPropagation()
-      return false
+    if (fullWidth) {
+      popupContentStyle.width = this.TriggerEl.getBoundingClientRect().width
     }
 
-    this.setState({
-      open: !this.state.open
-    })
-  }
-
-  handleSelectorClick = e => {
-    e.preventDefault()
-    e.stopPropagation()
-    this.setState({
-      open: !this.state.open
-    })
-  }
-
-  handleClickOutside = () => {
-    this.setState({ open: false })
-  }
-
-  handleKeyDown = e => {
-    // If 'escape' is pressed
-    if (e.keyCode === 27) {
-      e.preventDefault()
-      return this.setState({ open: false })
+    const childrenElementProps = {
+      className: `ri-popup-content ${className}`,
+      style: Object.assign({}, popupContentStyle, contentStyle),
+      ref: this.setContentRef,
+      onClick: e => {
+        e.stopPropagation();
+      }
+    };
+    if (on.includes("hover")) {
+      childrenElementProps.onMouseEnter = this.onMouseEnter;
+      childrenElementProps.onMouseLeave = this.onMouseLeave;
     }
-  }
+    return childrenElementProps;
+  };
 
-  close = () => {
-    this.setState({ open: false })
-  }
+  renderTrigger = () => {
+    const triggerProps = {
+      key: "T",
+      style: styles.trigger,
+    };
+    const { on, trigger } = this.props;
+    triggerProps.ref = this.setTriggerRef;
+    const onAsArray = Array.isArray(on) ? on : [on];
+    for (let i = 0, len = onAsArray.length; i < len; i++) {
+      switch (onAsArray[i]) {
+        case "click":
+          triggerProps.onClick = this.togglePopup;
+          break;
+        case "hover":
+          triggerProps.onMouseEnter = this.onMouseEnter;
+          triggerProps.onMouseLeave = this.onMouseLeave;
+        case "focus":
+          triggerProps.onFocus = this.onMouseEnter;
+          break;
+      }
+    }
 
-  render () {
-    const {
-      content,
-      children,
-      width = 'auto',
-      height = '100%',
-      position = 'left',
-      shadow = true,
-      animation = 'scale',
-      minWidth,
-      maxWidth,
-      className,
-      top,
-      ...rest
-    } = this.props
+    if (typeof trigger === "function")
+      return React.cloneElement(trigger(this.state.isOpen), triggerProps);
+
+    return React.cloneElement(trigger, triggerProps);
+  };
+
+  renderContent = () => {
+    // if (!this.state.isOpen) return null
+
+    const { arrow, arrowStyle, animation, duration, easing } = this.props;
+    const animations = {
+      scale: {
+        default: { opacity: 0 },
+        hide: { opacity: 0, transform: 'scale(.8) translateY(-30%)', pointerEvents: 'none' },
+        show: { opacity: 1, transform: 'none', pointerEvents: 'auto' },
+      },
+      fade: {
+        default: { opacity: 0 },
+        hide: { opacity: 0 },
+        show: { opacity: 1 },
+      },
+      slide: {
+        default: { opacity: 0 },
+        hide: { opacity: 0, transform: 'translateY(-2em)' },
+        show: { opacity: 1, transform: 'translateY(0)' },
+      }
+    }
+
+    const contentProps = !this.state.isOpen ? {} : this.addWarperAction()
 
     return (
-      <Wrapper
-        height={height}
-        width={width}
-        onClick={this.handleSelectorClick}
-        onKeyDown={this.handleKeyDown}
-        tabIndex="0"
-        className={`ri-popover ${className}`}
-        {...rest}
-      >
-        <div className="ri-popover-children" style={{ height: '100%' }}>
-          {children}
+      <Portal>
+        <div {...contentProps} key="C">
+          <Show
+            show={this.state.isOpen}
+            easing={easing}
+            duration={duration}
+            unmountOnHide={true}
+            style={animations[animation].default}
+            styleHide={animations[animation].hide}
+            styleShow={animations[animation].show}
+          >
+            <div>
+              {
+                arrow &&
+                <div
+                  ref={this.setArrowRef}
+                  style={Object.assign({}, styles.popupArrow, arrowStyle)}
+                />
+              }
+              {typeof this.props.children === "function"
+                ? this.props.children(this.closePopup, this.state.isOpen)
+                : this.props.children}
+            </div>
+          </Show>
         </div>
-        <ContentWrapper
-          {...this.state}
-          position={position}
-          onClick={this.handleContentClick}
-          minWidth={minWidth}
-          maxWidth={maxWidth}
-          closePopover={this.close}
-          shadow={shadow}
-          top={top}
-          animation={animation}
-        >
-          {React.cloneElement(content, {
-            closePopover: this.close
-          })}
-        </ContentWrapper>
-      </Wrapper>
+      </Portal>
+    )
+  };
+
+  render() {
+    const { overlayStyle, closeOnDocumentClick } = this.props;
+    const { isOpen } = this.state
+    const ovStyle = styles.overlay.tooltip
+    return (
+      <Fragment>
+        <div
+          key="H"
+          style={{ position: "absolute", top: "0px", left: "0px" }}
+          ref={this.setHelperRef}
+        />
+        {
+          isOpen &&
+          <div
+            key="O"
+            className="ri-popover-overlay"
+            style={Object.assign({}, ovStyle, overlayStyle)}
+            onClick={closeOnDocumentClick ? this.closePopup : undefined}
+          />
+        }
+        {this.renderContent()}
+        {this.renderTrigger()}
+      </Fragment>
     )
   }
 }
 
-Popover.defaultProps = {
-  dismissOnClick: true,
-  isOpen: false,
-  borderRadius: 4,
-}
-
 Popover.propTypes = {
-  height: PropTypes.any,
-  width: PropTypes.any,
-  position: PropTypes.string,
-  content: PropTypes.node,
-  children: PropTypes.node,
+  arrowStyle: PropTypes.object,
+  animation: PropTypes.oneOf(["fade", "scale", "slide"]),
+  duration: PropTypes.number,
+  contentStyle: PropTypes.object,
+  overlayStyle: PropTypes.object,
   className: PropTypes.string,
-  shadow: PropTypes.bool,
-  minWidth: PropTypes.string,
-  maxWidth: PropTypes.string,
-  dismissOnClick: PropTypes.bool,
-  isOpen: PropTypes.bool
-}
-
-export default onClickOutside(Popover)
+  closeOnDocumentClick: PropTypes.bool,
+  offset: PropTypes.number,
+  mouseEnterDelay: PropTypes.number,
+  mouseLeaveDelay: PropTypes.number,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+    .isRequired,
+  on: PropTypes.oneOfType([
+    PropTypes.oneOf(["hover", "click", "focus"]),
+    PropTypes.arrayOf(PropTypes.oneOf(["hover", "click", "focus"]))
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element,
+    PropTypes.string
+  ]).isRequired,
+  position: PropTypes.oneOf([
+    "top left",
+    "top center",
+    "top right",
+    "bottom left",
+    "bottom center",
+    "bottom right",
+    "right top",
+    "right center",
+    "right bottom",
+    "left top",
+    "left center",
+    "left bottom"
+  ])
+};
