@@ -7,28 +7,7 @@ import calculatePosition from "./utils";
 import styles from "./popover.css.js"
 import Show from 'react-show'
 
-export default class Popover extends React.Component {
-  static defaultProps = {
-    children: () => <span> Your Content Here !!</span>,
-    onOpen: () => {},
-    onClose: () => {},
-    closeOnDocumentClick: true,
-    defaultOpen: false,
-    on: ["click"],
-    contentStyle: {},
-    arrowStyle: {},
-    overlayStyle: {},
-    className: "",
-    position: "bottom center",
-    modal: false,
-    arrow: true,
-    offset: 0,
-    mouseEnterDelay: 100,
-    mouseLeaveDelay: 100,
-    animation: 'scale',
-    easing: 'easeOutQuint',
-    duration: 250,
-  };
+class Popover extends React.Component {
   state = {
     isOpen: this.props.defaultOpen
   };
@@ -271,3 +250,27 @@ Popover.propTypes = {
     "left bottom"
   ])
 };
+
+Popover.defaultProps = {
+  children: () => <span> Your Content Here !!</span>,
+  onOpen: () => {},
+  onClose: () => {},
+  closeOnDocumentClick: true,
+  defaultOpen: false,
+  on: ["click"],
+  contentStyle: {},
+  arrowStyle: {},
+  overlayStyle: {},
+  className: "",
+  position: "bottom center",
+  modal: false,
+  arrow: true,
+  offset: 0,
+  mouseEnterDelay: 100,
+  mouseLeaveDelay: 100,
+  animation: 'scale',
+  easing: 'easeOutQuint',
+  duration: 250,
+};
+
+export default Popover
