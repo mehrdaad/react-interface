@@ -1,17 +1,7 @@
 import React from 'react'
 import Color from 'color'
-import { Story, Demo } from 'react-story'
 import { withTheme } from 'styled-components'
-import { Theme } from '../../../../src'
 import { Flex, Box } from 'grid-styled'
-import ThemeRaw from '!raw-loader!../../../../src/Theme'
-import Sizes from '!raw-loader!./theme.md'
-
-const desc = `
-  The theme component is a thin wrapper around styled-components' ThemeProvider.
-  It will automatically pass colors and styles down through your components, and
-  automatically generate a customizable color palette for you to use.
-`
 
 const groupColorsByName = colors => {
   const grouped = Object.keys(colors)
@@ -40,21 +30,11 @@ const groupColorsByName = colors => {
   ))
 }
 
-const ThemeStory = props => (
-  <Story>
-    <Demo
-      name="Color Palette"
-      desc={desc}
-      code=''
-    >
-      <Flex wrap='wrap'>
-        {groupColorsByName(props.theme.colors)}
-      </Flex>
-    </Demo>
-  </Story>
+const Theme = props => (
+  <Flex wrap='wrap'>
+    {groupColorsByName(props.theme.colors)}
+  </Flex>
 )
 
-export default {
-  name: 'Theme',
-  component: withTheme(ThemeStory)
-}
+export default withTheme(Theme)
+

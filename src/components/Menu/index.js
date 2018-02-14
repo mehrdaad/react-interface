@@ -10,3 +10,4 @@ import MenuDivider from './MenuDivider';
 import MenuHeader from './MenuHeader';
 
 export { Menu, MenuItem, MenuDivider, MenuHeader };
+export default Menu

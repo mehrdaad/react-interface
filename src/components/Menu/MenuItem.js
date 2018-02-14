@@ -38,4 +38,5 @@ MenuItem.defaultProps = {
   p: 1,
 }
 
+/** @component */
 export default MenuItem

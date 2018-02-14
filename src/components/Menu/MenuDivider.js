@@ -10,4 +10,5 @@ MenuDivider.defaultProps = {
   my: 1,
 }
 
+/** @component */
 export default MenuDivider

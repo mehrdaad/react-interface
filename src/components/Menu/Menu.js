@@ -16,4 +16,5 @@ Menu.defaultProps = {
   m: 0,
 }
 
+/** @component */
 export default Menu

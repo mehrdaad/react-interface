@@ -12,4 +12,5 @@ MenuHeader.defaultProps = {
   p: 1,
 }
 
+/** @component */
 export default MenuHeader
