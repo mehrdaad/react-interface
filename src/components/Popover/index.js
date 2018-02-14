@@ -80,11 +80,15 @@ class Popover extends React.Component {
   };
 
   addWarperAction = () => {
-    const { contentStyle, className, menu, on, fullWidth } = this.props;
+    const { contentStyle, className, menu, on, width, fullWidth } = this.props;
     const popupContentStyle = styles.popupContent.tooltip;
 
     if (fullWidth) {
       popupContentStyle.width = this.TriggerEl.getBoundingClientRect().width
+    }
+
+    if (width) {
+      popupContentStyle.width = width
     }
 
     const childrenElementProps = {

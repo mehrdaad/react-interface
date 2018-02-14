@@ -2,7 +2,7 @@ export default {
   popupContent: {
     tooltip: {
       position: "absolute",
-      zIndex: "2",
+      zIndex: 99,
       width: "200px",
       // background: `rgb(255, 255, 255)`,
       // border: `1px solid rgb(187, 187, 187)`,
@@ -11,7 +11,7 @@ export default {
     },
     menu: {
       position: "fixed",
-      zIndex: "2",
+      zIndex: "99",
       width: "100%",
       padding: 0,
     },
@@ -23,7 +23,7 @@ export default {
     background: "rgb(255, 255, 255)",
     transform: "rotate(45deg)",
     margin: "-5px",
-    zIndex: "-1",
+    zIndex: 98,
     boxShadow: "rgba(0, 0, 0, 0.2) 1px 1px 1px"
   },
   trigger: {
@@ -31,6 +31,7 @@ export default {
   },
   overlay: {
     tooltip: {
+      zIndex: 98,
       position: "fixed",
       top: "0",
       bottom: "0",
