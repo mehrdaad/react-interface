@@ -7,6 +7,7 @@ import Pre from "./Pre"
 import Expand from "./Expand"
 import Checkbox from "./Checkbox"
 import Popover from "./Popover"
+import Popper from "./Popper"
 import Select from "./Select"
 import MultiSelect from "./MultiSelect"
 import Notification from "./Notification"
@@ -37,6 +38,7 @@ export {
   Icon,
   Checkbox,
   Popover,
+  Popper,
   Select,
   MultiSelect,
   Notification,

@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Body = styled.div`
+const Wrapper = styled.div`
 `;
 
-const FlexBody = ({ children }) => (
-  <Body>
+const TBody = ({ children }) => (
+  <Wrapper>
     {children}
-  </Body>
+  </Wrapper>
 );
 
-FlexBody.propTypes = {
+TBody.propTypes = {
   children: PropTypes.node
 };
 
-export default FlexBody;
+export default TBody;

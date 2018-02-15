@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import { render } from 'react-dom'
-import ReactStory from 'react-story'
-
-import { Button } from '../../src/components'
 import themes from '../../src/themes'
 import Theme from '../../src/Theme'
-import stories from './stories'
+
+// Stories
+import { Popper as PopperStory } from './stories'
 
 
 const themeMap = {
@@ -43,10 +42,9 @@ class Demo extends Component {
   render() {
     return (
       <Theme>
-        <ReactStory
-          stories={stories}
-          useTheme={false}
-        />
+        <div style={{ height: '100vh', width: '100%', position: 'absolute', display: 'flex', alignItem: 'center', justifyContent: 'center' }}>
+          <PopperStory />
+        </div>
       </Theme>
     )
   }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { space } from 'styled-system';
 
-const Table = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   font-size: .8rem;
@@ -14,14 +14,14 @@ const Table = styled.div`
   ${space}
 `;
 
-const FlexTable = ({ children, ...props }) => (
-  <Table {...props}>
+const Table = ({ children, ...props }) => (
+  <Wrapper {...props}>
     {children}
-  </Table>
+  </Wrapper>
 );
 
-FlexTable.propTypes = {
+Table.propTypes = {
   children: PropTypes.node
 };
 
-export default FlexTable;
+export default Table;

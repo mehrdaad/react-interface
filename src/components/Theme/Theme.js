@@ -14,9 +14,10 @@ const groupColorsByName = colors => {
     }, {})
 
   return Object.keys(grouped).map(g => (
-    <Box w={1/3} p={1}>
-      {grouped[g].map(p => (
+    <Box w={1/3} p={1} key={g}>
+      {grouped[g].map((p, i) => (
         <div
+          key={`${p.color}-${i}`}
           style={{
             background: p.color,
             padding: 10,

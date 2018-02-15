@@ -5,7 +5,7 @@
 */
 
 import Table from './Table';
-import TBody from './Body';
+import TBody from './TBody';
 import THead from './THead';
 import Header from './Header';
 import Row from './Row';

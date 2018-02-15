@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { space } from 'styled-system'
 
-const Cell = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-flow: row nowrap;
   flex-grow: ${props => props.grow};
@@ -19,13 +19,13 @@ const Cell = styled.div`
   ${space}
 `;
 
-const FlexCell = ({ children, ...props }) => (
-  <Cell {...props}>
+const Cell = ({ children, ...props }) => (
+  <Wrapper {...props}>
     {children}
-  </Cell>
+  </Wrapper>
 );
 
-FlexCell.defaultProps = {
+Cell.defaultProps = {
   grow: 1,
   shrink: 1,
   basis: 'auto',
@@ -33,7 +33,7 @@ FlexCell.defaultProps = {
   justify: 'start'
 };
 
-FlexCell.propTypes = {
+Cell.propTypes = {
   grow: PropTypes.number,
   basis: PropTypes.any,
   align: PropTypes.string,
@@ -41,4 +41,4 @@ FlexCell.propTypes = {
   justify: PropTypes.string
 };
 
-export default FlexCell;
+export default Cell;

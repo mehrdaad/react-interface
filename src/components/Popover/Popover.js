@@ -128,8 +128,9 @@ class Popover extends React.Component {
       }
     }
 
-    if (typeof trigger === "function")
+    if (typeof trigger === "function") {
       return React.cloneElement(trigger(this.state.isOpen), triggerProps);
+    }
 
     return React.cloneElement(trigger, triggerProps);
   };

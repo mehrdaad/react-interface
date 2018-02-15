@@ -30,7 +30,10 @@ const MenuItem = styled.li`
     font-size: ${props => props.theme.sizes.fonts.large};
   `}
 
-  a { color: inherit }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 MenuItem.defaultProps = {
