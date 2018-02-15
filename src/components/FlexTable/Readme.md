@@ -13,28 +13,7 @@
       <Cell>Cell</Cell>
       <Cell>Cell</Cell>
       <Cell>Cell</Cell>
-      <Cell>
-        <Popover
-          position="bottom right"
-          trigger={
-            <span>
-              <div style={{ display: 'flex', alignItem: 'center' }}>
-                <span>THead</span> <Icon type="more-vertical" />
-              </div>
-            </span>
-          }
-        >
-          <Menu>
-            <MenuHeader>Account</MenuHeader>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>Friends</MenuItem>
-            <MenuItem>Notifications</MenuItem>
-            <MenuDivider />
-            <MenuItem>Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </Menu>
-        </Popover>
-      </Cell>
+      <Cell>Cell</Cell>
     </Row>
     <Row>
       <Cell>Cell</Cell>
