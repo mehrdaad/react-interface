@@ -5,6 +5,7 @@ import Icon from '../Icon'
 import { MenuItem } from '../Menu'
 import Checkbox from '../Checkbox'
 import Popover from '../Popover'
+import Popper from '../Popper'
 import Wrapper from './Wrapper'
 import OptionWrapper from './OptionWrapper'
 
