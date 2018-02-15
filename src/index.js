@@ -26,7 +26,7 @@ export MenuHeader from './components/Menu/MenuHeader'
 export MenuDivider from './components/Menu/MenuDivider'
 
 export Table from './components/FlexTable/Table'
-export TBody from './components/FlexTable/Body'
+export TBody from './components/FlexTable/TBody'
 export THead from './components/FlexTable/THead'
 export Header from './components/FlexTable/Header'
 export Row from './components/FlexTable/Row'
