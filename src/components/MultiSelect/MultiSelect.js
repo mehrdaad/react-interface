@@ -158,7 +158,7 @@ class MultiSelect extends PureComponent {
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -1 }}
+        contentStyle={{ marginTop: -2 }}
       >
         {this.renderOptions()}
       </Popper>

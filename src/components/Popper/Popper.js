@@ -119,6 +119,8 @@ const CustomPopper = ({ innerRef, ...props }) => (
   <div
     ref={innerRef}
     {...props}
+    // for some reason react-popper is off by one pixel so we subtract one
+    style={{ ...props.style, left: 1 }}
   />
 )
 
@@ -156,7 +158,7 @@ class Popper extends PureComponent {
   }
 
   _setOutsideTap = () => {
-    const elements = [this.target]
+    const elements = [this.target, this.popper]
 
     if (this.popper) {
       elements.push(this.popper)
@@ -205,18 +207,37 @@ class Popper extends PureComponent {
   }
 
   renderPositioner () {
-    const { position, easing, duration, animation, children, arrow } = this.props
+    const {
+      position,
+      easing,
+      duration,
+      animation,
+      children,
+      arrow,
+      contentStyle
+    } = this.props
+
     const popperClasses = cx({
       popper: true,
       'has-arrow': arrow
     })
 
+    const popperStyle = {
+      ...contentStyle,
+      width: this._getPopperWidth(),
+      zIndex: 99,
+    }
+
     return (
       <Positioner
         key="popper"
         placement={position}
-        className={cx}
+        className={popperClasses}
         offset="-100px"
+        component={CustomPopper}
+        innerRef={c => {
+          this.popper = findDOMNode(c)
+        }}
       >
         <Show
           show={this.state.isOpen}
@@ -227,7 +248,7 @@ class Popper extends PureComponent {
           styleShow={animations[animation].show}
           transitionOnMount
         >
-          <div style={{ width: this._getPopperWidth() }}>
+          <div style={popperStyle}>
             {typeof this.props.children === "function"
               ? this.props.children(this._handleOutsideTap, this.state.isOpen)
               : this.props.children}
@@ -268,6 +289,7 @@ Popper.propTypes = {
   onClose: PropTypes.func,
   fullWidth: PropTypes.bool,
   portal: PropTypes.bool,
+  contentStyle: PropTypes.object,
   trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
     .isRequired,
   on: PropTypes.oneOfType([
@@ -311,6 +333,7 @@ Popper.defaultProps = {
   duration: 250,
   position: "bottom-start",
   fullWidth: false,
+  contentStyle: {},
 };
 
 export default Popper

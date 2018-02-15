@@ -65,7 +65,7 @@ class Select extends React.Component {
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -1 }}
+        contentStyle={{ marginTop: -2 }}
       >
         {this.renderOptions()}
       </Popper>
