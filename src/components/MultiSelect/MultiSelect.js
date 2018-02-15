@@ -151,17 +151,17 @@ class MultiSelect extends PureComponent {
 
   render () {
     return (
-      <Popover
+      <Popper
         trigger={this.renderTrigger()}
         animation="slide"
-        position="bottom center"
+        position="bottom"
         on="click"
         arrow={false}
         fullWidth
         contentStyle={{ marginTop: -1 }}
       >
         {this.renderOptions()}
-      </Popover>
+      </Popper>
     )
   }
 }

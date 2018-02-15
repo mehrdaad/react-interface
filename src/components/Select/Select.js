@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Popover from '../Popover'
+import Popper from '../Popper'
 import { Menu, MenuItem } from '../Menu'
 import Icon from '../Icon'
 import Wrapper from './Wrapper'
@@ -59,17 +59,16 @@ class Select extends React.Component {
   render () {
     const { value, ...rest } = this.props
     return (
-      <Popover
+      <Popper
         trigger={this.renderChildren()}
-        animation="slide"
-        position="bottom center"
+        position="bottom"
         on="click"
         arrow={false}
         fullWidth
         contentStyle={{ marginTop: -1 }}
       >
         {this.renderOptions()}
-      </Popover>
+      </Popper>
     )
   }
 }

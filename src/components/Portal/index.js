@@ -38,3 +38,14 @@ export default class Portal extends Component {
 Portal.propTypes = {
   children: PropTypes.node.isRequired
 }
+
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// class Portal extends React.Component {
+//     render() {
+//         const { children, target = document.body } = this.props;
+//         return ReactDOM.createPortal(children, target);
+//     }
+// }
+
+// export default Portal
