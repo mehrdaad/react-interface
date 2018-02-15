@@ -82,21 +82,6 @@ const PopoverWrapper = styled.div`
   }
 `
 
-const duration = 300
-
-const defaultStyle = {
-  transition: `opacity ${duration}ms ease-in-out`,
-  opacity: 0,
-}
-
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-}
-
-const animation = 'slide'
-const easing = 'easeOutQuint'
-
 const animations = {
   scale: {
     default: { opacity: 0 },
@@ -189,7 +174,7 @@ class Popper extends PureComponent {
 
   // check https://github.com/souporserious/react-popper/issues/57 for portal example
   render() {
-    const { width } = this.props
+    const { width, position, easing, duration, animation } = this.props
 
     return (
       <Manager>
@@ -203,7 +188,7 @@ class Popper extends PureComponent {
         <PopoverWrapper {...this.props}>
           <Positioner
             key="popper"
-            placement="bottom-start"
+            placement={position}
             className="popper"
           >
             <Show
@@ -224,5 +209,55 @@ class Popper extends PureComponent {
     )
   }
 }
+
+Popper.propTypes = {
+  arrow: PropTypes.bool,
+  animation: PropTypes.oneOf(["fade", "scale", "slide"]),
+  duration: PropTypes.number,
+  offset: PropTypes.number,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
+    .isRequired,
+  on: PropTypes.oneOfType([
+    PropTypes.oneOf(["hover", "click", "focus"]),
+    PropTypes.arrayOf(PropTypes.oneOf(["hover", "click", "focus"]))
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.element,
+    PropTypes.string
+  ]).isRequired,
+  position: PropTypes.oneOf([
+    "top",
+    "top-start",
+    "top-end",
+    "bottom",
+    "bottom-start",
+    "bottom-end",
+    "right",
+    "right-start",
+    "right-end",
+    "left",
+    "left-start",
+    "left-end",
+    "auto",
+    "auto-start",
+    "auto-end",
+  ])
+};
+
+Popper.defaultProps = {
+  onOpen: () => {},
+  onClose: () => {},
+  closeOnDocumentClick: true,
+  defaultOpen: false,
+  on: ["click"],
+  arrow: true,
+  animation: 'slide',
+  easing: 'easeOutQuint',
+  duration: 250,
+  position: "bottom-start",
+};
 
 export default Popper
