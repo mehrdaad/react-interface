@@ -174,7 +174,7 @@ class Popper extends PureComponent {
 
   // check https://github.com/souporserious/react-popper/issues/57 for portal example
   render() {
-    const { width, position, easing, duration, animation } = this.props
+    const { width, position, easing, duration, animation, arrow } = this.props
 
     return (
       <Manager>
@@ -201,7 +201,7 @@ class Popper extends PureComponent {
               transitionOnMount
             >
               {this.props.children}
-              <Arrow className="popper__arrow" />
+              { arrow && <Arrow className="popper__arrow" /> }
             </Show>
           </Positioner>
         </PopoverWrapper>
