@@ -202,7 +202,7 @@ class Popper extends PureComponent {
     }
 
     if (this.props.width) {
-      return `${width}px`;
+      return this.props.width
     }
   }
 
