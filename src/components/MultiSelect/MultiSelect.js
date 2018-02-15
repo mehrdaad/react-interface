@@ -131,18 +131,9 @@ class MultiSelect extends PureComponent {
   }
 
   renderTrigger () {
-    const style = {
-      display: 'flex',
-      alignItems: 'center',
-      padding: 10,
-      height: '100%',
-      justifyContent: 'center',
-    }
-
     return (
-      // Cannot assign ref to styled-component, so we must wrap it
       <div>
-        <Wrapper style={style} className="ri-multiselect">
+        <Wrapper className="ri-multiselect">
           {this.renderPlaceholder()}
           <Icon type="chevron-down" size={20} style={{ marginLeft: 'auto' }} />
         </Wrapper>
@@ -152,17 +143,17 @@ class MultiSelect extends PureComponent {
 
   render () {
     return (
-      <Popper
+      <Popover
         trigger={this.renderTrigger()}
         animation="slide"
         position="bottom"
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -2 }}
+        contentStyle={{ marginTop: -1 }}
       >
         {this.renderOptions()}
-      </Popper>
+      </Popover>
     )
   }
 }
