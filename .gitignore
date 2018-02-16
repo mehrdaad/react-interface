@@ -7,3 +7,4 @@
 npm-debug.log*
 notes.md
 /styleguide
+.DS_Store

@@ -166,7 +166,7 @@ class Popover extends React.Component {
             show={this.state.isOpen}
             easing={easing}
             duration={duration}
-            unmountOnHide={true}
+            unmountOnHide
             style={animations[animation].default}
             styleHide={animations[animation].hide}
             styleShow={animations[animation].show}
@@ -195,11 +195,13 @@ class Popover extends React.Component {
     const ovStyle = styles.overlay.tooltip
     return (
       <Fragment>
-        <div
-          key="H"
-          style={{ position: "absolute", top: "0px", left: "0px" }}
-          ref={this.setHelperRef}
-        />
+        <Portal>
+          <div
+            key="H"
+            style={{ position: "absolute", top: "0px", left: "0px" }}
+            ref={this.setHelperRef}
+          />
+        </Portal>
         {
           isOpen &&
           <div
@@ -273,7 +275,7 @@ Popover.defaultProps = {
   offset: 0,
   mouseEnterDelay: 100,
   mouseLeaveDelay: 100,
-  animation: 'scale',
+  animation: 'slide',
   easing: 'easeOutQuint',
   duration: 250,
 };

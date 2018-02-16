@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Popper from '../Popper'
+import Popover from '../Popover'
 import { Menu, MenuItem } from '../Menu'
 import Icon from '../Icon'
 import Wrapper from './Wrapper'
@@ -57,20 +57,29 @@ class Select extends React.Component {
   }
 
   render () {
-    const { value, ...rest } = this.props
+    const { maxHeight } = this.props
     return (
-      <Popper
+      <Popover
         trigger={this.renderChildren()}
-        position="bottom"
+        position="bottom center"
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -2 }}
+        portal
+        contentStyle={{
+          marginTop: -2,
+          maxHeight,
+          overflowY: 'scroll'
+        }}
       >
         {this.renderOptions()}
-      </Popper>
+      </Popover>
     )
   }
+}
+
+Select.defaultProps = {
+  maxHeight: 150
 }
 
 export default Select

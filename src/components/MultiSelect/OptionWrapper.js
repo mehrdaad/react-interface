@@ -1,11 +1,9 @@
-import styled from 'styled-components'
-import { space, width, borderRadius } from 'styled-system'
 import { Menu } from '../Menu'
 
 export default Menu.extend`
-  > div:hover {
+  > li:hover {
     .checkbox {
-      background: ${props => props.theme['checkbox.hover.background']};
+      background: ${props => props.theme['multiselect.checkbox.hover.background']};
     }
   }
 

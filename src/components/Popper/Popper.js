@@ -213,6 +213,7 @@ class Popper extends PureComponent {
       duration,
       animation,
       children,
+      modifiers,
       arrow,
       contentStyle
     } = this.props
@@ -228,10 +229,20 @@ class Popper extends PureComponent {
       zIndex: 99,
     }
 
+    const popperModifiers = {
+      preventOverflow: {
+        enabled: true,
+        escapeWithReference: true,
+        boundariesElement: 'scrollParent',
+      },
+      ...modifiers,
+    }
+
     return (
       <Positioner
         key="popper"
         placement={position}
+        modifiers={popperModifiers}
         className={popperClasses}
         offset="-100px"
         component={CustomPopper}
@@ -249,9 +260,9 @@ class Popper extends PureComponent {
           transitionOnMount
         >
           <div style={popperStyle}>
-            {typeof this.props.children === "function"
-              ? this.props.children(this._handleOutsideTap, this.state.isOpen)
-              : this.props.children}
+            {typeof children === "function"
+              ? children(this._handleOutsideTap, this.state.isOpen)
+              : children}
             { arrow && <Arrow className="popper__arrow" /> }
           </div>
         </Show>

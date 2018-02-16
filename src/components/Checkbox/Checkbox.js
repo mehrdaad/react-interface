@@ -70,6 +70,8 @@ class Checkbox extends PureComponent {
     // Allow for intercepting of label click if necessary
     if (onLabelClick) {
       onLabelClick(e, value, !checked)
+    } else {
+      onChange(e, value, !checked)
     }
   }
 
@@ -82,12 +84,12 @@ class Checkbox extends PureComponent {
       disabled,
       checked,
       onChange,
-      size
+      ...rest
     } = this.props
 
     return (
-      <Wrapper {...this.props} onClick={this.onClick} className="checkbox-wrapper">
-        <Box {...this.props} className="checkbox">
+      <Wrapper {...rest} className="checkbox-wrapper">
+        <Box {...this.props} className="checkbox" onClick={this.onClick}>
           {checked && <Icon type="check" />}
         </Box>
         {

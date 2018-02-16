@@ -19,6 +19,7 @@ const Tag = styled.div`
 
 class MultiSelect extends PureComponent {
   handleChange = (e, option, checked) => {
+    e.stopPropagation()
     const { getValue, allowEmpty = true } = this.props
     const value = getValue(option)
 
@@ -40,9 +41,9 @@ class MultiSelect extends PureComponent {
     this.props.onChange(Array.from(new Set(combined)))
   }
 
-  handleLabelClick = (e, option) => {
-    const { getValue } = this.props
-    if (!this.props.appendOnLabelClick) {
+  handleOptionClick = (e, option) => {
+    const { getValue, appendOnLabelClick } = this.props
+    if (!appendOnLabelClick) {
       e.stopPropagation()
       this.props.onChange([option])
     } else {
@@ -68,7 +69,7 @@ class MultiSelect extends PureComponent {
 
   // This gets rendered every time even if the content is not shown, don't do that
   renderOptions () {
-    const { getLabel, getValue } = this.props
+    const { getLabel, getValue, optionStyles } = this.props
     return (
       <OptionWrapper borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => {
@@ -77,8 +78,8 @@ class MultiSelect extends PureComponent {
           return (
             <MenuItem
               key={value}
-              borderRadius={0}
-              onClick={e => this.handleLabelClick(e, o)}
+              onClick={e => this.handleOptionClick(e, o)}
+              style={optionStyles}
             >
               <Checkbox
                 className="checkbox"
@@ -88,6 +89,10 @@ class MultiSelect extends PureComponent {
                 label={this.renderOption(o)}
                 checked={this.props.selected.find(s => getValue(s) === value) !== undefined}
                 onChange={this.handleChange}
+                onLabelClick={e => {
+                  e.stopPropagation()
+                  this.handleOptionClick(e, o)
+                }}
                 borderRadius={3}
                 mr={1}
               />
@@ -126,14 +131,10 @@ class MultiSelect extends PureComponent {
     }
   }
 
-  renderContent () {
-
-  }
-
   renderTrigger () {
     return (
       <div>
-        <Wrapper className="ri-multiselect">
+        <Wrapper className="ri-multiselect" {...this.props}>
           {this.renderPlaceholder()}
           <Icon type="chevron-down" size={20} style={{ marginLeft: 'auto' }} />
         </Wrapper>
@@ -146,11 +147,11 @@ class MultiSelect extends PureComponent {
       <Popover
         trigger={this.renderTrigger()}
         animation="slide"
-        position="bottom"
+        position="bottom center"
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -1 }}
+        contentStyle={{ marginTop: -1, maxHeight: 350, overflow: 'scroll' }}
       >
         {this.renderOptions()}
       </Popover>
@@ -161,6 +162,9 @@ class MultiSelect extends PureComponent {
 MultiSelect.defaultProps = {
   selected: [],
   appendOnLabelClick: true,
+  optionStyles: {
+    padding: 10
+  }
 }
 
 export default MultiSelect
