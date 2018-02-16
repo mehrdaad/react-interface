@@ -26,3 +26,7 @@ Button sizes:
   <span>Primary</span>
 </Button>
 ```
+
+```jsx
+<Button disabled>Disabled</Button>
+```

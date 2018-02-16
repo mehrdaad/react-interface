@@ -22,6 +22,9 @@ export const createTheme = themeColors => {
     fonts,
     colors,
 
+    /* Button */
+    "button.disabled.background": 'gray',
+
     /* Checkbox */
     "checkbox.border.color": colors.primary2,
     "checkbox.background": colors.primary1,

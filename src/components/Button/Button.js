@@ -25,6 +25,7 @@ const Button = styled.button`
   background: ${props => props.theme["button.background"]};
   border: 1px solid ${props => props.theme["button.border.color"]};
   color: ${props =>  props.theme["button.color"]};
+  box-shadow: ${props =>  props.theme["button.shadow"]};
 
   ${props => props.palette && css`
     background: ${props => props.theme.colors[props.palette]};
@@ -35,6 +36,11 @@ const Button = styled.button`
   ${color}
   ${space}
   ${width}
+
+  &:disabled {
+    background: ${props => props.theme["button.disabled.background"]};
+    color: ${props => props.theme["button.disabled.color"]};
+  }
 `
 
 Button.propTypes = {
