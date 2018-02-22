@@ -7,3 +7,5 @@ export default {
   info: '#25A2B6',
   background: '#FFF',
 }
+
+// check https://tailwindcss.com/docs/colors

@@ -168,6 +168,7 @@ class Popper extends PureComponent {
       this.outsideTap.remove()
     }
 
+    // TODO: check for existence of element sbefore setting listener
     this.outsideTap = outy(
       elements,
       ['click', 'touchstart'],

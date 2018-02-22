@@ -8,6 +8,7 @@ const Notification = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
+  line-height: 1rem;
 
   ${props => !props.palette && css`
     background: ${props => props.theme.colors['primary1']};

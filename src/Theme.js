@@ -5,6 +5,7 @@ import palx from './themes/utils/palx'
 import base from './themes/base'
 import { getColorShades, colorListToMap } from './themes/utils/colors'
 
+// Check out https://github.com/jxnblk/styled-system/tree/master/system-components
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
   background: ${props => props.theme.colors.background};

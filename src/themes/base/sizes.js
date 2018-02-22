@@ -1,3 +1,4 @@
+// https://tailwindcss.com/docs/spacing
 const sizes = {
   screen: {
     xxs: 400,

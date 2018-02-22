@@ -4,6 +4,7 @@ import {
   borderRadius,
   borderColor,
   borderWidth,
+  borders,
   space,
   color,
   width,
@@ -17,6 +18,7 @@ export default Box.extend`
   ${borderRadius}
   ${borderColor}
   ${borderWidth}
+  ${borders}
   ${color}
   ${space}
   ${width}

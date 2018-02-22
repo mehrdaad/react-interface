@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { space, width, color } from 'styled-system'
+import { space, width, color, borderRadius } from 'styled-system'
 
 const Button = styled.button`
   cursor: pointer;
@@ -23,9 +23,12 @@ const Button = styled.button`
   `}
 
   background: ${props => props.theme["button.background"]};
-  border: 1px solid ${props => props.theme["button.border.color"]};
+  border-color: ${props => props.theme["button.border.color"]};
+  border-width: ${props => props.theme["button.border.width"]};
+  border-style: ${props => props.theme["button.border.width"]};
   color: ${props =>  props.theme["button.color"]};
   box-shadow: ${props =>  props.theme["button.shadow"]};
+  border-radius: ${props =>  props.theme["button.border.radius"]};
 
   ${props => props.palette && css`
     background: ${props => props.theme.colors[props.palette]};
@@ -36,6 +39,7 @@ const Button = styled.button`
   ${color}
   ${space}
   ${width}
+  ${borderRadius}
 
   &:disabled {
     background: ${props => props.theme["button.disabled.background"]};
