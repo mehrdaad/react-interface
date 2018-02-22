@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Box } from 'grid-styled'
 import {
+  borders,
   borderRadius,
   borderColor,
   borderWidth,
-  borders,
   space,
   color,
   width,
@@ -15,10 +15,10 @@ import {
 import { flex } from '../../utils/styled-system-enhancers'
 
 export default Box.extend`
+  ${borders}
   ${borderRadius}
   ${borderColor}
   ${borderWidth}
-  ${borders}
   ${color}
   ${space}
   ${width}

@@ -22,7 +22,7 @@ Button sizes:
 
 ```jsx
 <Button>
-  <Icon type="activity" mr={1} height={20} width={20} />
+  <Icon type="activity" mr={2} height={20} width={20} />
   <span>Primary</span>
 </Button>
 ```

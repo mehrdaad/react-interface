@@ -41,33 +41,41 @@ Checkbox colors:
     palette="primary"
     label="primary"
     mr={1}
+    my={1}
     value="primary"
     checked={state.primary}
     onChange={(e, value, checked) => setState({ [value]: checked })}
   />
-    <Checkbox
+  <br />
+  <Checkbox
     palette="warning"
     label="warning"
     mr={1}
+    my={1}
     value="warning"
     checked={state.warning}
     onChange={(e, value, checked) => setState({ [value]: checked })}
   />
+  <br />
   <Checkbox
     palette="danger"
     label="danger"
     mr={1}
+    my={1}
     value="danger"
     checked={state.danger}
     onChange={(e, value, checked) => setState({ [value]: checked })}
   />
+  <br />
   <Checkbox
     palette="success"
     label="success"
     mr={1}
+    my={1}
     value="success"
     checked={state.success}
     onChange={(e, value, checked) => setState({ [value]: checked })}
   />
+  <br />
 </div>
 ```

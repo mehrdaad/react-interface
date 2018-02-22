@@ -13,8 +13,8 @@ const MenuItem = styled.li`
   font-size: ${props => props.theme.sizes.fonts[props.size]};
   color: ${props => props.theme['menu.item.color']};
   cursor: pointer;
-  ${borderRadius};
-  ${space};
+  ${borderRadius}
+  ${space}
 
   &:hover {
     background: ${props => props.theme['menu.item.hover.background']};
@@ -38,7 +38,7 @@ const MenuItem = styled.li`
 
 MenuItem.defaultProps = {
   br: 2,
-  p: 1,
+  p: 2,
 }
 
 /** @component */

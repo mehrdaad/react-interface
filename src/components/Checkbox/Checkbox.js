@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   > .checkbox-label {
-    padding-left: ${props => props.theme.sizes.paddings[props.size] / 2}rem;
+    padding-left: ${props => props.theme.sizes.paddings[props.size] * 3}px;
     color: ${props => props.theme['checkbox.label.color']};
     color: ${props => props.theme.colors[props.palette]};
   }

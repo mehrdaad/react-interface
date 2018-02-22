@@ -8,9 +8,9 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  ${space};
-  ${width};
-  ${borderRadius};
+  ${space}
+  ${width}
+  ${borderRadius}
 
   svg {
     color: ${props => props.theme['select.icon.color']};
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `
 
 Wrapper.defaultProps = {
-  p: 1,
+  p: 2,
   borderRadius: 4,
 }
 
