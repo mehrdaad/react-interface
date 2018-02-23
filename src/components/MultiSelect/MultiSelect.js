@@ -134,7 +134,7 @@ class MultiSelect extends PureComponent {
   renderTrigger () {
     return (
       <div>
-        <Wrapper className="ri-multiselect" {...this.props}>
+        <Wrapper className="ri-multiselect" {...this.props} tabIndex="0">
           {this.renderPlaceholder()}
           <Icon type="chevron-down" size={20} style={{ marginLeft: 'auto' }} />
         </Wrapper>

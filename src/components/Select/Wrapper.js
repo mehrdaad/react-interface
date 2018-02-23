@@ -15,6 +15,11 @@ const Wrapper = styled.div`
   svg {
     color: ${props => props.theme['select.icon.color']};
   }
+
+  &:focus {
+    border: 1px solid ${props => props.theme['select.focus.border.color']};
+    outline: none;
+  }
 `
 
 Wrapper.defaultProps = {

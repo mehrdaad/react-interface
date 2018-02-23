@@ -43,7 +43,7 @@ class Select extends React.Component {
     return (
       // Cannot assign ref to styled-component, so we must wrap it
       <div>
-        <Wrapper {...rest} className="ri-select">
+        <Wrapper {...rest} className="ri-select" tabIndex="0">
           {!value && this.renderPlaceholder()}
           {value && this.renderSelectedValue()}
           <Icon

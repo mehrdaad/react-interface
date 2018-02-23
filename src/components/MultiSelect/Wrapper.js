@@ -9,9 +9,14 @@ export default styled.div`
   justify-content: center;
   height: 100%;
   padding: 10px;
-  ${space};
-  ${width};
-  ${borderRadius};
+  ${space}
+  ${width}
+  ${borderRadius}
+
+  &:focus {
+    border: 1px solid ${props => props.theme['multiselect.focus.border.color']};
+    outline: none;
+  }
 
   svg {
     color: ${props => props.theme['multiselect.icon.color']};
