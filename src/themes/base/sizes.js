@@ -1,55 +1,55 @@
 // https://tailwindcss.com/docs/spacing
 const sizes = {
-  screen: {
-    xxs: 400,
-    xs: 600,
-    sm: 840,
-    md: 960,
-    lg: 1024,
-    xl: 1280,
-    xxl: 1440,
-    xxxl: 1920
+  breakpoints: ['40em', '52em', '64em'],
+  // Use for convenience
+  sizes: {
+    xxs: 1,
+    xs: 2,
+    sm: 3,
+    md: 4,
+    lg: 8,
+    xl: 16,
+    xxl: 32,
+    xxxl: 64,
   },
-  fonts: {
-    xxs: ".25rem",
-    xs: ".5rem",
-    sm: ".75rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-    xxl: "2rem",
-    xxxl: "3rem"
-  },
-  paddings: {
-    xxs: .25,
-    xs: .5,
-    sm: .75,
-    md: 1,
-    lg: 1.25,
-    xl: 1.5,
-    xxl: 2,
-    xxxl: 3
-  },
-  margins: {
-    xxs: .25,
-    xs: .5,
-    sm: .75,
-    md: 1,
-    lg: 1.25,
-    xl: 1.5,
-    xxl: 2,
-    xxxl: 3
-  },
+  // For height and width
   dimensions: {
-    xxs: ".25rem",
-    xs: ".5rem",
-    sm: ".75rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "1.5rem",
-    xxl: "2rem",
-    xxxl: "3rem"
-  }
+    xxs: 1,
+    xs: 2,
+    sm: 3,
+    md: 4,
+    lg: 8,
+    xl: 16,
+    xxl: 32,
+    xxxl: 64,
+  },
+  // Used for typographic scale
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  // Used for padding and margins
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  // Line heights
+  lineHeights: [1, 1.125, 1.25, 1.5],
+  // Font weights
+  fontWeights: {
+    normal: 500,
+    bold: 700,
+  },
+  // Letter spacing
+  letterSpacings: {
+    normal: 'normal',
+    caps: '0.25em',
+  },
+  // Border radius
+  radii: [0, 2, 3, 4, 8],
+  // Borders
+  borders: [0, '1px solid', '2px solid'],
+  // Shadows
+  shadows: [
+    'none',
+    '0 2px 4px 0 rgba(0,0,0,0.10)',
+    '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
+    '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
+  ],
 }
 
 export default sizes

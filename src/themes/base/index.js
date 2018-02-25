@@ -4,35 +4,27 @@
  *
  */
 
-import palx from '../utils/palx'
-import { getPaletteShades, colorListToMap } from '../utils/colors'
-import defaultColors from "./colors"
-import fonts from "./fonts"
-import sizes from "./sizes"
+import colors from './colors'
+import fonts from './fonts'
+import sizes from './sizes'
 
 export const createTheme = themeColors => {
-  const mergedColors = { ...defaultColors, ...themeColors }
-  const colors = {
-    ...getPaletteShades(mergedColors),
-    ...colorListToMap(palx(mergedColors.primary)),
-  }
-
   return {
-    sizes,
     fonts,
-    colors,
+    ...sizes,
+    colors: { ...colors, ...themeColors },
 
     /* Button */
-    "button.disabled.background": 'gray',
+    'button.disabled.background': 'gray',
 
     /* Checkbox */
-    "checkbox.border.color": colors.primary2,
-    "checkbox.background": colors.primary1,
-    "checkbox.icon.color": colors.primary,
-    "checkbox.label.color": colors.primary,
+    'checkbox.border.color': colors.primary2,
+    'checkbox.background': colors.primary1,
+    'checkbox.icon.color': colors.primary,
+    'checkbox.label.color': colors.primary,
 
     /* Popover */
-    "popover.border.color": 'transparent',
+    'popover.border.color': 'transparent',
 
     /* Select */
     'select.background': colors.background,
@@ -57,4 +49,4 @@ export const createTheme = themeColors => {
   }
 }
 
-export default createTheme(defaultColors)
+export default createTheme(colors)
