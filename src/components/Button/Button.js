@@ -35,6 +35,14 @@ const Button = styled.button`
   border-radius: ${props => props.theme['button.border.radius']};
 
   ${props =>
+    !props.palette &&
+    css`
+      background: ${props => props.theme.colors.primary[3]};
+      color: ${props => props.theme.colors.primary[0]};
+      border-color: ${props => props.theme.colors.primary[4]};
+    `}
+
+  ${props =>
     props.palette &&
     css`
       background: ${props => props.theme.colors[props.palette][3]};
@@ -105,7 +113,6 @@ Button.propTypes = {
 Button.defaultProps = {
   size: 'md',
   borderRadius: 3,
-  palette: 'primary',
 }
 
 /** @component */
