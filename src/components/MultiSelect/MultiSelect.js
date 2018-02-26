@@ -12,9 +12,9 @@ import OptionWrapper from './OptionWrapper'
 const Tag = styled.div`
   border-radius: 12px;
   padding: 3px 6px;
-  background: ${props => props.theme.colors.primary};
-  color: #FFF;
-  ${space}
+  background: ${props => props.theme.colors.primary[3]};
+  color: #fff;
+  ${space};
 `
 
 class MultiSelect extends PureComponent {
@@ -48,14 +48,13 @@ class MultiSelect extends PureComponent {
       this.props.onChange([option])
     } else {
       const value = getValue(option)
-      const isSelected = this.props.selected.find(
-        s => getValue(s) === value
-      ) !== undefined
+      const isSelected =
+        this.props.selected.find(s => getValue(s) === value) !== undefined
       this.handleChange(e, option, !isSelected)
     }
   }
 
-  renderOption (option) {
+  renderOption(option) {
     const { renderOption } = this.props
 
     // If option renderer is provided, use that
@@ -68,7 +67,7 @@ class MultiSelect extends PureComponent {
   }
 
   // This gets rendered every time even if the content is not shown, don't do that
-  renderOptions () {
+  renderOptions() {
     const { getLabel, getValue, optionStyles } = this.props
     return (
       <OptionWrapper borderRadius={0} p={0} m={0}>
@@ -87,7 +86,10 @@ class MultiSelect extends PureComponent {
                 id={label}
                 value={o}
                 label={this.renderOption(o)}
-                checked={this.props.selected.find(s => getValue(s) === value) !== undefined}
+                checked={
+                  this.props.selected.find(s => getValue(s) === value) !==
+                  undefined
+                }
                 onChange={this.handleChange}
                 onLabelClick={e => {
                   e.stopPropagation()
@@ -103,12 +105,12 @@ class MultiSelect extends PureComponent {
     )
   }
 
-  renderPlaceholder () {
+  renderPlaceholder() {
     const {
       selected,
       renderMultiPlaceholder,
       placeholder,
-      getLabel
+      getLabel,
     } = this.props
 
     if (selected.length === 0) {
@@ -116,14 +118,11 @@ class MultiSelect extends PureComponent {
     }
 
     if (selected.length === 1 || !renderMultiPlaceholder) {
-      return selected.map(s =>
-        <Tag
-          mr={1}
-          key={getLabel(s)}
-        >
+      return selected.map(s => (
+        <Tag mr={1} key={getLabel(s)}>
           <span>{this.renderOption(s)}</span>
         </Tag>
-      )
+      ))
     }
 
     if (selected.length > 1) {
@@ -131,7 +130,7 @@ class MultiSelect extends PureComponent {
     }
   }
 
-  renderTrigger () {
+  renderTrigger() {
     return (
       <div>
         <Wrapper className="ri-multiselect" {...this.props} tabIndex="0">
@@ -142,7 +141,7 @@ class MultiSelect extends PureComponent {
     )
   }
 
-  render () {
+  render() {
     return (
       <Popover
         trigger={this.renderTrigger()}
@@ -163,8 +162,8 @@ MultiSelect.defaultProps = {
   selected: [],
   appendOnLabelClick: true,
   optionStyles: {
-    padding: 10
-  }
+    padding: 10,
+  },
 }
 
 export default MultiSelect

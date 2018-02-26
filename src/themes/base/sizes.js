@@ -1,37 +1,46 @@
 // https://tailwindcss.com/docs/spacing
 const sizes = {
   breakpoints: ['40em', '52em', '64em'],
-  // Use for convenience
+  // Use for convenience, maps semantic sizes to array indicies for other propertries
   sizes: {
-    xxs: 1,
-    xs: 2,
-    sm: 3,
-    md: 4,
-    lg: 8,
-    xl: 16,
-    xxl: 32,
-    xxxl: 64,
-  },
-  // For height and width
-  dimensions: {
-    xxs: 1,
-    xs: 2,
-    sm: 3,
-    md: 4,
-    lg: 8,
-    xl: 16,
-    xxl: 32,
-    xxxl: 64,
+    xxs: 0,
+    xs: 1,
+    sm: 2,
+    md: 3,
+    lg: 4,
+    xl: 5,
+    xxl: 6,
+    xxxl: 7,
   },
   // Used for typographic scale
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [
+    '0.25rem',
+    '0.5rem',
+    '0.75rem',
+    '1rem',
+    '1.5rem',
+    '2rem',
+    '2.5rem',
+    '3rem',
+  ],
   // Used for padding and margins
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  space: [
+    '0rem',
+    '0.25rem',
+    '0.5rem',
+    '0.75rem',
+    '1rem',
+    '1.5rem',
+    '2rem',
+    '2.5rem',
+  ],
   // Line heights
-  lineHeights: [1, 1.125, 1.25, 1.5],
+  lineHeights: [1, 1.125, 1.25, 1.5, 1.75, 2, 2.5],
   // Font weights
   fontWeights: {
+    regular: 400,
     normal: 500,
+    semibold: 600,
     bold: 700,
   },
   // Letter spacing
@@ -40,7 +49,7 @@ const sizes = {
     caps: '0.25em',
   },
   // Border radius
-  radii: [0, 2, 3, 4, 8],
+  radii: [0, 2, 3, 4, 6, 8, 10],
   // Borders
   borders: [0, '1px solid', '2px solid'],
   // Shadows

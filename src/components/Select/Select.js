@@ -10,16 +10,16 @@ const Placeholder = styled.span`
 `
 
 class Select extends React.Component {
-  renderPlaceholder () {
+  renderPlaceholder() {
     return <Placeholder>{this.props.placeholder}</Placeholder>
   }
 
-  renderSelectedValue () {
+  renderSelectedValue() {
     const { value, options } = this.props
     return <span>{options.find(o => o.value === value).label}</span>
   }
 
-  renderOptions () {
+  renderOptions() {
     return close => (
       <Menu borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => (
@@ -38,7 +38,7 @@ class Select extends React.Component {
     )
   }
 
-  renderChildren () {
+  renderChildren() {
     const { value, ...rest } = this.props
     return (
       // Cannot assign ref to styled-component, so we must wrap it
@@ -56,7 +56,7 @@ class Select extends React.Component {
     )
   }
 
-  render () {
+  render() {
     const { maxHeight } = this.props
     return (
       <Popover
@@ -66,10 +66,11 @@ class Select extends React.Component {
         arrow={false}
         fullWidth
         portal
+        shadow={false}
         contentStyle={{
           marginTop: -2,
           maxHeight,
-          overflowY: 'scroll'
+          overflowY: 'scroll',
         }}
       >
         {this.renderOptions()}
@@ -79,7 +80,7 @@ class Select extends React.Component {
 }
 
 Select.defaultProps = {
-  maxHeight: 150
+  maxHeight: 150,
 }
 
 export default Select

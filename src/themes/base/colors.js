@@ -1,6 +1,15 @@
 // Colors from https://tailwindcss.com/docs/colors
 // @TODO: Generate this palette based on the primary color with something like palx
 export default {
+  primary: [
+    '#eff8ff',
+    '#bcdefa',
+    '#6cb2eb',
+    '#3490dc',
+    '#2779bd',
+    '#1c3d5a',
+    '#12283a',
+  ],
   gray: [
     '#ffffff',
     '#f8fafc',

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { space, width, borderRadius } from 'styled-system'
+import { space, width, borderRadius, borders, color } from 'styled-system'
 
 const Wrapper = styled.div`
   background: ${props => props.theme['select.background']};
@@ -11,6 +11,8 @@ const Wrapper = styled.div`
   ${space}
   ${width}
   ${borderRadius}
+  ${borders}
+  ${color}
 
   svg {
     color: ${props => props.theme['select.icon.color']};
@@ -23,8 +25,8 @@ const Wrapper = styled.div`
 `
 
 Wrapper.defaultProps = {
-  p: 2,
-  borderRadius: 4,
+  p: 3,
+  borderRadius: 2,
 }
 
 export default Wrapper

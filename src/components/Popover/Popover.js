@@ -3,88 +3,112 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { borderRadius } from 'styled-system'
 import Portal from '../Portal'
-import calculatePosition from "./utils";
-import styles from "./popover.css.js"
+import calculatePosition from './utils'
+import styles from './popover.css.js'
 import Show from 'react-show'
 
 class Popover extends React.Component {
   state = {
-    isOpen: this.props.defaultOpen
-  };
+    isOpen: this.props.defaultOpen,
+  }
 
   constructor(props) {
-    super(props);
-    this.setTriggerRef = r => (this.TriggerEl = r);
-    this.setContentRef = r => (this.ContentEl = r);
-    this.setArrowRef = r => (this.ArrowEl = r);
-    this.setHelperRef = r => (this.HelperEl = r);
-    this.timeOut = 0;
+    super(props)
+    this.setTriggerRef = r => (this.TriggerEl = r)
+    this.setContentRef = r => (this.ContentEl = r)
+    this.setArrowRef = r => (this.ArrowEl = r)
+    this.setHelperRef = r => (this.HelperEl = r)
+    this.timeOut = 0
   }
 
   componentDidMount() {
-    if (this.props.defaultOpen) this.setPosition();
+    if (this.props.defaultOpen) this.setPosition()
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeOut);
+    clearTimeout(this.timeOut)
   }
 
   togglePopup = () => {
-    if (this.state.isOpen) this.closePopup();
-    else this.openPopup();
-  };
+    if (this.state.isOpen) this.closePopup()
+    else this.openPopup()
+  }
+
   openPopup = () => {
-    if (this.state.isOpen) return;
+    if (this.state.isOpen) return
     this.setState({ isOpen: true }, () => {
-      this.setPosition();
-      this.props.onOpen();
-    });
-  };
+      this.setPosition()
+      this.props.onOpen()
+    })
+  }
+
   closePopup = () => {
-    if (!this.state.isOpen) return;
+    if (!this.state.isOpen) return
     this.setState({ isOpen: false }, () => {
-      this.props.onClose();
-    });
-  };
+      this.props.onClose()
+    })
+  }
+
   onMouseEnter = () => {
-    clearTimeout(this.timeOut);
-    const { mouseEnterDelay } = this.props;
-    this.timeOut = setTimeout(() => this.openPopup(), mouseEnterDelay);
-  };
+    clearTimeout(this.timeOut)
+    const { mouseEnterDelay } = this.props
+    this.timeOut = setTimeout(() => this.openPopup(), mouseEnterDelay)
+  }
+
   onMouseLeave = () => {
-    clearTimeout(this.timeOut);
-    const { mouseLeaveDelay } = this.props;
-    this.timeOut = setTimeout(() => this.closePopup(), mouseLeaveDelay);
-  };
+    clearTimeout(this.timeOut)
+    const { mouseLeaveDelay } = this.props
+    this.timeOut = setTimeout(() => this.closePopup(), mouseLeaveDelay)
+  }
 
   setPosition = () => {
-    const { arrow, position, offset } = this.props;
-    const helper = this.HelperEl.getBoundingClientRect();
-    const trigger = this.TriggerEl.getBoundingClientRect();
-    const content = this.ContentEl.getBoundingClientRect();
-    const cords = calculatePosition(trigger, content, position, arrow, offset);
-    this.ContentEl.style.top = cords.top - helper.top + "px";
-    this.ContentEl.style.left = cords.left - helper.left + "px";
+    const { arrow, position, offset } = this.props
+    const helper = this.HelperEl.getBoundingClientRect()
+    const trigger = this.TriggerEl.getBoundingClientRect()
+    const content = this.ContentEl.getBoundingClientRect()
+    const cords = calculatePosition(trigger, content, position, arrow, offset)
+
+    this.ContentEl.style.top = cords.top - helper.top + 'px'
+    this.ContentEl.style.left = cords.left - helper.left + 'px'
+
     if (arrow) {
-      this.ArrowEl.style["transform"] = cords.transform;
-      this.ArrowEl.style["-ms-transform"] = cords.transform;
-      this.ArrowEl.style["-webkit-transform"] = cords.transform;
-      this.ArrowEl.style.top = cords.arrowTop;
-      this.ArrowEl.style.left = cords.arrowLeft;
+      this.ArrowEl.style['transform'] = cords.transform
+      this.ArrowEl.style['-ms-transform'] = cords.transform
+      this.ArrowEl.style['-webkit-transform'] = cords.transform
+      this.ArrowEl.style.top = cords.arrowTop
+      this.ArrowEl.style.left = cords.arrowLeft
     }
+
     if (
-      this.TriggerEl.style.position == "static" ||
-      this.TriggerEl.style.position == ""
+      this.TriggerEl.style.position == 'static' ||
+      this.TriggerEl.style.position == ''
     )
-      this.TriggerEl.style.position = "relative";
-  };
+      this.TriggerEl.style.position = 'relative'
+  }
 
   addWarperAction = () => {
-    const { contentStyle, className, menu, on, width, fullWidth } = this.props;
-    const popupContentStyle = styles.popupContent.tooltip;
+    const {
+      contentStyle,
+      className,
+      menu,
+      on,
+      width,
+      fullWidth,
+      shadow,
+      border,
+    } = this.props
+    const popupContentStyle = styles.popupContent.tooltip
+
+    if (!shadow) popupContentStyle.boxShadow = ''
+    if (!border) popupContentStyle.border = ''
 
     if (fullWidth) {
       popupContentStyle.width = this.TriggerEl.getBoundingClientRect().width
+
+      if (border) {
+        popupContentStyle.width =
+          this.TriggerEl.getBoundingClientRect().width - 2
+      }
     }
 
     if (width) {
@@ -96,53 +120,60 @@ class Popover extends React.Component {
       style: Object.assign({}, popupContentStyle, contentStyle),
       ref: this.setContentRef,
       onClick: e => {
-        e.stopPropagation();
-      }
-    };
-    if (on.includes("hover")) {
-      childrenElementProps.onMouseEnter = this.onMouseEnter;
-      childrenElementProps.onMouseLeave = this.onMouseLeave;
+        e.stopPropagation()
+      },
     }
-    return childrenElementProps;
-  };
+
+    if (on.includes('hover')) {
+      childrenElementProps.onMouseEnter = this.onMouseEnter
+      childrenElementProps.onMouseLeave = this.onMouseLeave
+    }
+
+    return childrenElementProps
+  }
 
   renderTrigger = () => {
     const triggerProps = {
-      key: "T",
+      key: 'T',
       style: styles.trigger,
-    };
-    const { on, trigger } = this.props;
-    triggerProps.ref = this.setTriggerRef;
-    const onAsArray = Array.isArray(on) ? on : [on];
+    }
+    const { on, trigger } = this.props
+    const onAsArray = Array.isArray(on) ? on : [on]
+    triggerProps.ref = this.setTriggerRef
+
     for (let i = 0, len = onAsArray.length; i < len; i++) {
       switch (onAsArray[i]) {
-        case "click":
-          triggerProps.onClick = this.togglePopup;
-          break;
-        case "hover":
-          triggerProps.onMouseEnter = this.onMouseEnter;
-          triggerProps.onMouseLeave = this.onMouseLeave;
-        case "focus":
-          triggerProps.onFocus = this.onMouseEnter;
-          break;
+        case 'click':
+          triggerProps.onClick = this.togglePopup
+          break
+        case 'hover':
+          triggerProps.onMouseEnter = this.onMouseEnter
+          triggerProps.onMouseLeave = this.onMouseLeave
+        case 'focus':
+          triggerProps.onFocus = this.onMouseEnter
+          break
       }
     }
 
-    if (typeof trigger === "function") {
-      return React.cloneElement(trigger(this.state.isOpen), triggerProps);
+    if (typeof trigger === 'function') {
+      return React.cloneElement(trigger(this.state.isOpen), triggerProps)
     }
 
-    return React.cloneElement(trigger, triggerProps);
-  };
+    return React.cloneElement(trigger, triggerProps)
+  }
 
   renderContent = () => {
     // if (!this.state.isOpen) return null
 
-    const { arrow, arrowStyle, animation, duration, easing } = this.props;
+    const { arrow, arrowStyle, animation, duration, easing } = this.props
     const animations = {
       scale: {
         default: { opacity: 0 },
-        hide: { opacity: 0, transform: 'scale(.8) translateY(-30%)', pointerEvents: 'none' },
+        hide: {
+          opacity: 0,
+          transform: 'scale(.8) translateY(-30%)',
+          pointerEvents: 'none',
+        },
         show: { opacity: 1, transform: 'none', pointerEvents: 'auto' },
       },
       fade: {
@@ -154,7 +185,7 @@ class Popover extends React.Component {
         default: { opacity: 0 },
         hide: { opacity: 0, transform: 'translateY(-2em)' },
         show: { opacity: 1, transform: 'translateY(0)' },
-      }
+      },
     }
 
     const contentProps = !this.state.isOpen ? {} : this.addWarperAction()
@@ -172,14 +203,13 @@ class Popover extends React.Component {
             styleShow={animations[animation].show}
           >
             <div>
-              {
-                arrow &&
+              {arrow && (
                 <div
                   ref={this.setArrowRef}
                   style={Object.assign({}, styles.popupArrow, arrowStyle)}
                 />
-              }
-              {typeof this.props.children === "function"
+              )}
+              {typeof this.props.children === 'function'
                 ? this.props.children(this.closePopup, this.state.isOpen)
                 : this.props.children}
             </div>
@@ -187,10 +217,10 @@ class Popover extends React.Component {
         </div>
       </Portal>
     )
-  };
+  }
 
   render() {
-    const { overlayStyle, closeOnDocumentClick } = this.props;
+    const { overlayStyle, closeOnDocumentClick } = this.props
     const { isOpen } = this.state
     const ovStyle = styles.overlay.tooltip
     return (
@@ -198,19 +228,18 @@ class Popover extends React.Component {
         <Portal>
           <div
             key="H"
-            style={{ position: "absolute", top: "0px", left: "0px" }}
+            style={{ position: 'absolute', top: '0px', left: '0px' }}
             ref={this.setHelperRef}
           />
         </Portal>
-        {
-          isOpen &&
+        {isOpen && (
           <div
             key="O"
             className="ri-popover-overlay"
             style={Object.assign({}, ovStyle, overlayStyle)}
             onClick={closeOnDocumentClick ? this.closePopup : undefined}
           />
-        }
+        )}
         {this.renderContent()}
         {this.renderTrigger()}
       </Fragment>
@@ -220,7 +249,7 @@ class Popover extends React.Component {
 
 Popover.propTypes = {
   arrowStyle: PropTypes.object,
-  animation: PropTypes.oneOf(["fade", "scale", "slide"]),
+  animation: PropTypes.oneOf(['fade', 'scale', 'slide']),
   duration: PropTypes.number,
   contentStyle: PropTypes.object,
   overlayStyle: PropTypes.object,
@@ -231,32 +260,31 @@ Popover.propTypes = {
   mouseLeaveDelay: PropTypes.number,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
-  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
-    .isRequired,
+  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
   on: PropTypes.oneOfType([
-    PropTypes.oneOf(["hover", "click", "focus"]),
-    PropTypes.arrayOf(PropTypes.oneOf(["hover", "click", "focus"]))
+    PropTypes.oneOf(['hover', 'click', 'focus']),
+    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'click', 'focus'])),
   ]),
   children: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.element,
-    PropTypes.string
+    PropTypes.string,
   ]).isRequired,
   position: PropTypes.oneOf([
-    "top left",
-    "top center",
-    "top right",
-    "bottom left",
-    "bottom center",
-    "bottom right",
-    "right top",
-    "right center",
-    "right bottom",
-    "left top",
-    "left center",
-    "left bottom"
-  ])
-};
+    'top left',
+    'top center',
+    'top right',
+    'bottom left',
+    'bottom center',
+    'bottom right',
+    'right top',
+    'right center',
+    'right bottom',
+    'left top',
+    'left center',
+    'left bottom',
+  ]),
+}
 
 Popover.defaultProps = {
   children: () => <span> Your Content Here !!</span>,
@@ -264,12 +292,12 @@ Popover.defaultProps = {
   onClose: () => {},
   closeOnDocumentClick: true,
   defaultOpen: false,
-  on: ["click"],
+  on: ['click'],
   contentStyle: {},
   arrowStyle: {},
   overlayStyle: {},
-  className: "",
-  position: "bottom center",
+  className: '',
+  position: 'bottom center',
   modal: false,
   arrow: true,
   offset: 0,
@@ -278,6 +306,8 @@ Popover.defaultProps = {
   animation: 'slide',
   easing: 'easeOutQuint',
   duration: 250,
-};
+  shadow: true,
+  border: true,
+}
 
 export default Popover

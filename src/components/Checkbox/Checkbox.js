@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
   > .checkbox-label {
     color: ${props => props.theme['checkbox.label.color']};
-    color: ${props => props.theme.colors[props.palette]};
+    color: ${props => props.theme.colors[props.palette][3]};
   }
 
   ${fontSize}
@@ -28,38 +28,30 @@ const Wrapper = styled.div`
 `
 
 const Box = styled.div`
+  box-sizing: border-box;
+  height: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
+  width: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
+  background: ${props => props.theme['checkbox.background']};
+  border: 1px solid ${props => props.theme['checkbox.border.color']};
+  color: ${props => props.theme['checkbox.icon.color']};
+
+  ${props =>
+    props.palette &&
+    css`
+      background: ${props => props.theme.colors[props.palette][0]};
+      color: ${props => props.theme.colors[props.palette][3]};
+      border-color: ${props => props.theme.colors[props.palette][1]};
+    `}
+
   ${borderRadius}
   ${borderColor}
   ${color}
   ${space}
-  box-sizing: border-box;
-  height: ${props => props.theme.dimensions[props.size]};
-  width: ${props => props.theme.dimensions[props.size]};
-
-  ${props =>
-    !props.palette &&
-    css`
-      background: ${props => props.theme.colors.primary};
-      border: 1px solid ${props => props.theme.colors.primary};
-      color: ${props => props.theme.colors['primary1']};
-    `}
-
-  background: ${props => props.theme['checkbox.background']};
-  border: 1px solid ${props => props.theme['checkbox.border.color']};
-  color: ${props => props.theme['checkbox.icon.color']};
 
   &:hover {
     border-color: ${props => props.theme['checkbox.hover.border.color']};
     background: ${props => props.theme['checkbox.hover.background']};
   }
-
-  ${props =>
-    props.palette &&
-    css`
-      background: ${props => props.theme.colors[`${props.palette}1`]};
-      border: 1px solid ${props => props.theme.colors[props.palette]};
-      color: ${props => props.theme.colors[props.palette]};
-    `}
 
   svg,
   div {
@@ -118,11 +110,16 @@ Checkbox.propTypes = {
    */
   palette: PropTypes.oneOf([
     'primary',
-    'secondary',
-    'info',
-    'success',
-    'warning',
-    'danger',
+    'gray',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'teal',
+    'blue',
+    'indigo',
+    'purple',
+    'pink',
     PropTypes.string,
   ]),
   /**
@@ -133,6 +130,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   size: 'md',
+  palette: 'primary',
 }
 
 export default Checkbox
