@@ -5,12 +5,27 @@ import base from './themes/base'
 import { getColorShades, colorListToMap } from './themes/utils/colors'
 
 // Check out https://github.com/jxnblk/styled-system/tree/master/system-components
+// and https://github.com/pricelinelabs/design-system
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.gray[8]};
   box-sizing: border-box;
-  ul { margin: 0, padding: 0 }
+  blockquote,
+  dd,
+  dl,
+  figure,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  pre,
+  ul {
+    margin: 0;
+  }
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
