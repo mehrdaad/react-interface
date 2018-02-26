@@ -35,7 +35,7 @@ const sizes = {
     '2.5rem',
   ],
   // Line heights
-  lineHeights: [1, 1.125, 1.25, 1.5, 1.75, 2, 2.5],
+  lineHeights: [1, 1.125, 1.25, 1.5, 1.75, 2, 2],
   // Font weights
   fontWeights: {
     regular: 400,

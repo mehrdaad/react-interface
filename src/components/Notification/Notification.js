@@ -7,6 +7,7 @@ import {
   justifyContent,
   width,
   fontSize,
+  borders,
 } from 'styled-system'
 
 const Notification = styled.div`
@@ -14,13 +15,15 @@ const Notification = styled.div`
   align-items: center;
   justify-content: start;
   line-height: 1rem;
+  border-width: 1px;
+  border-style: solid;
 
   ${props =>
     !props.palette &&
     css`
-      background: ${props => props.theme.colors['primary1']};
-      border: 1px solid ${props => props.theme.colors.primary};
-      color: ${props => props.theme.colors.primary};
+      background: ${props => props.theme.colors.primary[0]};
+      color: ${props => props.theme.colors.primary[4]};
+      border-color: ${props => props.theme.colors.primary[2]};
     `}
 
   background: ${props => props.theme['notification.background']};
@@ -30,21 +33,22 @@ const Notification = styled.div`
   ${props =>
     props.palette &&
     css`
-      background: ${props => props.theme.colors[`${props.palette}1`]};
-      border: 1px solid ${props => props.theme.colors[props.palette]};
-      color: ${props => props.theme.colors[`${props.palette}6`]};
+      background: ${props => props.theme.colors[props.palette][0]};
+      color: ${props => props.theme.colors[props.palette][4]};
+      border-color: ${props => props.theme.colors[props.palette][2]};
     `}
 
   ${props =>
     props.palette &&
     props.solid &&
     css`
-      background: ${props => props.theme.colors[props.palette]};
-      border: 1px solid ${props => props.theme.colors[props.palette]};
-      color: ${props => props.theme.colors[`${props.palette}1`]};
+      background: ${props => props.theme.colors[props.palette][3]};
+      color: ${props => props.theme.colors[props.palette][0]};
+      border-color: ${props => props.theme.colors[props.palette][4]};
     `}
 
   ${borderRadius}
+  ${borders}
   ${color}
   ${space}
   ${justifyContent}
@@ -54,7 +58,7 @@ const Notification = styled.div`
 
 Notification.defaultProps = {
   borderRadius: 4,
-  p: 2,
+  p: 3,
   solid: false,
 }
 
