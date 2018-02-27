@@ -108,7 +108,8 @@ class MultiSelect extends PureComponent {
   renderPlaceholder() {
     const {
       selected,
-      renderMultiPlaceholder,
+      renderMultiSelected,
+      renderSelected,
       placeholder,
       getLabel,
     } = this.props
@@ -117,16 +118,24 @@ class MultiSelect extends PureComponent {
       return <span>{placeholder || 'Select Options'}</span>
     }
 
-    if (selected.length === 1 || !renderMultiPlaceholder) {
+    if (selected.length === 1 && renderSelected) {
+      return renderSelected(selected[0])
+    }
+
+    if (selected.length === 1 && !renderSelected) {
+      return <Tag>{getLabel(selected[0])}</Tag>
+    }
+
+    if (selected.length > 1 && !renderMultiSelected) {
       return selected.map(s => (
         <Tag mr={1} key={getLabel(s)}>
-          <span>{this.renderOption(s)}</span>
+          <div key={getLabel(s)}>{this.renderOption(s)}</div>
         </Tag>
       ))
     }
 
     if (selected.length > 1) {
-      return renderMultiPlaceholder(selected)
+      return renderMultiSelected(selected)
     }
   }
 
