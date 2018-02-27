@@ -23,9 +23,12 @@ export default class Tooltip extends React.PureComponent {
 
     // center align the tooltip by taking both the target and tooltip widths into account
     if (position === 'bottom' || position === 'top') {
-      style.left = (left + (width / 2)) - (this.width / 2)
+      style.left = left + width / 2 - this.width / 2
       style.left = Math.max(this.space, style.left) // make sure it doesn't poke off the left side of the page
-      style.left = Math.min(style.left, document.body.clientWidth - this.width - this.space) // or off the right
+      style.left = Math.min(
+        style.left,
+        document.body.clientWidth - this.width - this.space
+      ) // or off the right
     }
 
     if (position === 'left') {
@@ -33,7 +36,7 @@ export default class Tooltip extends React.PureComponent {
     }
 
     if (position === 'top') {
-      style.bottom = (window.innerHeight - top) + this.space
+      style.bottom = window.innerHeight - top + this.space
     }
 
     if (position === 'bottom') {
@@ -46,7 +49,7 @@ export default class Tooltip extends React.PureComponent {
         style.top = top + height + this.space
         style.bottom = undefined
       } else {
-        style.bottom = (window.innerHeight - top) + this.space
+        style.bottom = window.innerHeight - top + this.space
         style.top = undefined
       }
     }
@@ -54,7 +57,7 @@ export default class Tooltip extends React.PureComponent {
     this.setState({
       visible: true,
       style,
-    });
+    })
   }
 
   hide = () => {
@@ -67,22 +70,18 @@ export default class Tooltip extends React.PureComponent {
         onMouseOver={this.show}
         onMouseOut={this.hide}
         className="tooltip-trigger-text"
-        ref={el => this.el = el}
+        ref={el => (this.el = el)}
         style={{ cursor: this.props.cursor || 'pointer' }}
       >
         {this.props.children}
         {this.state.visible && (
           <Portal>
-            <Tip
-              className="tooltip-body"
-              style={this.state.style}
-              size={this.props.size}
-            >
+            <Tip className="tooltip-body" style={this.state.style}>
               {this.props.content}
             </Tip>
           </Portal>
         )}
       </span>
-    );
+    )
   }
 }
