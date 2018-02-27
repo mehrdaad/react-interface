@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 `
 
 Wrapper.defaultProps = {
-  p: 3,
+  p: 2,
   borderRadius: 2,
 }
 

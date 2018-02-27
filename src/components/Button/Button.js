@@ -10,6 +10,7 @@ import {
   borderRadius,
   fontWeight,
   fontSize,
+  hover,
 } from 'styled-system'
 
 const Button = styled.button`
@@ -37,7 +38,7 @@ const Button = styled.button`
   ${props =>
     !props.palette &&
     css`
-      background: ${props => props.theme.colors.primary[3]};
+      background: ${props => props.theme.colors.primary[4]};
       color: ${props => props.theme.colors.primary[0]};
       border-color: ${props => props.theme.colors.primary[4]};
     `}
@@ -48,6 +49,24 @@ const Button = styled.button`
       background: ${props => props.theme.colors[props.palette][3]};
       color: ${props => props.theme.colors[props.palette][0]};
       border-color: ${props => props.theme.colors[props.palette][4]};
+    `}
+
+  ${props =>
+    props.inverse &&
+    props.palette &&
+    css`
+      background: ${props => props.theme.colors[props.palette][0]};
+      color: ${props => props.theme.colors[props.palette][4]};
+      border-color: ${props => props.theme.colors[props.palette][1]};
+    `}
+
+  ${props =>
+    props.transparent &&
+    css`
+      background: none;
+      color: ${props =>
+        props.palette ? props.theme.colors[props.palette][4] : 'inherit'};
+      border: none;
     `}
 
   ${props =>
@@ -66,6 +85,7 @@ const Button = styled.button`
   ${borderRadius}
   ${fontWeight}
   ${fontSize}
+  ${hover}
 
   &:disabled {
     opacity: .25;
@@ -103,11 +123,21 @@ Button.propTypes = {
     color: PropTypes.string,
     border: PropTypes.string,
   }),
+  /**
+   * Inverse colors
+   */
+  inverse: PropTypes.bool,
+  /**
+   * Transparent
+   */
+  transparent: PropTypes.bool,
 }
 
 Button.defaultProps = {
   size: 'md',
   borderRadius: 3,
+  inverse: false,
+  transparent: false,
 }
 
 /** @component */
