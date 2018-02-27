@@ -42,7 +42,7 @@ const MenuItem = styled.li`
 
 MenuItem.defaultProps = {
   borderRadius: 2,
-  p: 3,
+  p: 2,
 }
 
 /** @component */

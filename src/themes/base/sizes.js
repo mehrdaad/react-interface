@@ -24,16 +24,17 @@ const sizes = {
     '3rem',
   ],
   // Used for padding and margins
-  space: [
-    '0rem',
+  buttonPaddings: [
     '0.25rem',
     '0.5rem',
     '0.75rem',
     '1rem',
+    '1.25rem',
     '1.5rem',
     '2rem',
     '2.5rem',
   ],
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   // Line heights
   lineHeights: [1, 1.125, 1.25, 1.5, 1.75, 2, 2],
   // Font weights

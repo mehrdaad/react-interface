@@ -55,13 +55,8 @@ const Button = styled.button`
     css`
       font-size: ${props =>
         props.theme.fontSizes[props.theme.sizes[props.size]]};
-      padding-left: ${props =>
-        props.theme.space[props.theme.sizes[props.size] + 1]};
-      padding-right: ${props =>
-        props.theme.space[props.theme.sizes[props.size] + 1]};
-      padding-top: ${props => props.theme.space[props.theme.sizes[props.size]]};
-      padding-bottom: ${props =>
-        props.theme.space[props.theme.sizes[props.size]]};
+      padding: ${props =>
+        props.theme.buttonPaddings[props.theme.sizes[props.size]]};
     `}
 
   ${color}
