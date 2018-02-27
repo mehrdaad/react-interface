@@ -1,5 +1,4 @@
 import Button from './Button'
-import Box from './Box'
 import Icon from './Icon'
 import Title from './Title'
 import Paragraph from './Paragraph'
