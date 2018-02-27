@@ -29,19 +29,13 @@ const Wrapper = styled.div`
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
-  if (color) {
-    const primaryShades = getColorShades(color, 'primary')
-    // Merge theme and primary color palette
-    theme = merge(theme, {
-      colors: {
-        primary: primaryShades,
-      },
-    })
-  }
-
   // Merge base theme and theme with palette
   const merged = merge(base, theme)
-  console.log(merged)
+
+  if (color) {
+    const primaryShades = getColorShades(color, 'primary')
+    merged.colors.primary = primaryShades
+  }
 
   return (
     <ThemeProvider theme={merged}>

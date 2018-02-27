@@ -1,16 +1,16 @@
 // Thank you erikras: https://github.com/erikras/styled-components-theme
 // and jxnblk: https://github.com/jxnblk/monochrome/blob/master/src/palette.js
-import chroma from "chroma-js"
+import chroma from 'chroma-js'
 
 const isDark = color => chroma(color).luminance() < 0.5
 
-export function getColorShades(color, colorName, steps = 8) {
+export function getColorShades(color, colorName, steps = 7) {
   const colorList = []
   var scaleSourceHex = color
 
   // Prepare color scale.
-  var colors = ["#fff", scaleSourceHex, "#000"]
-  var scale = chroma.scale(colors).mode("lab")
+  var colors = ['#fff', scaleSourceHex, '#000']
+  var scale = chroma.scale(colors).mode('lab')
   // Output source color.
   for (var i = 0, steps = steps; i < steps; i++) {
     var point = i / steps
@@ -21,8 +21,12 @@ export function getColorShades(color, colorName, steps = 8) {
     colorList.push(hex)
   }
 
+  colorList[4] = color
+
   return colorList
 }
+
+window.getColorShades = getColorShades
 
 export function getPaletteShades(palette) {
   return Object.keys(palette)
@@ -33,7 +37,7 @@ export function getPaletteShades(palette) {
 export function colorListToMap(colors) {
   let palette = {}
   for (let color in colors) {
-    if (typeof colors[color] === "string") {
+    if (typeof colors[color] === 'string') {
       palette[color] = colors[color]
     } else {
       const shades = colors[color].reduce((acc, curr, i) => {
