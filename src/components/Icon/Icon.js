@@ -12,7 +12,8 @@ const icons = {
 const capitalize = type => type.charAt(0).toUpperCase() + type.substring(1)
 
 const Wrapper = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  // display: inline-block;
   ${space}
   ${width}
   ${alignSelf}
