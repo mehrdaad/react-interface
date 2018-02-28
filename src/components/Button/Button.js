@@ -27,14 +27,6 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  border-color: ${props => props.theme['button.border.color']};
-  border-width: ${props => props.theme['button.border.width']};
-  border-style: ${props => props.theme['button.border.style']};
-  background: ${props => props.theme['button.background']};
-  color: ${props => props.theme['button.color']};
-  box-shadow: ${props => props.theme['button.shadow']};
-  border-radius: ${props => props.theme['button.border.radius']};
-
   ${props =>
     !props.palette &&
     css`
@@ -42,6 +34,14 @@ const Button = styled.button`
       color: ${props => props.theme.colors.primary[0]};
       border-color: ${props => props.theme.colors.primary[4]};
     `}
+
+  border-color: ${props => props.theme['button.border.color']};
+  border-width: ${props => props.theme['button.border.width']};
+  border-style: ${props => props.theme['button.border.style']};
+  background: ${props => props.theme['button.background']};
+  color: ${props => props.theme['button.color']};
+  box-shadow: ${props => props.theme['button.shadow']};
+  border-radius: ${props => props.theme['button.border.radius']};
 
   ${props =>
     props.palette &&

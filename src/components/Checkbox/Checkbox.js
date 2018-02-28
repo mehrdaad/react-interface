@@ -18,8 +18,19 @@ const Wrapper = styled.div`
   cursor: pointer;
 
   > .checkbox-label {
+    ${props =>
+      !props.palette &&
+      css`
+        color: ${props => props.theme.colors.primary[3]};
+      `}
+
     color: ${props => props.theme['checkbox.label.color']};
-    color: ${props => props.theme.colors[props.palette][3]};
+
+    ${props =>
+      props.palette &&
+      css`
+        color: ${props => props.theme.colors[props.palette][3]};
+      `}
   }
 
   ${fontSize}
@@ -34,6 +45,14 @@ const Box = styled.div`
   background: ${props => props.theme['checkbox.background']};
   border: 1px solid ${props => props.theme['checkbox.border.color']};
   color: ${props => props.theme['checkbox.icon.color']};
+
+  ${props =>
+    !props.palette &&
+    css`
+      background: ${props => props.theme.colors.primary[0]};
+      color: ${props => props.theme.colors.primary[3]};
+      border-color: ${props => props.theme.colors.primary[1]};
+    `}
 
   ${props =>
     props.palette &&
@@ -130,7 +149,6 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   size: 'md',
-  palette: 'primary',
 }
 
 export default Checkbox

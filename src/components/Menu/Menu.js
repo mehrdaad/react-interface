@@ -10,8 +10,7 @@ const Menu = styled.ul`
 
 Menu.defaultProps = {
   borderRadius: 4,
-  p: 1,
-  m: 0,
+  p: 2,
 }
 
 /** @component */

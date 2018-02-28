@@ -8,7 +8,7 @@ const MenuHeader = styled.div`
 `
 
 MenuHeader.defaultProps = {
-  p: 1,
+  p: 3,
 }
 
 /** @component */

@@ -68,7 +68,14 @@ class MultiSelect extends PureComponent {
 
   // This gets rendered every time even if the content is not shown, don't do that
   renderOptions() {
-    const { getLabel, getValue, optionStyles } = this.props
+    const {
+      getLabel,
+      getValue,
+      optionStyles,
+      menuItemProps,
+      checkboxProps,
+    } = this.props
+
     return (
       <OptionWrapper borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => {
@@ -79,6 +86,7 @@ class MultiSelect extends PureComponent {
               key={value}
               onClick={e => this.handleOptionClick(e, o)}
               style={optionStyles}
+              {...menuItemProps}
             >
               <Checkbox
                 className="checkbox"
@@ -95,8 +103,7 @@ class MultiSelect extends PureComponent {
                   e.stopPropagation()
                   this.handleOptionClick(e, o)
                 }}
-                borderRadius={3}
-                mr={1}
+                {...checkboxProps}
               />
             </MenuItem>
           )
@@ -151,18 +158,20 @@ class MultiSelect extends PureComponent {
   }
 
   render() {
+    const { popoverProps } = this.props
+
     return (
-      <Popover
+      <Popper
         trigger={this.renderTrigger()}
         animation="slide"
-        position="bottom center"
+        position="bottom"
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -1, maxHeight: 350, overflow: 'scroll' }}
+        {...popoverProps}
       >
         {this.renderOptions()}
-      </Popover>
+      </Popper>
     )
   }
 }
@@ -170,6 +179,13 @@ class MultiSelect extends PureComponent {
 MultiSelect.defaultProps = {
   selected: [],
   appendOnLabelClick: true,
+  popoverProps: {
+    boxShadow: 'none',
+  },
+  checkboxProps: {
+    mr: 1,
+  },
+  menuItemProps: {},
   optionStyles: {
     padding: 10,
   },

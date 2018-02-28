@@ -1,5 +1,12 @@
 import styled from 'styled-components'
-import { space, width, borderRadius, color, borders } from 'styled-system'
+import {
+  space,
+  width,
+  borderRadius,
+  color,
+  borders,
+  borderColor,
+} from 'styled-system'
 
 export default styled.div`
   background: ${props => props.theme['multiselect.background']};
@@ -14,6 +21,7 @@ export default styled.div`
   ${borderRadius}
   ${color}
   ${borders}
+  ${borderColor}
 
   &:focus {
     border: 1px solid ${props => props.theme['multiselect.focus.border.color']};
