@@ -41,11 +41,12 @@ class MultiSelect extends PureComponent {
     this.props.onChange(Array.from(new Set(combined)))
   }
 
-  handleOptionClick = (e, option) => {
+  handleOptionClick = (e, option, close) => {
     const { getValue, appendOnLabelClick } = this.props
     if (!appendOnLabelClick) {
       e.stopPropagation()
       this.props.onChange([option])
+      close()
     } else {
       const value = getValue(option)
       const isSelected =
@@ -67,7 +68,7 @@ class MultiSelect extends PureComponent {
   }
 
   // This gets rendered every time even if the content is not shown, don't do that
-  renderOptions() {
+  renderOptions(close) {
     const {
       getLabel,
       getValue,
@@ -101,7 +102,7 @@ class MultiSelect extends PureComponent {
                 onChange={this.handleChange}
                 onLabelClick={e => {
                   e.stopPropagation()
-                  this.handleOptionClick(e, o)
+                  this.handleOptionClick(e, o, close)
                 }}
                 {...checkboxProps}
               />
@@ -170,7 +171,7 @@ class MultiSelect extends PureComponent {
         fullWidth
         {...popoverProps}
       >
-        {this.renderOptions()}
+        {close => this.renderOptions(close)}
       </Popper>
     )
   }
@@ -181,6 +182,7 @@ MultiSelect.defaultProps = {
   appendOnLabelClick: true,
   popoverProps: {
     boxShadow: 'none',
+    mt: '-1px',
   },
   checkboxProps: {
     mr: 1,

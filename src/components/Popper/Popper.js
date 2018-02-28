@@ -15,9 +15,10 @@ const PopoverWrapper = styled.div`
   .popper {
     // width: ${props => props.width};
     z-index: 99;
-    display: ${props => (props.isOpen ? 'block' : 'none')};
-    max-height: ${props => props.maxHeight};
     overflow-y: scroll;
+    max-height: ${props => props.maxHeight};
+    display: ${props => (props.isOpen ? 'block' : 'none')};
+    border-color: ${props => props.theme['popover.border.color']};
     ${color}
     ${borders}
     ${borderColor}

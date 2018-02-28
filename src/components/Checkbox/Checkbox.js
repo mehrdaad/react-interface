@@ -16,7 +16,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  flex-shrink: 0;
 
   > .checkbox-label {
     ${props =>
@@ -41,6 +40,7 @@ const Wrapper = styled.div`
 
 const Box = styled.div`
   box-sizing: border-box;
+  flex-shrink: 0;
   height: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
   width: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
 
