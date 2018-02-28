@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react'
-import cx from 'classnames'
-import Portal from '../Portal'
+import PropTypes from 'prop-types'
+import { findDOMNode } from 'react-dom'
 import styled from 'styled-components'
 import { borders, color, borderColor, boxShadow, space } from 'styled-system'
-import { findDOMNode } from 'react-dom'
 import resizeDetector from 'element-resize-detector'
-import PropTypes from 'prop-types'
+import cx from 'classnames'
 import outy from 'outy'
 import { Manager, Target, Popper as Positioner, Arrow } from 'react-popper'
 import Show from 'react-show'
 import { debounce } from '../../utils/browser'
+import Portal from '../Portal'
 
 const PopoverWrapper = styled.div`
   .popper {
@@ -121,23 +121,9 @@ const CustomTarget = ({ innerRef, ...props }) => (
   <div ref={innerRef} style={{ cursor: 'pointer' }} {...props} />
 )
 
-CustomTarget.propTypes = {
-  innerRef: PropTypes.func,
-}
-
 const CustomPopper = ({ innerRef, ...props }) => (
-  <div
-    ref={innerRef}
-    {...props}
-    // for some reason react-popper is off by one pixel so we subtract one
-    style={{ ...props.style, left: 1 }}
-  />
+  <div ref={innerRef} {...props} style={{ ...props.style }} />
 )
-
-CustomPopper.propTypes = {
-  innerRef: PropTypes.func,
-  style: PropTypes.object,
-}
 
 class Popper extends PureComponent {
   constructor(props) {
@@ -152,38 +138,22 @@ class Popper extends PureComponent {
   }
 
   componentDidMount() {
-    this._setOutsideTap()
     this._setResizeDetector()
   }
 
   componentDidUpdate(lastProps, lastState) {
-    if (lastState.isOpen !== this.state.isOpen) {
+    if (!lastState.isOpen && this.state.isOpen) {
       setTimeout(() => this._setOutsideTap())
     }
   }
 
   componentWillUnmount() {
-    this.outsideTap.remove()
+    document.removeEventListener('click', this._handleOutsideTap, true)
     this.detector.uninstall()
   }
 
   _setOutsideTap = () => {
-    const elements = [this.target]
-
-    if (this.popper) {
-      elements.push(this.popper)
-    }
-
-    if (this.outsideTap) {
-      this.outsideTap.remove()
-    }
-
-    // TODO: check for existence of element sbefore setting listener
-    this.outsideTap = outy(
-      elements,
-      ['click', 'touchstart'],
-      this._handleOutsideTap
-    )
+    document.addEventListener('click', this._handleOutsideTap, true)
   }
 
   _setResizeDetector = () => {
@@ -198,7 +168,16 @@ class Popper extends PureComponent {
     })
   }
 
-  _handleOutsideTap = () => {
+  _handleOutsideTap = e => {
+    const clickedPopper = e && this.popper && this.popper.contains(e.target)
+    const clickedTarget = e && this.target && this.target.contains(e.target)
+
+    if (!e || (!clickedPopper && !clickedTarget)) {
+      this.setState({ isOpen: false })
+    }
+  }
+
+  close = () => {
     this.setState({ isOpen: false })
   }
 
@@ -264,7 +243,7 @@ class Popper extends PureComponent {
       >
         <div style={popperStyle}>
           {typeof children === 'function'
-            ? children(this._handleOutsideTap, this.state.isOpen)
+            ? children(this.close, this.state.isOpen)
             : children}
           {arrow && <Arrow className="popper__arrow" />}
         </div>
@@ -279,9 +258,9 @@ class Popper extends PureComponent {
       <PopoverWrapper {...rest} isOpen={this.state.isOpen}>
         <Manager>
           <Target
-            onClick={this._handleTargetClick}
             innerRef={c => (this.target = findDOMNode(c))}
             component={CustomTarget}
+            onClick={this._handleTargetClick}
           >
             {trigger}
           </Target>

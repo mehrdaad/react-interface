@@ -85,7 +85,7 @@ class MultiSelect extends PureComponent {
           return (
             <MenuItem
               key={value}
-              onClick={e => this.handleOptionClick(e, o)}
+              onClick={e => this.handleOptionClick(e, o, close)}
               style={optionStyles}
               {...menuItemProps}
             >

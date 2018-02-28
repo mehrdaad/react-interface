@@ -26,7 +26,7 @@ class Select extends React.Component {
     return <span>{options.find(o => o.value === value).label}</span>
   }
 
-  renderOptions() {
+  renderOptions(close) {
     const { menuItemProps } = this.props
 
     return close => (

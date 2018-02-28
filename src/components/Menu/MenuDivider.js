@@ -8,6 +8,7 @@ const MenuDivider = styled.div`
 
 MenuDivider.defaultProps = {
   my: 1,
+  mx: 2,
 }
 
 /** @component */
