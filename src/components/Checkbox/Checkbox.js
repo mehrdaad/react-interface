@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
 
   > .checkbox-label {
     ${props =>
@@ -42,9 +43,6 @@ const Box = styled.div`
   box-sizing: border-box;
   height: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
   width: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
-  background: ${props => props.theme['checkbox.background']};
-  border: 1px solid ${props => props.theme['checkbox.border.color']};
-  color: ${props => props.theme['checkbox.icon.color']};
 
   ${props =>
     !props.palette &&
@@ -53,6 +51,10 @@ const Box = styled.div`
       color: ${props => props.theme.colors.primary[3]};
       border-color: ${props => props.theme.colors.primary[1]};
     `}
+
+  background: ${props => props.theme['checkbox.background']};
+  border: 1px solid ${props => props.theme['checkbox.border.color']};
+  color: ${props => props.theme['checkbox.icon.color']};
 
   ${props =>
     props.palette &&

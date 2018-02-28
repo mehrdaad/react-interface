@@ -273,7 +273,6 @@ class Popper extends PureComponent {
 
   render() {
     const { trigger, portal, ...rest } = this.props
-    console.log(rest)
 
     return (
       <PopoverWrapper {...rest} isOpen={this.state.isOpen}>
