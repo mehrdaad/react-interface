@@ -145,7 +145,9 @@ class Popper extends PureComponent {
 
   componentWillUnmount() {
     document.removeEventListener('click', this._handleOutsideTap, true)
-    this.detector.uninstall()
+    if (this.detector) {
+      this.detector.uninstall()
+    }
   }
 
   _setOutsideTap = () => {
