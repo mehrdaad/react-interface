@@ -1,8 +1,7 @@
-import { Flex } from 'grid-styled'
+import { Flex, Box } from 'grid-styled'
 
 // Grid components
-export { Flex } from 'grid-styled'
-export Box from './components/Box'
+export { Flex, Box } from 'grid-styled'
 
 // Components
 export Button from './components/Button'

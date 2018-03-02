@@ -1,21 +1,20 @@
-import Button from "./Button"
-import Box from "./Box"
-import Icon from "./Icon"
-import Title from "./Title"
-import Paragraph from "./Paragraph"
-import Pre from "./Pre"
-import Expand from "./Expand"
-import Checkbox from "./Checkbox"
-import Popover from "./Popover"
-import Popper from "./Popper"
-import Select from "./Select"
-import MultiSelect from "./MultiSelect"
-import Notification from "./Notification"
-import Tooltip from "./Tooltip"
-import Text from "./Text"
-import { Menu, MenuItem, MenuHeader, MenuDivider } from "./Menu"
-import { Table, TBody, THead, Header, Row, Cell } from "./FlexTable"
-import { Flex } from "grid-styled"
+import Button from './Button'
+import Icon from './Icon'
+import Title from './Title'
+import Paragraph from './Paragraph'
+import Pre from './Pre'
+import Expand from './Expand'
+import Checkbox from './Checkbox'
+import Popover from './Popover'
+import Popper from './Popper'
+import Select from './Select'
+import MultiSelect from './MultiSelect'
+import Notification from './Notification'
+import Tooltip from './Tooltip'
+import Text from './Text'
+import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
+import { Table, TBody, THead, Header, Row, Cell } from './FlexTable'
+import { Flex, Box } from 'grid-styled'
 
 export {
   Button,

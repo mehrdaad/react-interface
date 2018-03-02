@@ -1,19 +1,28 @@
 import React, { PureComponent } from 'react'
-import cx from 'classnames'
-import Portal from '../Portal'
-import styled from 'styled-components'
-import { findDOMNode } from 'react-dom'
-import resizeDetector from 'element-resize-detector'
 import PropTypes from 'prop-types'
-import outy from 'outy'
+import { findDOMNode } from 'react-dom'
+import styled from 'styled-components'
+import { borders, color, borderColor, boxShadow, space } from 'styled-system'
+import resizeDetector from 'element-resize-detector'
+import cx from 'classnames'
 import { Manager, Target, Popper as Positioner, Arrow } from 'react-popper'
 import Show from 'react-show'
 import { debounce } from '../../utils/browser'
+import Portal from '../Portal'
 
 const PopoverWrapper = styled.div`
   .popper {
     // width: ${props => props.width};
     z-index: 99;
+    overflow-y: scroll;
+    max-height: ${props => props.maxHeight};
+    display: ${props => (props.isOpen ? 'block' : 'none')};
+    border-color: ${props => props.theme['popover.border.color']};
+    ${color}
+    ${borders}
+    ${borderColor}
+    ${boxShadow}
+    ${space}
   }
 
   .popper .popper__arrow {
@@ -88,7 +97,11 @@ const PopoverWrapper = styled.div`
 const animations = {
   scale: {
     default: { opacity: 0 },
-    hide: { opacity: 0, transform: 'scale(.8) translateY(-30%)', pointerEvents: 'none' },
+    hide: {
+      opacity: 0,
+      transform: 'scale(.8) translateY(-30%)',
+      pointerEvents: 'none',
+    },
     show: { opacity: 1, transform: 'none', pointerEvents: 'auto' },
   },
   fade: {
@@ -100,40 +113,22 @@ const animations = {
     default: { opacity: 0 },
     hide: { opacity: 0, transform: 'translateY(-2em)' },
     show: { opacity: 1, transform: 'translateY(0)' },
-  }
+  },
 }
 
 const CustomTarget = ({ innerRef, ...props }) => (
-  <div
-    ref={innerRef}
-    style={{ cursor: 'pointer' }}
-    {...props}
-  />
+  <div ref={innerRef} style={{ cursor: 'pointer' }} {...props} />
 )
-
-CustomTarget.propTypes = {
-  innerRef: PropTypes.func,
-}
 
 const CustomPopper = ({ innerRef, ...props }) => (
-  <div
-    ref={innerRef}
-    {...props}
-    // for some reason react-popper is off by one pixel so we subtract one
-    style={{ ...props.style, left: 1 }}
-  />
+  <div ref={innerRef} {...props} style={{ ...props.style }} /> // left: 1 if needed
 )
 
-CustomPopper.propTypes = {
-  innerRef: PropTypes.func,
-  style: PropTypes.object,
-}
-
 class Popper extends PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
-    this._handleResize = debounce(this._handleResize, 250, false)
+    this._handleResize = debounce(this._handleResize, 50, false)
 
     this.state = {
       isOpen: false,
@@ -142,38 +137,22 @@ class Popper extends PureComponent {
   }
 
   componentDidMount() {
-    this._setOutsideTap()
     this._setResizeDetector()
   }
 
   componentDidUpdate(lastProps, lastState) {
-    if (lastState.isOpen !== this.state.isOpen) {
+    if (!lastState.isOpen && this.state.isOpen) {
       setTimeout(() => this._setOutsideTap())
     }
   }
 
   componentWillUnmount() {
-    this.outsideTap.remove()
+    document.removeEventListener('click', this._handleOutsideTap, true)
     this.detector.uninstall()
   }
 
   _setOutsideTap = () => {
-    const elements = [this.target, this.popper]
-
-    if (this.popper) {
-      elements.push(this.popper)
-    }
-
-    if (this.outsideTap) {
-      this.outsideTap.remove()
-    }
-
-    // TODO: check for existence of element sbefore setting listener
-    this.outsideTap = outy(
-      elements,
-      ['click', 'touchstart'],
-      this._handleOutsideTap,
-    )
+    document.addEventListener('click', this._handleOutsideTap, true)
   }
 
   _setResizeDetector = () => {
@@ -184,11 +163,20 @@ class Popper extends PureComponent {
   _handleResize = el => {
     this.mostRecentWidth = this.state.width
     this.setState({
-      width: el.offsetWidth
+      width: el.offsetWidth,
     })
   }
 
-  _handleOutsideTap = () => {
+  _handleOutsideTap = e => {
+    const clickedPopper = e && this.popper && this.popper.contains(e.target)
+    const clickedTarget = e && this.target && this.target.contains(e.target)
+
+    if (!e || (!clickedPopper && !clickedTarget)) {
+      this.setState({ isOpen: false })
+    }
+  }
+
+  close = () => {
     this.setState({ isOpen: false })
   }
 
@@ -196,10 +184,10 @@ class Popper extends PureComponent {
     this.setState({ isOpen: !this.state.isOpen })
   }
 
-  _getPopperWidth () {
+  _getPopperWidth() {
     if (this.target && this.props.fullWidth) {
       // return this.target.getBoundingClientRect().width
-      return this.state.width
+      return this.state.width - 2
     }
 
     if (this.props.width) {
@@ -207,7 +195,7 @@ class Popper extends PureComponent {
     }
   }
 
-  renderPositioner () {
+  renderPositioner() {
     const {
       position,
       easing,
@@ -216,18 +204,19 @@ class Popper extends PureComponent {
       children,
       modifiers,
       arrow,
-      contentStyle
+      contentStyle,
     } = this.props
 
     const popperClasses = cx({
       popper: true,
-      'has-arrow': arrow
+      'has-arrow': arrow,
     })
 
     const popperStyle = {
       ...contentStyle,
       width: this._getPopperWidth(),
       zIndex: 99,
+      display: this.state.isOpen ? 'block' : 'none',
     }
 
     const popperModifiers = {
@@ -251,50 +240,57 @@ class Popper extends PureComponent {
           this.popper = findDOMNode(c)
         }}
       >
-        <Show
-          show={this.state.isOpen}
-          easing={easing}
-          duration={duration}
-          style={animations[animation].default}
-          styleHide={animations[animation].hide}
-          styleShow={animations[animation].show}
-          transitionOnMount
-        >
-          <div style={popperStyle}>
-            {typeof children === "function"
-              ? children(this._handleOutsideTap, this.state.isOpen)
-              : children}
-            { arrow && <Arrow className="popper__arrow" /> }
-          </div>
-        </Show>
+        <div style={popperStyle}>
+          {typeof children === 'function'
+            ? children(this.close, this.state.isOpen)
+            : children}
+          {arrow && <Arrow className="popper__arrow" />}
+        </div>
       </Positioner>
     )
   }
 
   render() {
-    const { trigger, portal } = this.props
+    const { trigger, portal, ...rest } = this.props
 
     return (
-      <PopoverWrapper>
+      <PopoverWrapper {...rest} isOpen={this.state.isOpen}>
         <Manager>
           <Target
-            onClick={this._handleTargetClick}
             innerRef={c => (this.target = findDOMNode(c))}
             component={CustomTarget}
+            onClick={this._handleTargetClick}
           >
             {trigger}
           </Target>
-          { portal && <Portal>{this.renderPositioner()}</Portal> }
-          { !portal && this.renderPositioner() }
+          {portal && <Portal>{this.renderPositioner()}</Portal>}
+          {!portal && this.renderPositioner()}
         </Manager>
       </PopoverWrapper>
     )
   }
 }
 
+// <Show
+//   show={this.state.isOpen}
+//   easing={easing}
+//   duration={duration}
+//   style={animations[animation].default}
+//   styleHide={animations[animation].hide}
+//   styleShow={animations[animation].show}
+//   transitionOnMount
+// >
+//   <div style={popperStyle}>
+//     {typeof children === 'function'
+//       ? children(this._handleOutsideTap, this.state.isOpen)
+//       : children}
+//     {arrow && <Arrow className="popper__arrow" />}
+//   </div>
+// </Show>
+
 Popper.propTypes = {
   arrow: PropTypes.bool,
-  animation: PropTypes.oneOf(["fade", "scale", "slide"]),
+  animation: PropTypes.oneOf(['fade', 'scale', 'slide']),
   duration: PropTypes.number,
   offset: PropTypes.number,
   onOpen: PropTypes.func,
@@ -302,50 +298,52 @@ Popper.propTypes = {
   fullWidth: PropTypes.bool,
   portal: PropTypes.bool,
   contentStyle: PropTypes.object,
-  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
-    .isRequired,
+  trigger: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
   on: PropTypes.oneOfType([
-    PropTypes.oneOf(["hover", "click", "focus"]),
-    PropTypes.arrayOf(PropTypes.oneOf(["hover", "click", "focus"]))
+    PropTypes.oneOf(['hover', 'click', 'focus']),
+    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'click', 'focus'])),
   ]),
   children: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.element,
-    PropTypes.string
+    PropTypes.string,
   ]).isRequired,
   position: PropTypes.oneOf([
-    "top",
-    "top-start",
-    "top-end",
-    "bottom",
-    "bottom-start",
-    "bottom-end",
-    "right",
-    "right-start",
-    "right-end",
-    "left",
-    "left-start",
-    "left-end",
-    "auto",
-    "auto-start",
-    "auto-end",
-  ])
-};
+    'top',
+    'top-start',
+    'top-end',
+    'bottom',
+    'bottom-start',
+    'bottom-end',
+    'right',
+    'right-start',
+    'right-end',
+    'left',
+    'left-start',
+    'left-end',
+    'auto',
+    'auto-start',
+    'auto-end',
+  ]),
+}
 
 Popper.defaultProps = {
   onOpen: () => {},
   onClose: () => {},
   closeOnDocumentClick: true,
   defaultOpen: false,
-  on: ["click"],
+  on: ['click'],
   portal: false,
   arrow: true,
   animation: 'slide',
   easing: 'easeOutQuint',
   duration: 250,
-  position: "bottom-start",
+  position: 'bottom-start',
   fullWidth: false,
   contentStyle: {},
-};
+  boxShadow: 1,
+  border: 1,
+  borderColor: 'gray.4',
+}
 
 export default Popper

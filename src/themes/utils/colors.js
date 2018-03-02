@@ -2,28 +2,31 @@
 // and jxnblk: https://github.com/jxnblk/monochrome/blob/master/src/palette.js
 import chroma from 'chroma-js'
 
-const isDark = color => chroma(color).luminance() < .5
+const isDark = color => chroma(color).luminance() < 0.5
 
-export function getColorShades(color, colorName, steps = 10) {
-  const colorList = {}
-  var scaleSourceHex = color;
+export function getColorShades(color, colorName, steps = 7) {
+  const colorList = []
+  var scaleSourceHex = color
 
   // Prepare color scale.
-  var colors = ['#fff', scaleSourceHex, '#000'];
+  var colors = ['#fff', scaleSourceHex, '#000']
   var scale = chroma.scale(colors).mode('lab')
   // Output source color.
-  for(var i = 0, steps = steps; i < steps; i++) {
-    var point = i / steps;
+  for (var i = 0, steps = steps; i < steps; i++) {
+    var point = i / steps
     // Convert point to numbering system value.
-    var name = Math.round(point * 1000);
+    var name = Math.round(point * 1000)
     // Generate RGB color from luminance location along scale.
-    var hex = scale(point).hex();
-    colorList[`${colorName}${i}`] = hex
+    var hex = scale(point).hex()
+    colorList.push(hex)
   }
 
-  colorList[colorName] = color
+  colorList[4] = color
+
   return colorList
 }
+
+window.getColorShades = getColorShades
 
 export function getPaletteShades(palette) {
   return Object.keys(palette)

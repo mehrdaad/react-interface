@@ -1,35 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
-import Popover from '../Popover'
+import { color } from 'styled-system'
+import Popper from '../Popper'
 import { Menu, MenuItem } from '../Menu'
 import Icon from '../Icon'
 import Wrapper from './Wrapper'
 
 const Placeholder = styled.span`
   color: ${props => props.theme['select.placeholder.color']};
+  ${color};
 `
 
 class Select extends React.Component {
-  renderPlaceholder () {
-    return <Placeholder>{this.props.placeholder}</Placeholder>
+  renderPlaceholder() {
+    const { placeholderColor } = this.props
+    return (
+      <Placeholder color={placeholderColor}>
+        {this.props.placeholder}
+      </Placeholder>
+    )
   }
 
-  renderSelectedValue () {
+  renderSelectedValue() {
     const { value, options } = this.props
     return <span>{options.find(o => o.value === value).label}</span>
   }
 
-  renderOptions () {
+  renderOptions(close) {
+    const { menuItemProps } = this.props
+
     return close => (
       <Menu borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => (
           <MenuItem
             key={o.value}
-            borderRadius={0}
             onClick={() => {
               this.props.onChange(o.value)
               close()
             }}
+            {...menuItemProps}
           >
             {o.label}
           </MenuItem>
@@ -38,8 +47,8 @@ class Select extends React.Component {
     )
   }
 
-  renderChildren () {
-    const { value, ...rest } = this.props
+  renderChildren() {
+    const { value, placeholderColor, ...rest } = this.props
     return (
       // Cannot assign ref to styled-component, so we must wrap it
       <div>
@@ -56,30 +65,36 @@ class Select extends React.Component {
     )
   }
 
-  render () {
-    const { maxHeight } = this.props
+  render() {
+    const { maxHeight, popoverProps } = this.props
     return (
-      <Popover
+      <Popper
         trigger={this.renderChildren()}
-        position="bottom center"
+        position="bottom"
         on="click"
         arrow={false}
         fullWidth
-        portal
-        contentStyle={{
-          marginTop: -2,
-          maxHeight,
-          overflowY: 'scroll'
-        }}
+        portal={false}
+        {...popoverProps}
       >
         {this.renderOptions()}
-      </Popover>
+      </Popper>
     )
   }
 }
 
 Select.defaultProps = {
-  maxHeight: 150
+  borders: 1,
+  popoverProps: {
+    borders: 1,
+    borderColor: 'gray.4',
+    boxShadow: 'none',
+    maxHeight: '150px',
+    mt: '-1px',
+  },
+  menuItemProps: {
+    borderRadius: 0,
+  },
 }
 
 export default Select

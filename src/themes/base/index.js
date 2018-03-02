@@ -4,35 +4,24 @@
  *
  */
 
-import palx from '../utils/palx'
-import { getPaletteShades, colorListToMap } from '../utils/colors'
-import defaultColors from "./colors"
-import fonts from "./fonts"
-import sizes from "./sizes"
+import colors from './colors'
+import fonts from './fonts'
+import sizes from './sizes'
 
 export const createTheme = themeColors => {
-  const mergedColors = { ...defaultColors, ...themeColors }
-  const colors = {
-    ...getPaletteShades(mergedColors),
-    ...colorListToMap(palx(mergedColors.primary)),
-  }
-
   return {
-    sizes,
     fonts,
-    colors,
-
-    /* Button */
-    "button.disabled.background": 'gray',
+    ...sizes,
+    colors: { ...colors, ...themeColors },
 
     /* Checkbox */
-    "checkbox.border.color": colors.primary2,
-    "checkbox.background": colors.primary1,
-    "checkbox.icon.color": colors.primary,
-    "checkbox.label.color": colors.primary,
+    'checkbox.border.color': colors.primary[2],
+    'checkbox.background': colors.primary[1],
+    'checkbox.icon.color': colors.primary[3],
+    'checkbox.label.color': colors.primary[3],
 
     /* Popover */
-    "popover.border.color": 'transparent',
+    'popover.border.color': 'transparent',
 
     /* Select */
     'select.background': colors.background,
@@ -47,14 +36,13 @@ export const createTheme = themeColors => {
     'multiselect.icon.color': colors.background6,
 
     /* Menus */
-    'menu.background': colors.background,
-    'menu.border.color': colors.background6,
+    'menu.background': colors.gray[0],
     'menu.divider.border.color': colors.background6,
-    'menu.item.hover.background': colors.primary1,
-    'menu.item.hover.color': colors.primary,
+    'menu.item.hover.background': colors.blue[0],
+    'menu.item.hover.color': colors.blue[3],
     'menu.item.active.background': colors.primary,
     'menu.item.active.color': colors.primary9,
   }
 }
 
-export default createTheme(defaultColors)
+export default createTheme(colors)

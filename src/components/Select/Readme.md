@@ -4,9 +4,15 @@
   options={[
     { label: 'First Option', value: 'first' },
     { label: 'Second Option', value: 'second' },
-    { label: 'Third Option', value: 'third' }
+    { label: 'Third Option', value: 'third' },
+    { label: 'Fourth Option', value: 'fourth' },
+    { label: 'Fifth Option', value: 'fifth' },
+    { label: 'Sixth Option', value: 'sixth' },
   ]}
   onChange={value => setState({ value })}
   value={state.value}
+  borderColor="gray.4"
+  placeholderColor="gray.4"
+  color="gray.7"
 />
 ```

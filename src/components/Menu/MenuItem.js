@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { borderRadius, space } from 'styled-system';
+import styled, { css } from 'styled-components'
+import { borderRadius, space, fontSize } from 'styled-system'
 
 const MenuItem = styled.li`
   overflow: hidden;
@@ -10,25 +10,29 @@ const MenuItem = styled.li`
   line-height: 16px;
   display: flex;
   align-items: center;
-  font-size: ${props => props.theme.sizes.fonts[props.size]};
   color: ${props => props.theme['menu.item.color']};
   cursor: pointer;
   ${borderRadius}
   ${space}
+  ${fontSize}
 
   &:hover {
     background: ${props => props.theme['menu.item.hover.background']};
     color: ${props => props.theme['menu.item.hover.color']};
   }
 
-  ${props => props.active && css`
-    background: ${props => props.theme['menu.item.active.background']};
-    color: ${props => props.theme['menu.item.active.color']};
-  `}
+  ${props =>
+    props.active &&
+    css`
+      background: ${props => props.theme['menu.item.active.background']};
+      color: ${props => props.theme['menu.item.active.color']};
+    `}
 
-  ${props => props.large && css`
-    font-size: ${props => props.theme.sizes.fonts.large};
-  `}
+  ${props =>
+    props.large &&
+    css`
+      font-size: ${props => props.theme.sizes.fonts.large};
+    `}
 
   a {
     color: inherit;
@@ -37,7 +41,7 @@ const MenuItem = styled.li`
 `
 
 MenuItem.defaultProps = {
-  br: 2,
+  borderRadius: 2,
   p: 2,
 }
 

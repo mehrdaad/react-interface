@@ -1,30 +1,21 @@
-import React from 'react'
-import Color from 'color'
-import { withTheme } from 'styled-components'
-import { Flex, Box } from 'grid-styled'
+import React from "react"
+import Color from "color"
+import { withTheme } from "styled-components"
+import { Flex, Box } from "grid-styled"
 
 const groupColorsByName = colors => {
-  const grouped = Object.keys(colors)
-    .filter(c => /\d/.test(c))
-    .map(c => ({ name: c, color: colors[c] }))
-    .reduce((acc, curr) => {
-      const group = curr.name.match(/[a-zA-Z]+/g)[0]
-      acc[group] = acc[group] ? [...acc[group], curr] : [curr]
-      return acc
-    }, {})
-
-  return Object.keys(grouped).map(g => (
-    <Box w={1/3} p={1} key={g}>
-      {grouped[g].map((p, i) => (
+  return Object.keys(colors).map(c => (
+    <Box w={1 / 3} p={3} key={c}>
+      {colors[c].map((p, i) => (
         <div
-          key={`${p.color}-${i}`}
+          key={`${p}-${i}`}
           style={{
-            background: p.color,
+            background: p,
             padding: 10,
-            color: Color(p.color).light() ? '#000' : '#FFF'
+            color: Color(p).light() ? "#000" : "#FFF"
           }}
         >
-          {p.name}
+          {`${c}[${i}]`} ({p})
         </div>
       ))}
     </Box>
@@ -32,10 +23,9 @@ const groupColorsByName = colors => {
 }
 
 const Theme = props => (
-  <Flex wrap='wrap'>
+  <Flex wrap="wrap" borderRadius={3}>
     {groupColorsByName(props.theme.colors)}
   </Flex>
 )
 
 export default withTheme(Theme)
-

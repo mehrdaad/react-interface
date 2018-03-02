@@ -1,55 +1,78 @@
-import React, { PureComponent } from "react"
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { space, size, borderColor, borderRadius, color } from "styled-system"
-import Icon from "../Icon"
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import {
+  space,
+  size,
+  borderColor,
+  borderRadius,
+  color,
+  fontSize,
+} from 'styled-system'
+import Icon from '../Icon'
 
 const Wrapper = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: ${props => props.theme.sizes.fonts[props.size]};
   cursor: pointer;
 
   > .checkbox-label {
-    padding-left: ${props => props.theme.sizes.paddings[props.size] * 3}px;
+    ${props =>
+      !props.palette &&
+      css`
+        color: ${props => props.theme.colors.primary[3]};
+      `}
+
     color: ${props => props.theme['checkbox.label.color']};
-    color: ${props => props.theme.colors[props.palette]};
+
+    ${props =>
+      props.palette &&
+      css`
+        color: ${props => props.theme.colors[props.palette][3]};
+      `}
   }
 
-  ${space};
-  ${size};
+  ${fontSize}
+  ${space}
+  ${size}
 `
 
 const Box = styled.div`
-  ${borderRadius};
-  ${borderColor};
-  ${color};
-  ${space};
   box-sizing: border-box;
-  height: ${props => props.theme.sizes.dimensions[props.size]};
-  width: ${props => props.theme.sizes.dimensions[props.size]};
+  flex-shrink: 0;
+  height: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
+  width: ${props => props.theme.fontSizes[props.theme.sizes[props.size]]};
 
-  ${props => !props.palette && css`
-    background: ${props => props.theme.colors.primary};
-    border: 1px solid ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors['primary1']};
-  `}
+  ${props =>
+    !props.palette &&
+    css`
+      background: ${props => props.theme.colors.primary[0]};
+      color: ${props => props.theme.colors.primary[3]};
+      border-color: ${props => props.theme.colors.primary[1]};
+    `}
 
-  background: ${props => props.theme["checkbox.background"]};
-  border: 1px solid ${props => props.theme["checkbox.border.color"]};
-  color: ${props =>  props.theme["checkbox.icon.color"]};
+  background: ${props => props.theme['checkbox.background']};
+  border: 1px solid ${props => props.theme['checkbox.border.color']};
+  color: ${props => props.theme['checkbox.icon.color']};
+
+  ${props =>
+    props.palette &&
+    css`
+      background: ${props => props.theme.colors[props.palette][0]};
+      color: ${props => props.theme.colors[props.palette][3]};
+      border-color: ${props => props.theme.colors[props.palette][1]};
+    `}
+
+  ${borderRadius}
+  ${borderColor}
+  ${color}
+  ${space}
 
   &:hover {
-    border-color: ${props => props.theme["checkbox.hover.border.color"]};
-    background: ${props => props.theme["checkbox.hover.background"]};
+    border-color: ${props => props.theme['checkbox.hover.border.color']};
+    background: ${props => props.theme['checkbox.hover.background']};
   }
-
-  ${props => props.palette && css`
-    background: ${props => props.theme.colors[`${props.palette}1`]};
-    border: 1px solid ${props => props.theme.colors[props.palette]};
-    color: ${props => props.theme.colors[props.palette]};
-  `}
 
   svg,
   div {
@@ -92,12 +115,11 @@ class Checkbox extends PureComponent {
         <Box {...this.props} className="checkbox" onClick={this.onClick}>
           {checked && <Icon type="check" />}
         </Box>
-        {
-          label &&
+        {label && (
           <span onClick={this.onLabelClick} className="checkbox-label">
             {label}
           </span>
-        }
+        )}
       </Wrapper>
     )
   }
@@ -108,22 +130,27 @@ Checkbox.propTypes = {
    * What type of component is this?
    */
   palette: PropTypes.oneOf([
-    "primary",
-    "secondary",
-    "info",
-    "success",
-    "warning",
-    "danger",
-    PropTypes.string
+    'primary',
+    'gray',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'teal',
+    'blue',
+    'indigo',
+    'purple',
+    'pink',
+    PropTypes.string,
   ]),
   /**
    * How big is it?
    */
-  size: PropTypes.oneOf(["xxs", "xs", "sm", "md", "lg", "xl", "xxl", "xxxl"])
+  size: PropTypes.oneOf(['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl']),
 }
 
 Checkbox.defaultProps = {
-  size: "md"
+  size: 'md',
 }
 
 export default Checkbox

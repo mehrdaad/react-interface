@@ -12,9 +12,9 @@ import OptionWrapper from './OptionWrapper'
 const Tag = styled.div`
   border-radius: 12px;
   padding: 3px 6px;
-  background: ${props => props.theme.colors.primary};
-  color: #FFF;
-  ${space}
+  background: ${props => props.theme.colors.primary[3]};
+  color: #fff;
+  ${space};
 `
 
 class MultiSelect extends PureComponent {
@@ -41,21 +41,21 @@ class MultiSelect extends PureComponent {
     this.props.onChange(Array.from(new Set(combined)))
   }
 
-  handleOptionClick = (e, option) => {
+  handleOptionClick = (e, option, close) => {
     const { getValue, appendOnLabelClick } = this.props
     if (!appendOnLabelClick) {
       e.stopPropagation()
       this.props.onChange([option])
+      close()
     } else {
       const value = getValue(option)
-      const isSelected = this.props.selected.find(
-        s => getValue(s) === value
-      ) !== undefined
+      const isSelected =
+        this.props.selected.find(s => getValue(s) === value) !== undefined
       this.handleChange(e, option, !isSelected)
     }
   }
 
-  renderOption (option) {
+  renderOption(option) {
     const { renderOption } = this.props
 
     // If option renderer is provided, use that
@@ -68,8 +68,15 @@ class MultiSelect extends PureComponent {
   }
 
   // This gets rendered every time even if the content is not shown, don't do that
-  renderOptions () {
-    const { getLabel, getValue, optionStyles } = this.props
+  renderOptions(close) {
+    const {
+      getLabel,
+      getValue,
+      optionStyles,
+      menuItemProps,
+      checkboxProps,
+    } = this.props
+
     return (
       <OptionWrapper borderRadius={0} p={0} m={0}>
         {this.props.options.map(o => {
@@ -78,8 +85,9 @@ class MultiSelect extends PureComponent {
           return (
             <MenuItem
               key={value}
-              onClick={e => this.handleOptionClick(e, o)}
+              onClick={e => this.handleOptionClick(e, o, close)}
               style={optionStyles}
+              {...menuItemProps}
             >
               <Checkbox
                 className="checkbox"
@@ -87,14 +95,16 @@ class MultiSelect extends PureComponent {
                 id={label}
                 value={o}
                 label={this.renderOption(o)}
-                checked={this.props.selected.find(s => getValue(s) === value) !== undefined}
+                checked={
+                  this.props.selected.find(s => getValue(s) === value) !==
+                  undefined
+                }
                 onChange={this.handleChange}
                 onLabelClick={e => {
                   e.stopPropagation()
-                  this.handleOptionClick(e, o)
+                  this.handleOptionClick(e, o, close)
                 }}
-                borderRadius={3}
-                mr={1}
+                {...checkboxProps}
               />
             </MenuItem>
           )
@@ -103,35 +113,41 @@ class MultiSelect extends PureComponent {
     )
   }
 
-  renderPlaceholder () {
+  renderPlaceholder() {
     const {
       selected,
-      renderMultiPlaceholder,
+      renderMultiSelected,
+      renderSelected,
       placeholder,
-      getLabel
+      getLabel,
     } = this.props
 
     if (selected.length === 0) {
       return <span>{placeholder || 'Select Options'}</span>
     }
 
-    if (selected.length === 1 || !renderMultiPlaceholder) {
-      return selected.map(s =>
-        <Tag
-          mr={1}
-          key={getLabel(s)}
-        >
-          <span>{this.renderOption(s)}</span>
+    if (selected.length === 1 && renderSelected) {
+      return renderSelected(selected[0])
+    }
+
+    if (selected.length === 1 && !renderSelected) {
+      return <Tag>{getLabel(selected[0])}</Tag>
+    }
+
+    if (selected.length > 1 && !renderMultiSelected) {
+      return selected.map(s => (
+        <Tag mr={1} key={getLabel(s)}>
+          <div key={getLabel(s)}>{this.renderOption(s)}</div>
         </Tag>
-      )
+      ))
     }
 
     if (selected.length > 1) {
-      return renderMultiPlaceholder(selected)
+      return renderMultiSelected(selected)
     }
   }
 
-  renderTrigger () {
+  renderTrigger() {
     return (
       <div>
         <Wrapper className="ri-multiselect" {...this.props} tabIndex="0">
@@ -142,19 +158,21 @@ class MultiSelect extends PureComponent {
     )
   }
 
-  render () {
+  render() {
+    const { popoverProps } = this.props
+
     return (
-      <Popover
+      <Popper
         trigger={this.renderTrigger()}
         animation="slide"
-        position="bottom center"
+        position="bottom"
         on="click"
         arrow={false}
         fullWidth
-        contentStyle={{ marginTop: -1, maxHeight: 350, overflow: 'scroll' }}
+        {...popoverProps}
       >
-        {this.renderOptions()}
-      </Popover>
+        {close => this.renderOptions(close)}
+      </Popper>
     )
   }
 }
@@ -162,9 +180,19 @@ class MultiSelect extends PureComponent {
 MultiSelect.defaultProps = {
   selected: [],
   appendOnLabelClick: true,
+  popoverProps: {
+    boxShadow: 'none',
+    mt: '-1px',
+  },
+  checkboxProps: {
+    mr: 1,
+  },
+  menuItemProps: {
+    borderRadius: 0,
+  },
   optionStyles: {
-    padding: 10
-  }
+    padding: 10,
+  },
 }
 
 export default MultiSelect

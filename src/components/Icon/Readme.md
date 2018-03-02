@@ -3,21 +3,21 @@
 
 ```jsx
 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-  <Icon type="camera" color='primary' />
-  <Icon type="activity" color='primary' />
-  <Icon type="bell" color='primary' />
-  <Icon type="cloud" color='primary' />
-  <Icon type="anchor" color='primary' />
-  <Icon type="battery" color='primary' />
-  <Icon type="box" color='primary' />
-  <Icon type="cast" color='primary' />
-  <Icon type="bar-chart" color='primary' />
-  <Icon type="activity" color='primary' />
-  <Icon type="alert-circle" color='primary' />
-  <Icon type="aperture" color='primary' />
-  <Icon type="align-left" color='primary' />
-  <Icon type="check" color='primary' />
-  <Icon type="chevron-down" color='primary' />
-  <Icon type="copy" color='primary'  />
+  <Icon type="camera" />
+  <Icon type="activity" />
+  <Icon type="bell" />
+  <Icon type="cloud" />
+  <Icon type="anchor" />
+  <Icon type="battery" />
+  <Icon type="box" />
+  <Icon type="cast" />
+  <Icon type="bar-chart" />
+  <Icon type="activity" />
+  <Icon type="alert-circle" />
+  <Icon type="aperture" />
+  <Icon type="align-left" />
+  <Icon type="check" />
+  <Icon type="chevron-down" />
+  <Icon type="copy" />
 </div>
 ```
