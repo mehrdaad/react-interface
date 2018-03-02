@@ -3,21 +3,21 @@
 
 ```jsx
 <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-  <Icon type="camera" />
-  <Icon type="activity" />
-  <Icon type="bell" />
-  <Icon type="cloud" />
-  <Icon type="anchor" />
-  <Icon type="battery" />
-  <Icon type="box" />
-  <Icon type="cast" />
-  <Icon type="bar-chart" />
-  <Icon type="activity" />
-  <Icon type="alert-circle" />
-  <Icon type="aperture" />
-  <Icon type="align-left" />
-  <Icon type="check" />
-  <Icon type="chevron-down" />
-  <Icon type="copy" />
+  <Icon type="camera" hover={{ color: 'blue.3' }} />
+  <Icon type="activity" hover={{ color: 'blue.3' }} />
+  <Icon type="bell" hover={{ color: 'blue.3' }} />
+  <Icon type="cloud" hover={{ color: 'blue.3' }} />
+  <Icon type="anchor" hover={{ color: 'blue.3' }} />
+  <Icon type="battery" hover={{ color: 'blue.3' }} />
+  <Icon type="box" hover={{ color: 'blue.3' }} />
+  <Icon type="cast" hover={{ color: 'blue.3' }} />
+  <Icon type="bar-chart" hover={{ color: 'blue.3' }} />
+  <Icon type="activity" hover={{ color: 'blue.3' }} />
+  <Icon type="alert-circle" hover={{ color: 'blue.3' }} />
+  <Icon type="aperture" hover={{ color: 'blue.3' }} />
+  <Icon type="align-left" hover={{ color: 'blue.3' }} />
+  <Icon type="check" hover={{ color: 'blue.3' }} />
+  <Icon type="chevron-down" hover={{ color: 'blue.3' }} />
+  <Icon type="copy" hover={{ color: 'blue.3' }} />
 </div>
 ```

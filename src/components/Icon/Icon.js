@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   ${alignSelf}
   ${color}
   ${fontSize}
+  ${hover}
 `
 
 const Icon = ({ type, size, color, ...rest }) => (
@@ -30,7 +31,7 @@ const Icon = ({ type, size, color, ...rest }) => (
           .map(t => capitalize(t))
           .join('')
       ],
-      { size, color }
+      { size }
     )}
   </Wrapper>
 )

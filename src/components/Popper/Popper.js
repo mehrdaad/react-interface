@@ -136,13 +136,10 @@ class Popper extends PureComponent {
     }
   }
 
-  componentDidMount() {
-    this._setResizeDetector()
-  }
-
   componentDidUpdate(lastProps, lastState) {
     if (!lastState.isOpen && this.state.isOpen) {
       setTimeout(() => this._setOutsideTap())
+      setTimeout(() => this._setResizeDetector())
     }
   }
 
@@ -157,7 +154,10 @@ class Popper extends PureComponent {
 
   _setResizeDetector = () => {
     this.detector = resizeDetector()
-    this.detector.listenTo(this.target, this._handleResize)
+    console.log(this.target)
+    if (this.target) {
+      this.detector.listenTo(this.target, this._handleResize)
+    }
   }
 
   _handleResize = el => {
