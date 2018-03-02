@@ -187,7 +187,9 @@ MultiSelect.defaultProps = {
   checkboxProps: {
     mr: 1,
   },
-  menuItemProps: {},
+  menuItemProps: {
+    borderRadius: 0,
+  },
   optionStyles: {
     padding: 10,
   },

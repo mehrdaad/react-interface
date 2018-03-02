@@ -121,7 +121,7 @@ const CustomTarget = ({ innerRef, ...props }) => (
 )
 
 const CustomPopper = ({ innerRef, ...props }) => (
-  <div ref={innerRef} {...props} style={{ ...props.style }} />
+  <div ref={innerRef} {...props} style={{ ...props.style }} /> // left: 1 if needed
 )
 
 class Popper extends PureComponent {
