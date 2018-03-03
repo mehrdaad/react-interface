@@ -156,7 +156,7 @@ class Popper extends PureComponent {
 
   _setResizeDetector = () => {
     this.detector = resizeDetector()
-    console.log(this.target)
+
     if (this.target) {
       this.detector.listenTo(this.target, this._handleResize)
     }
@@ -188,8 +188,11 @@ class Popper extends PureComponent {
 
   _getPopperWidth() {
     if (this.target && this.props.fullWidth) {
-      // return this.target.getBoundingClientRect().width
-      return this.state.width - 2
+      if (!this.state.width) {
+        return this.target.getBoundingClientRect().width - 2
+      } else {
+        return this.state.width - 2
+      }
     }
 
     if (this.props.width) {
