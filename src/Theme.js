@@ -9,7 +9,7 @@ import { getColorShades, colorListToMap } from './themes/utils/colors'
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
   background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.gray[8]};
+  color: ${props => props.theme.colors.text || props.theme.colors.gray[8]};
   box-sizing: border-box;
 `
 
