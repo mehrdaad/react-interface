@@ -21,7 +21,7 @@ export const createTheme = themeColors => {
     'checkbox.label.color': colors.primary[3],
 
     /* Popover */
-    'popover.border.color': 'transparent',
+    'popover.border.color': colors.gray[4],
 
     /* Select */
     'select.background': colors.background,

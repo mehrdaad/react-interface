@@ -86,9 +86,6 @@ class Select extends React.Component {
 Select.defaultProps = {
   borders: 1,
   popoverProps: {
-    borders: 1,
-    borderColor: 'gray.4',
-    boxShadow: 'none',
     maxHeight: '150px',
     mt: '-1px',
   },
