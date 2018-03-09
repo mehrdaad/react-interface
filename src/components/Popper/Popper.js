@@ -346,7 +346,6 @@ Popper.defaultProps = {
   position: 'bottom-start',
   fullWidth: false,
   contentStyle: {},
-  boxShadow: 1,
   border: 1,
 }
 
