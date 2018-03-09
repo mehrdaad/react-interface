@@ -348,7 +348,6 @@ Popper.defaultProps = {
   contentStyle: {},
   boxShadow: 1,
   border: 1,
-  borderColor: 'gray.4',
 }
 
 export default Popper
