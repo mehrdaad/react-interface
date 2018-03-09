@@ -22,18 +22,20 @@ export const createTheme = themeColors => {
 
     /* Popover */
     'popover.border.color': colors.gray[4],
+    'popover.border.style': 'solid',
+    'popover.border.width': '1px',
 
     /* Select */
-    'select.background': colors.background,
-    'select.placeholder.color': colors.background6,
-    'select.border.color': colors.background6,
-    'select.icon.color': colors.background6,
+    'select.background': colors.gray[0],
+    'select.placeholder.color': colors.gray[5],
+    'select.border.color': colors.gray[5],
+    'select.icon.color': colors.gray[5],
 
     /* MultiSelect */
-    'multiselect.background': colors.background,
-    'multiselect.placeholder.color': colors.background6,
-    'multiselect.border.color': colors.background6,
-    'multiselect.icon.color': colors.background6,
+    'multiselect.background': colors.gray[0],
+    'multiselect.placeholder.color': colors.gray[5],
+    'multiselect.border.color': colors.gray[5],
+    'multiselect.icon.color': colors.gray[5],
 
     /* Menus */
     'menu.background': colors.gray[0],

@@ -2,7 +2,14 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { findDOMNode } from 'react-dom'
 import styled from 'styled-components'
-import { borders, color, borderColor, boxShadow, space } from 'styled-system'
+import {
+  borders,
+  color,
+  borderColor,
+  boxShadow,
+  space,
+  width,
+} from 'styled-system'
 import resizeDetector from 'element-resize-detector'
 import cx from 'classnames'
 import { Manager, Target, Popper as Positioner, Arrow } from 'react-popper'
@@ -12,17 +19,20 @@ import Portal from '../Portal'
 
 const PopoverWrapper = styled.div`
   .popper {
-    // width: ${props => props.width};
     z-index: 99;
     overflow-y: scroll;
     max-height: ${props => props.maxHeight};
     display: ${props => (props.isOpen ? 'block' : 'none')};
+    border-width: ${props => props.theme['popover.border.width']};
+    border-style: ${props => props.theme['popover.border.style']};
     border-color: ${props => props.theme['popover.border.color']};
+    box-shadow: ${props => props.theme['popover.shadow']};
     ${color}
     ${borders}
     ${borderColor}
     ${boxShadow}
     ${space}
+    ${width}
   }
 
   .popper .popper__arrow {
@@ -346,7 +356,6 @@ Popper.defaultProps = {
   position: 'bottom-start',
   fullWidth: false,
   contentStyle: {},
-  border: 1,
 }
 
 export default Popper
