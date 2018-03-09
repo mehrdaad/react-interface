@@ -8,8 +8,8 @@ import { getColorShades, colorListToMap } from './themes/utils/colors'
 // and https://github.com/pricelinelabs/design-system
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text || props.theme.colors.gray[8]};
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.text || props.theme.colors.gray[8]};
   box-sizing: border-box;
 `
 
