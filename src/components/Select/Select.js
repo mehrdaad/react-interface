@@ -48,7 +48,7 @@ class Select extends React.Component {
   }
 
   renderChildren() {
-    const { value, placeholderColor, ...rest } = this.props
+    const { value, placeholderColor, iconProps, ...rest } = this.props
     return (
       // Cannot assign ref to styled-component, so we must wrap it
       <div>
@@ -57,8 +57,8 @@ class Select extends React.Component {
           {value && this.renderSelectedValue()}
           <Icon
             type="chevron-down"
-            size={20}
             style={{ marginLeft: 'auto', display: 'inherit' }}
+            {...iconProps}
           />
         </Wrapper>
       </div>
@@ -84,10 +84,17 @@ class Select extends React.Component {
 
 Select.defaultProps = {
   borders: 1,
+  iconProps: {
+    size: 20,
+  },
   popoverProps: {
     maxHeight: '150px',
     mt: '-1px',
     portal: false,
+    bg: 'select.background',
+    color: 'select.color',
+    borderColor: 'select.border',
+    borderRadius: 0,
   },
   menuItemProps: {
     borderRadius: 0,

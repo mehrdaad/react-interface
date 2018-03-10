@@ -9,8 +9,8 @@ import {
 } from 'styled-system'
 
 const Wrapper = styled.div`
-  background: ${props => props.theme['select.background']};
-  border: 1px solid ${props => props.theme['select.border.color']};
+  background: ${props => props.theme.colors['select.background']};
+  border: 1px solid ${props => props.theme.colors['select.border']};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,11 +23,11 @@ const Wrapper = styled.div`
   ${color}
 
   svg {
-    color: ${props => props.theme['select.icon.color']};
+    color: ${props => props.theme.colors['select.icon']};
   }
 
   &:focus {
-    border: 1px solid ${props => props.theme['select.focus.border.color']};
+    border: 1px solid ${props => props.theme.colors['select.focus.border']};
     outline: none;
   }
 `

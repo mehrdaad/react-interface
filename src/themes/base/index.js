@@ -12,7 +12,15 @@ export const createTheme = themeColors => {
   return {
     fonts,
     ...sizes,
-    colors: { ...colors, ...themeColors },
+    colors: {
+      ...colors,
+      ...themeColors,
+      /* Select */
+      'select.background': colors.gray[0],
+      'select.placeholder': colors.gray[5],
+      'select.border': colors.gray[5],
+      'select.icon': colors.gray[5],
+    },
 
     /* Checkbox */
     'checkbox.border.color': colors.primary[2],
@@ -24,12 +32,6 @@ export const createTheme = themeColors => {
     'popover.border.color': colors.gray[4],
     'popover.border.style': 'solid',
     'popover.border.width': '1px',
-
-    /* Select */
-    'select.background': colors.gray[0],
-    'select.placeholder.color': colors.gray[5],
-    'select.border.color': colors.gray[5],
-    'select.icon.color': colors.gray[5],
 
     /* MultiSelect */
     'multiselect.background': colors.gray[0],
