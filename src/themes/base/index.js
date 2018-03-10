@@ -26,6 +26,8 @@ export const createTheme = themeColors => {
       selectBorder: colors.gray[5],
       selectFocusBorder: colors.gray[6],
       selectIcon: colors.gray[5],
+      selectItemHoverBackground: colors.blue[0],
+      selectItemHover: colors.blue[3],
     },
 
     /* Checkbox */

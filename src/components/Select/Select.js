@@ -103,6 +103,10 @@ Select.defaultProps = {
   menuItemProps: {
     borderRadius: 0,
     color: 'select',
+    hover: {
+      color: 'selectItemHover',
+      backgroundColor: 'selectItemHoverBackground',
+    },
   },
 }
 

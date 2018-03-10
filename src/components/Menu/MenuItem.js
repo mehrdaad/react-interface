@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { borderRadius, space, fontSize } from 'styled-system'
+import { borderRadius, space, fontSize, color, hover } from 'styled-system'
 
 const MenuItem = styled.li`
   overflow: hidden;
@@ -15,11 +15,14 @@ const MenuItem = styled.li`
   ${borderRadius}
   ${space}
   ${fontSize}
+  ${color}
 
   &:hover {
     background: ${props => props.theme['menu.item.hover.background']};
     color: ${props => props.theme['menu.item.hover.color']};
   }
+
+  ${hover}
 
   ${props =>
     props.active &&
