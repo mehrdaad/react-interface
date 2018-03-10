@@ -13,12 +13,17 @@ export const createTheme = themeColors => {
     fonts,
     ...sizes,
     colors: {
+      /* Base Colors */
       ...colors,
+
+      /* Theme Colors */
       ...themeColors,
+
       /* Select */
       'select.background': colors.gray[0],
       'select.placeholder': colors.gray[5],
       'select.border': colors.gray[5],
+      'select.focus.border': colors.gray[6],
       'select.icon': colors.gray[5],
     },
 

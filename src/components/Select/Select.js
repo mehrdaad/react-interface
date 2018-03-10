@@ -7,7 +7,7 @@ import Icon from '../Icon'
 import Wrapper from './Wrapper'
 
 const Placeholder = styled.span`
-  color: ${props => props.theme['select.placeholder.color']};
+  color: ${props => props.theme.colors['select.placeholder']};
   ${color};
 `
 
@@ -55,11 +55,7 @@ class Select extends React.Component {
         <Wrapper {...rest} className="ri-select" tabIndex="0">
           {!value && this.renderPlaceholder()}
           {value && this.renderSelectedValue()}
-          <Icon
-            type="chevron-down"
-            style={{ marginLeft: 'auto', display: 'inherit' }}
-            {...iconProps}
-          />
+          <Icon type="chevron-down" {...iconProps} />
         </Wrapper>
       </div>
     )
@@ -86,13 +82,15 @@ Select.defaultProps = {
   borders: 1,
   iconProps: {
     size: 20,
+    color: 'select.icon',
+    style: { marginLeft: 'auto', display: 'inherit' },
   },
   popoverProps: {
     maxHeight: '150px',
     mt: '-1px',
     portal: false,
+    color: 'select',
     bg: 'select.background',
-    color: 'select.color',
     borderColor: 'select.border',
     borderRadius: 0,
   },
