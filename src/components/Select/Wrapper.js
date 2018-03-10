@@ -6,11 +6,10 @@ import {
   borders,
   borderColor,
   color,
+  hover,
 } from 'styled-system'
 
 const Wrapper = styled.div`
-  background: ${props => props.theme.colors.selectBackground};
-  border: 1px solid ${props => props.theme.colors.selectBorder};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +20,7 @@ const Wrapper = styled.div`
   ${borders}
   ${borderColor}
   ${color}
+  ${hover}
 
   svg {
     color: ${props => props.theme.colors.selectIcon};
@@ -34,7 +34,15 @@ const Wrapper = styled.div`
 
 Wrapper.defaultProps = {
   p: 2,
+  color: 'select',
+  background: 'selectBackground',
+  borderColor: 'selectBorder',
   borderRadius: 2,
+  border: '1px solid',
+  hover: {
+    color: 'selectHover',
+    backgroundColor: 'selectHoverBackground',
+  },
 }
 
 export default Wrapper

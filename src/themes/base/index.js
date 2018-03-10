@@ -21,6 +21,8 @@ export const createTheme = themeColors => {
 
       /* Select */
       select: colors.gray[7],
+      selectHover: colors.gray[6],
+      selectHoverBackground: colors.gray[1],
       selectBackground: colors.gray[0],
       selectPlaceholder: colors.gray[5],
       selectBorder: colors.gray[5],

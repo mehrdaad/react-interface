@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color } from 'styled-system'
+import { color, hover } from 'styled-system'
 import Popper from '../Popper'
 import { Menu, MenuItem } from '../Menu'
 import Icon from '../Icon'
@@ -8,8 +8,15 @@ import Wrapper from './Wrapper'
 
 const Placeholder = styled.span`
   color: ${props => props.theme.colors['selectPlaceholder']};
-  ${color};
+  ${color} ${hover};
 `
+
+Placeholder.defaultProps = {
+  hover: {
+    color: 'selectHover',
+    bg: 'selectHoverBackground',
+  },
+}
 
 class Select extends React.Component {
   renderPlaceholder() {
@@ -79,7 +86,6 @@ class Select extends React.Component {
 }
 
 Select.defaultProps = {
-  borders: 1,
   iconProps: {
     size: 20,
     color: 'selectIcon',

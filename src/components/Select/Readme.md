@@ -11,8 +11,5 @@
   ]}
   onChange={value => setState({ value })}
   value={state.value}
-  borderColor="gray.4"
-  placeholderColor="gray.4"
-  color="gray.7"
 />
 ```
