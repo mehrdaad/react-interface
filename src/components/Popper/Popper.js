@@ -7,6 +7,7 @@ import {
   color,
   borderColor,
   boxShadow,
+  borderRadius,
   space,
   width,
 } from 'styled-system'
@@ -30,6 +31,7 @@ const PopoverWrapper = styled.div`
     ${color}
     ${borders}
     ${borderColor}
+    ${borderRadius}
     ${boxShadow}
     ${space}
     ${width}
