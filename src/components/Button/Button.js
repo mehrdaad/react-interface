@@ -8,9 +8,11 @@ import {
   color,
   borders,
   borderRadius,
+  borderColor,
   fontWeight,
   fontSize,
   hover,
+  boxShadow,
 } from 'styled-system'
 
 const Button = styled.button`
@@ -83,9 +85,11 @@ const Button = styled.button`
   ${width}
   ${borders}
   ${borderRadius}
+  ${borderColor}
   ${fontWeight}
   ${fontSize}
   ${hover}
+  ${boxShadow}
 
   &:disabled {
     opacity: .25;
