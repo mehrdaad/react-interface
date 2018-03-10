@@ -7,7 +7,7 @@ import Icon from '../Icon'
 import Wrapper from './Wrapper'
 
 const Placeholder = styled.span`
-  color: ${props => props.theme.colors['select.placeholder']};
+  color: ${props => props.theme.colors['selectPlaceholder']};
   ${color};
 `
 
@@ -27,10 +27,10 @@ class Select extends React.Component {
   }
 
   renderOptions(close) {
-    const { menuItemProps } = this.props
+    const { menuProps, menuItemProps } = this.props
 
     return close => (
-      <Menu borderRadius={0} p={0} m={0}>
+      <Menu {...menuProps}>
         {this.props.options.map(o => (
           <MenuItem
             key={o.value}
@@ -82,7 +82,7 @@ Select.defaultProps = {
   borders: 1,
   iconProps: {
     size: 20,
-    color: 'select.icon',
+    color: 'selectIcon',
     style: { marginLeft: 'auto', display: 'inherit' },
   },
   popoverProps: {
@@ -90,12 +90,19 @@ Select.defaultProps = {
     mt: '-1px',
     portal: false,
     color: 'select',
-    bg: 'select.background',
-    borderColor: 'select.border',
+    bg: 'selectBackground',
+    borderColor: 'selectBorder',
     borderRadius: 0,
+  },
+  menuProps: {
+    borderRadius: 0,
+    p: 0,
+    m: 0,
+    bg: 'selectBackground',
   },
   menuItemProps: {
     borderRadius: 0,
+    color: 'select',
   },
 }
 

@@ -20,11 +20,12 @@ export const createTheme = themeColors => {
       ...themeColors,
 
       /* Select */
-      'select.background': colors.gray[0],
-      'select.placeholder': colors.gray[5],
-      'select.border': colors.gray[5],
-      'select.focus.border': colors.gray[6],
-      'select.icon': colors.gray[5],
+      select: colors.gray[7],
+      selectBackground: colors.gray[0],
+      selectPlaceholder: colors.gray[5],
+      selectBorder: colors.gray[5],
+      selectFocusBorder: colors.gray[6],
+      selectIcon: colors.gray[5],
     },
 
     /* Checkbox */
