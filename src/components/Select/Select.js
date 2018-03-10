@@ -74,7 +74,6 @@ class Select extends React.Component {
         on="click"
         arrow={false}
         fullWidth
-        portal={false}
         {...popoverProps}
       >
         {this.renderOptions()}
@@ -88,6 +87,7 @@ Select.defaultProps = {
   popoverProps: {
     maxHeight: '150px',
     mt: '-1px',
+    portal: false,
   },
   menuItemProps: {
     borderRadius: 0,
