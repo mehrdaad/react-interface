@@ -8,14 +8,17 @@ import { getColorShades, colorListToMap } from './themes/utils/colors'
 // and https://github.com/pricelinelabs/design-system
 const Wrapper = styled.div`
   font-family: ${props => props.theme.fonts.primary};
-  background: ${props => props.theme.background};
-  color: ${props => props.theme.text || props.theme.colors.gray[8]};
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text || props.theme.colors.gray[8]};
   box-sizing: border-box;
 `
 
 const Theme = ({ theme = {}, color, ...rest }) => {
   // Merge base theme and theme with palette
-  const merged = merge(base, theme)
+  // theme arrays will be overriden
+  const merged = merge(base, theme, {
+    arrayMerge: (destination, source) => source,
+  })
 
   if (color) {
     const primaryShades = getColorShades(color, 'primary')

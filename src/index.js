@@ -1,9 +1,6 @@
-import { Flex, Box } from 'grid-styled'
-
-// Grid components
-export { Flex, Box } from 'grid-styled'
-
 // Components
+export Box from './components/Box'
+export Flex from './components/Flex'
 export Button from './components/Button'
 export Title from './components/Title'
 export Paragraph from './components/Paragraph'

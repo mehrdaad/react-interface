@@ -17,18 +17,13 @@ const Notification = styled.div`
   line-height: 1rem;
   border-width: 1px;
   border-style: solid;
-
-  ${props =>
-    !props.palette &&
-    css`
-      background: ${props => props.theme.colors.primary[0]};
-      color: ${props => props.theme.colors.primary[4]};
-      border-color: ${props => props.theme.colors.primary[2]};
-    `}
-
-  background: ${props => props.theme['notification.background']};
-  border: 1px solid ${props => props.theme['notification.border.color']};
-  color: ${props => props.theme['notification.color']};
+  ${borderRadius}
+  ${borders}
+  ${color}
+  ${space}
+  ${justifyContent}
+  ${width}
+  ${fontSize}
 
   ${props =>
     props.palette &&
@@ -46,20 +41,15 @@ const Notification = styled.div`
       color: ${props => props.theme.colors[props.palette][0]};
       border-color: ${props => props.theme.colors[props.palette][4]};
     `}
-
-  ${borderRadius}
-  ${borders}
-  ${color}
-  ${space}
-  ${justifyContent}
-  ${width}
-  ${fontSize}
 `
 
 Notification.defaultProps = {
   borderRadius: 4,
   p: 3,
   solid: false,
+  bg: 'notificationBackground',
+  color: 'notificationColor',
+  borderColor: 'notificationBorder',
 }
 
 /** @component */

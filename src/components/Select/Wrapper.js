@@ -35,7 +35,7 @@ const Wrapper = styled.div`
 Wrapper.defaultProps = {
   p: 2,
   color: 'select',
-  background: 'selectBackground',
+  bg: 'selectBackground',
   borderColor: 'selectBorder',
   borderRadius: 2,
   border: '1px solid',

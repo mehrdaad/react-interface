@@ -30,6 +30,11 @@ export const createTheme = themeColors => {
       selectIcon: colors.gray[5],
       selectItemHoverBackground: colors.blue[0],
       selectItemHover: colors.blue[3],
+
+      /* Notifications */
+      notificationBackground: colors.primary[0],
+      notificationColor: colors.primary[3],
+      notificationBorder: colors.primary[4],
     },
 
     /* Checkbox */
