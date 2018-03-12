@@ -35,6 +35,9 @@ export const createTheme = themeColors => {
       notificationBackground: colors.primary[0],
       notificationColor: colors.primary[3],
       notificationBorder: colors.primary[4],
+
+      /* Spinner */
+      spinner: colors.primary[4],
     },
 
     /* Checkbox */

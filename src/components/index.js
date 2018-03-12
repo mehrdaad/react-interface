@@ -1,3 +1,5 @@
+import Flex from './Flex'
+import Box from './Box'
 import Button from './Button'
 import Icon from './Icon'
 import Title from './Title'
@@ -14,7 +16,6 @@ import Tooltip from './Tooltip'
 import Text from './Text'
 import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
 import { Table, TBody, THead, Header, Row, Cell } from './FlexTable'
-import { Flex, Box } from 'grid-styled'
 
 export {
   Button,
@@ -43,4 +44,5 @@ export {
   Notification,
   Text,
   Tooltip,
+  Spinner,
 }
