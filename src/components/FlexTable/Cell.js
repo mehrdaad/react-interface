@@ -5,7 +5,8 @@ import { space } from 'styled-system'
 
 const Wrapper = styled.div`
   display: flex;
-  flex-flow: row nowrap;
+  flex-direction: ${props => props.direction};
+  flex-wrap: ${props => props.wrap};
   flex-grow: ${props => props.grow};
   flex-shrink: ${props => props.shrink};
   flex-basis: ${props => props.basis};
@@ -30,7 +31,9 @@ Cell.defaultProps = {
   shrink: 1,
   basis: 'auto',
   align: 'initial',
-  justify: 'start'
+  justify: 'start',
+  wrap: 'nowrap',
+  direction: 'row'
 };
 
 Cell.propTypes = {
@@ -38,7 +41,9 @@ Cell.propTypes = {
   basis: PropTypes.any,
   align: PropTypes.string,
   children: PropTypes.node,
-  justify: PropTypes.string
+  justify: PropTypes.string,
+  wrap: PropTypes.string,
+  direction: PropTypes.string,
 };
 
 export default Cell;
