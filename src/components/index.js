@@ -14,6 +14,7 @@ import MultiSelect from './MultiSelect'
 import Notification from './Notification'
 import Tooltip from './Tooltip'
 import Text from './Text'
+import Spinner from './Spinner'
 import { Menu, MenuItem, MenuHeader, MenuDivider } from './Menu'
 import { Table, TBody, THead, Header, Row, Cell } from './FlexTable'
 
