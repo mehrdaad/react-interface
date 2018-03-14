@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { space } from 'styled-system'
+import { space, width } from 'styled-system'
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   text-overflow: ellipsis;
   min-width: 0px;
   ${space}
+  ${width}
 `;
 
 const Cell = ({ children, ...props }) => (
