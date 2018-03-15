@@ -1,7 +1,6 @@
-// https://tailwindcss.com/docs/spacing
 const sizes = {
   breakpoints: ['40em', '52em', '64em'],
-  // Use for convenience, maps semantic sizes to array indicies for other propertries
+  // Used for convenience, maps semantic sizes to array indicies for other propertries
   sizes: {
     xxs: 0,
     xs: 1,
@@ -12,6 +11,7 @@ const sizes = {
     xxl: 6,
     xxxl: 7,
   },
+  dimensions: [0, 6, 12, 16, 24, 36, 48, 64, 72],
   // Used for typographic scale
   fontSizes: [
     '0.25rem',

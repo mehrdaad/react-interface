@@ -38,6 +38,11 @@ export const createTheme = themeColors => {
 
       /* Spinner */
       spinner: colors.primary[4],
+
+      /* Switch */
+      switchOnBackground: colors.primary[4],
+      switchOffBackground: colors.primary[1],
+      switchKnobBackground: colors.gray[0],
     },
 
     /* Checkbox */
