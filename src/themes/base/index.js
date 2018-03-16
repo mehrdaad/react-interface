@@ -19,6 +19,11 @@ export const createTheme = themeColors => {
       /* Theme Colors */
       ...themeColors,
 
+      /* Button */
+      button: colors.primary[0],
+      buttonBorder: colors.primary[4],
+      buttonBackground: colors.primary[4],
+
       /* Select */
       select: colors.gray[7],
       selectHover: colors.gray[6],
@@ -43,6 +48,12 @@ export const createTheme = themeColors => {
       switchOnBackground: colors.primary[4],
       switchOffBackground: colors.primary[1],
       switchKnobBackground: colors.gray[0],
+
+      /* MultiSelect */
+      multiSelectBackground: colors.gray[0],
+      multiSelectPlaceholder: colors.gray[5],
+      multiSelectBorder: colors.gray[5],
+      multiSelectIcon: colors.gray[5],
     },
 
     /* Checkbox */
@@ -55,12 +66,6 @@ export const createTheme = themeColors => {
     'popover.border.color': colors.gray[4],
     'popover.border.style': 'solid',
     'popover.border.width': '1px',
-
-    /* MultiSelect */
-    'multiselect.background': colors.gray[0],
-    'multiselect.placeholder.color': colors.gray[5],
-    'multiselect.border.color': colors.gray[5],
-    'multiselect.icon.color': colors.gray[5],
 
     /* Menus */
     'menu.background': colors.gray[0],

@@ -3,7 +3,7 @@ import { Menu } from '../Menu'
 export default Menu.extend`
   > li:hover {
     .checkbox {
-      background: ${props => props.theme['multiselect.checkbox.hover.background']};
+      background: ${props => props.theme.colors.multiSelectCheckboxHoverBackground};
     }
   }
 

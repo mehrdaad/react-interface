@@ -6,29 +6,48 @@ import {
   color,
   borders,
   borderColor,
+  hover,
 } from 'styled-system'
 
-export default styled.div`
-  background: ${props => props.theme['multiselect.background']};
-  border: 1px solid ${props => props.theme['multiselect.border.color']};
+const Wrapper = styled.div`
+  background: ${props => props.theme.colors.multiSelectBackground};
+  border: 1px solid ${props => props.theme.colors.multiSelectBorder};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   height: 100%;
   padding: 10px;
+  position: relative;
   ${space}
   ${width}
   ${borderRadius}
   ${color}
   ${borders}
   ${borderColor}
+  ${hover}
 
   &:focus {
-    border: 1px solid ${props => props.theme['multiselect.focus.border.color']};
+    border: 1px solid ${props => props.theme.colors.multiSelectFocusBorder};
     outline: none;
   }
 
   svg {
-    color: ${props => props.theme['multiselect.icon.color']};
+    color: ${props => props.theme.colors.multiSelectIcon};
   }
 `
+
+Wrapper.defaultProps = {
+  p: 2,
+  color: 'multiSelect',
+  bg: 'multiSelectBackground',
+  borderColor: 'multiSelectBorder',
+  borderRadius: 2,
+  border: '1px solid',
+  hover: {
+    color: 'multiSelectHover',
+    backgroundColor: 'multiSelectHoverBackground',
+  },
+}
+
+export default Wrapper
