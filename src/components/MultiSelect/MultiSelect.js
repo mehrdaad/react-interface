@@ -190,13 +190,13 @@ MultiSelect.defaultProps = {
     portal: false,
     color: 'multiSelect',
     bg: 'multiSelectBackground',
-    borderColor: 'multiSelectBorder',
+    borderColor: 'multiSelectPopoverBorder',
     borderRadius: 0,
   },
   checkboxProps: {
     mr: 1,
     color: 'multiSelect',
-    background: 'multiSelectBackground',
+    background: 'multiSelectCheckboxBackground',
   },
   menuProps: {
     borderRadius: 0,

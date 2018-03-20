@@ -147,6 +147,10 @@ Checkbox.propTypes = {
     'indigo',
     'purple',
     'pink',
+    'info',
+    'danger',
+    'warning',
+    'success',
     PropTypes.string,
   ]),
   /**
