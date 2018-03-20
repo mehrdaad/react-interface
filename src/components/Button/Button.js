@@ -138,7 +138,8 @@ Button.defaultProps = {
   borderRadius: 3,
   inverse: false,
   transparent: false,
-  border: '1px solid'
+  borderWidth: '1px',
+  borderStyle: 'solid',
 }
 
 /** @component */
