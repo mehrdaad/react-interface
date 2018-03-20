@@ -28,17 +28,14 @@ const Button = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  appearance: none;
-  ${color}
-  ${space}
-  ${width}
-  ${borders}
-  ${borderRadius}
-  ${borderColor}
-  ${fontWeight}
-  ${fontSize}
-  ${hover}
-  ${boxShadow}
+
+  ${props =>
+    !props.palette &&
+    css`
+      background: ${props => props.theme.colors.buttonBackground};
+      color: ${props => props.theme.colors.button};
+      border-color: ${props => props.theme.colors.buttonBorder};
+    `}
 
   ${props =>
     props.palette &&
@@ -75,10 +72,21 @@ const Button = styled.button`
         props.theme.buttonPaddings[props.theme.sizes[props.size]]};
     `}
 
+  ${color}
+  ${space}
+  ${width}
+  ${borders}
+  ${borderRadius}
+  ${borderColor}
+  ${fontWeight}
+  ${fontSize}
+  ${hover}
+  ${boxShadow}
+
   &:disabled {
     opacity: .25;
-    background: ${props => props.theme['button.disabled.background']};
-    color: ${props => props.theme['button.disabled.color']};
+    background: ${props => props.theme.colors.buttonDisabledBackground};
+    color: ${props => props.theme.colors.buttonDisabled};
   }
 `
 
@@ -130,9 +138,6 @@ Button.defaultProps = {
   borderRadius: 3,
   inverse: false,
   transparent: false,
-  color: 'button',
-  bg: 'buttonBackground',
-  borderColor: 'buttonBorder',
   border: '1px solid'
 }
 

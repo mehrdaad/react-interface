@@ -137,7 +137,9 @@ class MultiSelect extends PureComponent {
     if (selected.length > 1 && !renderMultiSelected) {
       return selected.map(s => (
         <Tag mr={1} key={getLabel(s)}>
-          <div key={getLabel(s)}>{this.renderOption(s, getLabel(s))}</div>
+          <div key={getLabel(s)}>
+            {this.renderOption(s, getLabel(s))}
+          </div>
         </Tag>
       ))
     }
@@ -149,16 +151,14 @@ class MultiSelect extends PureComponent {
 
   renderTrigger() {
     return (
-      <div>
-        <Wrapper className="ri-multiselect" {...this.props} tabIndex="0">
-          {this.renderPlaceholder()}
-          <Icon
-            type="chevron-down"
-            size={20}
-            style={{ marginLeft: 'auto', position: 'absolute', right: 10 }}
-          />
-        </Wrapper>
-      </div>
+      <Wrapper className="ri-multiselect" {...this.props} tabIndex="0">
+        {this.renderPlaceholder()}
+        <Icon
+          type="chevron-down"
+          size={20}
+          style={{ marginLeft: 'auto' }}
+        />
+      </Wrapper>
     )
   }
 

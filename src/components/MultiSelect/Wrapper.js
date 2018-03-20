@@ -7,6 +7,7 @@ import {
   borders,
   borderColor,
   hover,
+  focus,
 } from 'styled-system'
 
 const Wrapper = styled.div`
@@ -25,12 +26,14 @@ const Wrapper = styled.div`
   ${color}
   ${borders}
   ${borderColor}
-  ${hover}
 
   &:focus {
     border: 1px solid ${props => props.theme.colors.multiSelectFocusBorder};
     outline: none;
   }
+
+  ${focus}
+  ${hover}
 
   svg {
     color: ${props => props.theme.colors.multiSelectIcon};

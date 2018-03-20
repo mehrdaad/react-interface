@@ -7,7 +7,9 @@ import {
   borderColor,
   borderRadius,
   color,
+  textColor,
   fontSize,
+  hover,
 } from 'styled-system'
 import Icon from '../Icon'
 
@@ -31,6 +33,8 @@ const Wrapper = styled.div`
       css`
         color: ${props => props.theme.colors[props.palette][3]};
       `}
+
+    ${textColor}
   }
 
   ${fontSize}
@@ -64,15 +68,17 @@ const Box = styled.div`
       border-color: ${props => props.theme.colors[props.palette][1]};
     `}
 
-  ${borderRadius}
-  ${borderColor}
-  ${color}
-  ${space}
-
   &:hover {
     border-color: ${props => props.theme['checkbox.hover.border.color']};
     background: ${props => props.theme['checkbox.hover.background']};
   }
+
+
+  ${borderRadius}
+  ${borderColor}
+  ${color}
+  ${space}
+  ${hover}
 
   svg,
   div {
