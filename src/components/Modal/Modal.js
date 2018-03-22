@@ -32,7 +32,11 @@ const Backdrop = styled.aside`
 `
 
 const Body = styled.div`
+  background: #ffffff;
   width: 100%;
+  max-width: 700px;
+  border-radius: 4px;
+  padding: 25px;
   margin: 10% auto 5%;
   animation: ${slideIn} 300ms ease-out;
 
@@ -101,7 +105,6 @@ class Modal extends Component {
       closeWithBackdrop,
       trigger,
       backdropProps,
-      containerProps,
       children
     } = this.props
 
@@ -116,8 +119,10 @@ class Modal extends Component {
             <PageClick
               outsideOnly
               notify={() => closeWithBackdrop && this.closeModal()}>
-              <Body {...containerProps}>
-                {children}
+              <Body {...this.props}>
+                {typeof children === 'function'
+                  ? children(this.closeModal)
+                  : children}
               </Body>
             </PageClick>
           </Backdrop>}
@@ -133,8 +138,7 @@ Modal.propTypes = {
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
   trigger: PropTypes.object,
-  backdropProps: PropTypes.object,
-  containerProps: PropTypes.object
+  backdropProps: PropTypes.object
 }
 
 Modal.defaultProps = {
@@ -143,16 +147,9 @@ Modal.defaultProps = {
   closeWithBackdrop: true,
   onOpen: () => {},
   onClose: () => {},
-  trigger: <button>Open Modal</button>,
   backdropProps: {
     bg: 'rgba(0, 0, 0, 0.8)',
     zIndex: 11
-  },
-  containerProps: {
-    bg: '#ffffff',
-    borderRadius: '4px',
-    maxWidth: '700px',
-    p: '25px'
   }
 }
 
