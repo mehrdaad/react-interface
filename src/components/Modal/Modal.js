@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import PageClick from 'react-page-click'
 import { fadeIn, slideIn } from '../../utils/animations'
 import {
   space,
@@ -39,6 +38,8 @@ const Body = styled.div`
   padding: 25px;
   margin: 10% auto 5%;
   animation: ${slideIn} 300ms ease-out;
+  position: relative;
+  z-index: 10;
 
   ${space}
   ${size}
@@ -50,6 +51,15 @@ const Body = styled.div`
   ${boxShadow}
   ${fontSize}
   ${fontWeight}
+`
+
+const Closer = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
 `
 
 class Modal extends Component {
@@ -116,15 +126,12 @@ class Modal extends Component {
 
         {this.state.isOpen &&
           <Backdrop {...backdropProps}>
-            <PageClick
-              outsideOnly
-              notify={() => closeWithBackdrop && this.closeModal()}>
-              <Body {...this.props}>
-                {typeof children === 'function'
-                  ? children(this.closeModal)
-                  : children}
-              </Body>
-            </PageClick>
+            <Closer onClick={() => closeWithBackdrop && this.closeModal()} />
+            <Body {...this.props}>
+              {typeof children === 'function'
+                ? children(this.closeModal)
+                : children}
+            </Body>
           </Backdrop>}
       </div>
     )

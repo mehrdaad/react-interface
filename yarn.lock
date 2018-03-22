@@ -7876,12 +7876,6 @@ react-icons@^2.2.7:
   dependencies:
     react-icon-base "2.1.0"
 
-react-page-click@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/react-page-click/-/react-page-click-4.0.2.tgz#3f1a079ca0fd86da91e8b5b78a018956dc7ad9b6"
-  dependencies:
-    prop-types "^15.6.0"
-
 react-popper@^0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/react-popper/-/react-popper-0.8.2.tgz#092095ff13933211d3856d9f325511ec3a42f12c"
