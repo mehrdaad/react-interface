@@ -114,3 +114,14 @@ export const start = keyframes`
 export const spin = keyframes`
   to { transform: translateY(-15.0em); }
 `
+
+export const slideIn = keyframes`
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`
