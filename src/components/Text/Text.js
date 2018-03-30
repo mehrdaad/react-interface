@@ -9,6 +9,7 @@ import {
   fontSize,
   letterSpacing,
   lineHeight,
+  textAlign,
 } from 'styled-system'
 
 const Text = styled.span`
@@ -30,6 +31,7 @@ const Text = styled.span`
   ${letterSpacing}
   ${lineHeight}
   ${fontSize}
+  ${textAlign}
 `
 
 /** @component */
