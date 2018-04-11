@@ -54,6 +54,10 @@ export const createTheme = themeColors => {
       multiSelectPlaceholder: colors.gray[5],
       multiSelectBorder: colors.gray[5],
       multiSelectIcon: colors.gray[5],
+
+      /* Accordion */
+      accordionLabelColor: colors.gray[0],
+      accordionLabelBackground: colors.primary[4],
     },
 
     /* Checkbox */
