@@ -11,10 +11,6 @@ import {
 	textAlign,
 } from 'styled-system'
 
-const Wrapper = styled.div`
-	position: relative;
-`
-
 const Label = styled.div`
 	cursor: pointer;
 
@@ -37,7 +33,7 @@ class Accordion extends Component {
 
 	render () {
 		return (
-			<Wrapper>
+			<div>
 				{this.props.children.map((section, idx) => {
 					return (
 						<div key={idx}>
@@ -57,7 +53,7 @@ class Accordion extends Component {
 						</div>
 					)
 				})}
-			</Wrapper>
+			</div>
 		)
 	}
 }
