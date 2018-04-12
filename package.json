@@ -14,6 +14,7 @@
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo --port=4000",
     "test": "nwb test-react",
+    "test:lint": "eslint src tests",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
     "styleguide": "styleguidist server",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "create-nwb-webpack-config": "^1.0.0",
-    "eslint-config-react-tools": "^1.1.2",
+    "eslint-config-timber": "^1.0.12",
     "markdown-loader": "^2.0.1",
     "nwb": "^0.21.5",
     "prettier": "^1.10.2",
@@ -55,5 +56,8 @@
   "repository": "",
   "keywords": [
     "react-component"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": "timber"
+  }
 }
