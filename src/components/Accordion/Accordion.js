@@ -1,68 +1,77 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Show from 'react-show'
 import styled from 'styled-components'
 import {
-	space,
-	color,
-	border,
-	borderRadius,
-	borderColor,
-	fontSize,
-	textAlign,
+  space,
+  color,
+  border,
+  borderRadius,
+  borderColor,
+  fontSize,
+  textAlign,
 } from 'styled-system'
 
-const Label = styled.div`
-	cursor: pointer;
-
-	${space}
-	${color}
-	${border}
-	${borderRadius}
-	${borderColor}
-	${fontSize}
-	${textAlign}
+const DefaultLabel = styled.div`
+  cursor: pointer;
+  background: ${props => props.theme.colors.accordionLabelBackground};
+  color: ${props => props.theme.colors.accordionLabelColor};
+  margin: 5px 0;
+  padding: 5px;
 `
 
 class Accordion extends Component {
-	constructor (props) {
-		super(props)
-		this.state = {
-			selectedIdx: props.selectedIdx || 0,
-		}
-	}
+  constructor (props) {
+    super(props)
+    this.state = {
+      selectedIdx: props.selectedIdx,
+    }
+  }
 
-	render () {
-		return (
-			<div>
-				{this.props.children.map((section, idx) => {
-					return (
-						<div key={idx}>
-							<Label
-								{...this.props}
-								onClick={() => this.setState({ selectedIdx: idx })}
-							>
-								{section.props.label}
-							</Label>
+  onClick = (idx) => {
+    this.setState({
+      selectedIdx: idx
+    })
+  }
 
-							<Show
-								show={idx === this.state.selectedIdx}
-								duration={200}
-							>
-								{section}
-							</Show>
-						</div>
-					)
-				})}
-			</div>
-		)
-	}
+  render () {
+    const children = Array.isArray(this.props.children)
+      ? this.props.children
+      : [this.props.children]
+
+    return children.map((child, idx) => {
+      const {
+        label = `Section ${idx + 1}`,
+        trigger = <DefaultLabel>{label}</DefaultLabel>,
+      } = child.props
+
+      return (
+        <div key={`accordion-${idx}`}>
+          <span onClick={() => this.onClick(idx)}>
+            {trigger}
+          </span>
+
+          <Show
+            duration={200}
+            show={idx === this.state.selectedIdx}
+            styleHide={{ height: 0, opacity: 0 }}
+            styleShow={{ height: 'auto', opacity: 1 }}
+          >
+            {child}
+          </Show>
+        </div>
+      )
+    })
+  }
+}
+
+Accordion.propTypes = {
+  selectedIdx: PropTypes.number,
+  trigger: PropTypes.object,
 }
 
 Accordion.defaultProps = {
-	bg: 'accordionLabelBackground',
-	color: 'accordionLabelColor',
-	m: '5px 0',
-	p: 2,
+  selectedIdx: 0,
 }
 
 export default Accordion

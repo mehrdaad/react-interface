@@ -1,1 +1,1 @@
-export default from './Accordion.js'
+export default from './Accordion'
