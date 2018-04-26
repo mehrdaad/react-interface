@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { color, hover } from 'styled-system'
 import Popper from '../Popper'
@@ -18,7 +18,7 @@ Placeholder.defaultProps = {
   },
 }
 
-class Select extends React.Component {
+class Select extends Component {
   renderPlaceholder() {
     const { placeholderColor } = this.props
     return (
@@ -86,6 +86,7 @@ class Select extends React.Component {
 }
 
 Select.defaultProps = {
+  onChange: () => {},
   iconProps: {
     size: 20,
     color: 'selectIcon',
