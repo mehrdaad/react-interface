@@ -14,7 +14,7 @@ import {
 import resizeDetector from 'element-resize-detector'
 import cx from 'classnames'
 import { Manager, Target, Popper as Positioner, Arrow } from 'react-popper'
-import Show from 'react-show'
+// import Show from 'react-show'
 import { debounce } from '../../utils/browser'
 import Portal from '../Portal'
 
@@ -101,9 +101,9 @@ const PopoverWrapper = styled.div`
     margin-right: 0;
   }
 
-  .popper[data-x-out-of-boundaries] {
-      display: none;
-  }
+  // .popper[data-x-out-of-boundaries] {
+  //   display: none;
+  // }
 `
 
 const animations = {
@@ -280,8 +280,10 @@ class Popper extends PureComponent {
           >
             {trigger}
           </Target>
-          {portal && <Portal>{this.renderPositioner()}</Portal>}
-          {!portal && this.renderPositioner()}
+
+          {portal
+            ? <Portal>{this.renderPositioner()}</Portal>
+            : this.renderPositioner()}
         </Manager>
       </PopoverWrapper>
     )
