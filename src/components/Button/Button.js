@@ -29,6 +29,11 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
+  /* normalize borders */
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+
   ${props =>
     !props.palette &&
     css`
@@ -135,11 +140,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   size: 'md',
-  borderRadius: 3,
   inverse: false,
-  transparent: false,
-  borderWidth: '1px',
-  borderStyle: 'solid',
+  transparent: false
 }
 
 /** @component */
