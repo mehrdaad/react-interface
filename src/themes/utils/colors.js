@@ -26,7 +26,9 @@ export function getColorShades(color, colorName, steps = 7) {
   return colorList
 }
 
-window.getColorShades = getColorShades
+if (typeof window !== 'undefined') {
+  window.getColorShades = getColorShades
+}
 
 export function getPaletteShades(palette) {
   return Object.keys(palette)

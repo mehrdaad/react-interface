@@ -1,26 +1,13 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Show from 'react-show'
-import styled from 'styled-components'
-import {
-  space,
-  color,
-  border,
-  borderRadius,
-  borderColor,
-  fontSize,
-  textAlign,
-} from 'styled-system'
 
-const DefaultLabel = styled.div`
-  cursor: pointer;
-  background: ${props => props.theme.colors.accordionLabelBackground};
-  color: ${props => props.theme.colors.accordionLabelColor};
-  margin: 5px 0;
-  padding: 5px;
-`
+export default class Accordion extends PureComponent {
+  static propTypes = {
+    selectedIdx: PropTypes.number,
+    trigger: PropTypes.object,
+  }
 
-class Accordion extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -40,22 +27,28 @@ class Accordion extends Component {
       : [this.props.children]
 
     return children.map((child, idx) => {
-      const {
-        label = `Section ${idx + 1}`,
-        trigger = <DefaultLabel>{label}</DefaultLabel>,
-      } = child.props
+      const { trigger, ...childProps } = child.props
+
+      const styleHide = { opacity: 0, height: 0 }
+      const styleShow = { opacity: 1, height: 'auto' }
 
       return (
-        <div key={`accordion-${idx}`}>
-          <span onClick={() => this.onClick(idx)}>
+        <div
+          key={`accordion-${idx}`}
+          style={this.props.style}
+          className={this.props.className}
+        >
+          <span
+            onClick={() => this.onClick(idx)}
+          >
             {trigger}
           </span>
 
           <Show
             duration={200}
             show={idx === this.state.selectedIdx}
-            styleHide={{ height: 0, opacity: 0 }}
-            styleShow={{ height: 'auto', opacity: 1 }}
+            styleHide={styleHide}
+            styleShow={styleShow}
           >
             {child}
           </Show>
@@ -64,14 +57,3 @@ class Accordion extends Component {
     })
   }
 }
-
-Accordion.propTypes = {
-  selectedIdx: PropTypes.number,
-  trigger: PropTypes.object,
-}
-
-Accordion.defaultProps = {
-  selectedIdx: 0,
-}
-
-export default Accordion

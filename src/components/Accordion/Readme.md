@@ -1,7 +1,7 @@
 ```jsx
 <Accordion>
-  <div label="Section One">This is section one.</div>
-  <div label="Section Two">This is section two.</div>
-  <div label="Section Three">This is section three.</div>
+  <div trigger={<a>Section One</a>}>This is section one.</div>
+  <div trigger={<a>Section Two</a>}>This is section two.</div>
+  <div trigger={<a>Section Three</a>}>This is section three.</div>
 </Accordion>
 ```

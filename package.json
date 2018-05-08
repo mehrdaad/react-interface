@@ -10,6 +10,7 @@
     "umd"
   ],
   "scripts": {
+    "watch": "rm -rf lib && babel src_new -d lib -w",
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo --port=4000",
@@ -27,6 +28,7 @@
     "deepmerge": "^2.0.0",
     "dom-helpers": "^3.3.1",
     "element-resize-detector": "^1.1.13",
+    "glamor": "^2.20.40",
     "grid-styled": "^3.2.1",
     "polished": "^1.9.2",
     "prop-types": "^15.6.0",
@@ -40,6 +42,12 @@
     "react": ">=15"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.46",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.46",
+    "@babel/plugin-transform-react-jsx": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
     "create-nwb-webpack-config": "^1.0.0",
     "eslint-config-timber": "^1.0.12",
     "markdown-loader": "^2.0.1",
@@ -59,5 +67,15 @@
   ],
   "eslintConfig": {
     "extends": "timber"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-react-jsx",
+      "@babel/plugin-proposal-export-default-from",
+      "@babel/plugin-proposal-class-properties"
+    ]
   }
 }
