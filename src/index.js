@@ -19,6 +19,8 @@ export Popover from './components/Popover'
 export Popper from './components/Popper'
 export Expand from './components/Expand'
 export Tooltip from './components/Tooltip'
+export Modal from './components/Modal'
+export Accordion from './components/Accordion'
 
 // Loading
 export Spinner from './components/Spinner'
