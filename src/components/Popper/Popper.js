@@ -186,19 +186,19 @@ class Popper extends PureComponent {
     const clickedTarget = e && this.target && this.target.contains(e.target)
 
     if (!e || (!clickedPopper && !clickedTarget)) {
-      this.setState({ isOpen: false }, this.props.onClose);
+      this.close()
     }
   }
 
   close = () => {
-    this.setState({ isOpen: false }, this.props.onClose);
+    this.setState({ isOpen: false }, this.props.onClose)
   }
 
   _handleTargetClick = () => {
     if (this.state.isOpen) {
-      this.setState({ isOpen: false }, this.props.onClose);
+      this.close()
     } else {
-      this.setState({ isOpen: true }, this.props.onOpen);
+      this.setState({ isOpen: true }, this.props.onOpen)
     }
   }
 
